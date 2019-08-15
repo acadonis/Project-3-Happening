@@ -7,11 +7,16 @@ const mongoose = require('mongoose')
 
 const bodyParser = require('body-parser')
 
-const router = require('./config/routes')
 //Not yet using the below
+// const router = require('./config/routes')
 // const queryHandler = require('./lib/queryHandler')
 // const errorHandler = require('./lib/errorHandler')
 const { dbURI } = require('./config/environment')
+
+//Not yet using the below
+// app.use(queryHandler)
+// app.use('/api', router)
+// app.use(errorHandler)
 
 const app = express()
 mongoose.connect(dbURI, { useNewUrlParser: true })
