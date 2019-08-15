@@ -1,26 +1,27 @@
-/* global api, describe, it, expect, beforeEach, afterEach */
-const Happening = require('../../models/Happening')
-const happeningData = require('../../db/data/happeningData')
+/* global api, describe, beforeEach, afterEach, it, expect */
 
-describe('GET /happenings/:id', () => {
+const User = require('../../models/User')
+const userData = require('../../db/data/usersData')
 
-  let happening = null
+describe('Get /users/:id',() => {
+
+  let user = null
 
   beforeEach(done => {
-    Happening.create(happeningData)
-      .then(happenings => {
-        happening = happenings[0]
+    User.create(userData)
+      .then(users => {
+        user = users[0]
         done()
       })
   })
 
   afterEach(done => {
-    Happening.remove({})
+    User.remove({})
       .then(() => done())
   })
 
-  it('should return a 200 response', done => {
-    api.get(`/happenings/${happening._id}`)
+  it('should send a 200 response', done => {
+    api.get(`/users/${user._id}`)
       .end((err, res) => {
         expect(res.status).to.eq(200)
         done()
@@ -28,7 +29,7 @@ describe('GET /happenings/:id', () => {
   })
 
   it('should return an object', done => {
-    api.get(`/happenings/${happening._id}`)
+    api.get(`/users/${user._id}`)
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -36,28 +37,26 @@ describe('GET /happenings/:id', () => {
   })
 
   it('should return the correct fields', done => {
-    api.get(`/happenings/${happening._id}`)
+    api.get(`/users/${user._id}`)
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           'name',
-          'lat',
-          'lon',
-          'local_date',
-          'local_time',
-          'time',
-          'plain_text_description',
+          'email',
+          'birthday',
+          'gender',
           'photo',
-          'venue',
+          'bio',
           'city',
-          'attendance_count',
-          'event_hosts'
+          'categories',
+          'following',
+          'events'
         ])
         done()
       })
   })
 
-  it('should return the correct data types', done => {
-    api.get(`/happenings/${happening._id}`)
+  xit('should return the correct data types', done => {
+    api.get(`/users/${user._id}`)
       .end((err, res) => {
         expect(res.body.name).to.be.a('string')
         expect(res.body.lat).to.be.a('number')
