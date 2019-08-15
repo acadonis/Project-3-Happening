@@ -8,7 +8,7 @@ const Happening = require('..models/Happening')
 */
 
 function indexRoute(req, res) {
-  Happening.find(req.query)
+  Happening.find(req.query) // This won't work until we have the query handler plugged in
     .then(happening => res.json(happening))
 }
 
