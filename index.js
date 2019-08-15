@@ -17,8 +17,8 @@ const app = express()
 // app.use(errorHandler)
 
 
-app.use(router)
 app.use(bodyParser.json())
+app.use(router)
 mongoose.connect(dbURI, { useNewUrlParser: true })
 
 app.listen(4000, () => console.log('Mind the gap on port 4000'))

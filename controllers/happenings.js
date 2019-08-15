@@ -13,6 +13,7 @@ function indexRoute(req, res) {
 }
 
 function createRoute(req, res) {
+  console.log(req.body)
   const happening = new Happening(req.body)
 
   happening.save()
