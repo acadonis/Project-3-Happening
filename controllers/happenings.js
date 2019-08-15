@@ -1,4 +1,4 @@
-const Happening = require('..models/Happening')
+const Happening = require('../models/Happening')
 
 /* Note to team:
 - I'm not building is user related pieces yet (e.g. populating records)

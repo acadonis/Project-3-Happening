@@ -22,7 +22,7 @@ router.post('/login', usersController.login)
 
 router.route('/users/:id')
   .get(usersController.userShow)
-  .push(usersController.userUpdate)
+  .put(usersController.userUpdate)
   .delete(usersController.userDelete)
 
 module.exports = router
