@@ -2,7 +2,7 @@
 const Happening = require('../../models/Happening')
 const happeningData = require('../../db/data/happeningData')
 
-describe('GET /stations', () => {
+describe('GET /happenings', () => {
 
   beforeEach(done => {
     Happening.create(happeningData)
@@ -43,8 +43,8 @@ describe('GET /stations', () => {
   it('should return the correct fields', done => {
     api.get('/happenings')
       .end((err, res) => {
-        res.body.forEach(station => {
-          expect(station).to.contains.keys([
+        res.body.forEach(happening => {
+          expect(happening).to.contains.keys([
             '_id',
             'name',
             'lat',
