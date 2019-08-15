@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = [{
   name: 'arsenal vs burnley',
   lat: 51.555486,
   lon: -0.109682,
@@ -11,4 +11,4 @@ module.exports = {
   city: 'London',
   attendance_count: 1000,
   event_hosts: ['admin','admin2']
-}
+}]
