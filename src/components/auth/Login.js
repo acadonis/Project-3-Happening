@@ -29,7 +29,7 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token) // store the token in localStorage
         toast.success(res.data.message)
-        this.props.history.push('http://localhost:4000/happenings') // redirect to the cheeses INDEX page
+        this.props.history.push('/happenings') // redirect to the cheeses INDEX page
       })
       .catch(() => {
         Auth.removeToken() // remove the token from localStorage
@@ -50,7 +50,7 @@ class Login extends React.Component {
                   className="input"
                   type="email"
                   name="email"
-                  placeholder="eg: leela3000@planetexpress.co.nny"
+                  placeholder="eg"
                   onChange={this.handleChange}
                 />
               </div>

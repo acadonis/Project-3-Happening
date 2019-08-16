@@ -14,7 +14,7 @@ import HappeningShow from './components/happenings/HappeningShow'
 
 // import HappeningEdit from './components/happenings/HappeningEdit'
 // import HappeningNew from './components/happenings/HappeningNew'
-// import UserIndex from './components/happenings/UserIndex'
+import UserIndex from './components/users/UserIndex'
 
 
 import UserShow from './components/users/UserShow'
@@ -40,6 +40,7 @@ class App extends React.Component {
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
+          <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
 
