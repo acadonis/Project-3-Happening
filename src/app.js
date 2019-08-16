@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 // import Home from './components/pages/Home'
-// // import Navbar from './components/common/Navbar'
+import Navbar from './components/common/Navbar'
 // import SecureRoute from './components/common/SecureRoute'
+// import Navbar from './components/common/Navbar'
 
 // import HappeningIndex from './components/happenings/HappeningIndex'
 
@@ -32,12 +33,12 @@ class App extends React.Component {
   render() {
     return (
       <HashRouter>
+        <Navbar />
         <ToastContainer position="bottom-right" hideProgressBar={true} />
-
         <Switch>
 
-          <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
+          <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
