@@ -64,7 +64,7 @@ class Show extends React.Component {
                   <div className="buttons">
                     <Link
                       className="button"
-                      to={`/stations/${this.state.user._id}/edit`}
+                      to={`/users/${this.state.user._id}/edit`}
                     >Edit</Link>
 
                     <button className="button is-danger">Delete</button>
