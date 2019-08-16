@@ -57,7 +57,7 @@ describe('GET /happenings', () => {
             'venue',
             'city',
             'attendance_count',
-            'event_hosts',
+            'happening_hosts',
             '__v'
           ])
         })
@@ -81,7 +81,7 @@ describe('GET /happenings', () => {
           expect(happening.city).to.be.a('string')
           expect(happening.time).to.be.a('number')
           expect(happening.attendance_count).to.be.a('number')
-          expect(happening.event_hosts).to.be.a('array')
+          expect(happening.happening_hosts).to.be.a('array')
         })
         done()
       })

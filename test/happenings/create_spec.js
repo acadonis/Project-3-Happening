@@ -16,7 +16,7 @@ const testData = {
   venue: 'test',
   city: 'test',
   attendance_count: 1000,
-  event_hosts: ['test','test']
+  happening_hosts: ['test','test']
 }
 
 describe('POST /happenings', () => {
@@ -90,7 +90,7 @@ describe('POST /happenings', () => {
           'venue',
           'city',
           'attendance_count',
-          'event_hosts',
+          'happening_hosts',
           '__v'
         ])
         done()
@@ -112,7 +112,7 @@ describe('POST /happenings', () => {
         expect(res.body.venue).to.eq(testData.venue)
         expect(res.body.city).to.eq(testData.city)
         expect(res.body.attendance_count).to.eq(testData.attendance_count)
-        expect(res.body.event_hosts).to.deep.eq(testData.event_hosts)
+        expect(res.body.happening_hosts).to.deep.eq(testData.happening_hosts)
         done()
       })
   })
