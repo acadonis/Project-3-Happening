@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const happeningSchema = new mongoose.Schema({
-  name: {type: String, required: 'Please provide a {PATH}', unique: true},
+  name: {type: String, required: 'Please provide a {PATH}'},
   city: {type: String, required: 'Please provide a {PATH}'},
   lat: {type: Number, required: 'Please'},
   lon: {type: Number, required: 'Please provide a {PATH}'},
