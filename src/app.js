@@ -8,7 +8,7 @@ import Navbar from './components/common/Navbar'
 // import SecureRoute from './components/common/SecureRoute'
 // import Navbar from './components/common/Navbar'
 
-// import HappeningIndex from './components/happenings/HappeningIndex'
+import HappeningIndex from './components/happenings/HappeningIndex'
 
 import HappeningShow from './components/happenings/HappeningShow'
 
@@ -37,6 +37,7 @@ class App extends React.Component {
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
 
+          <Route path="/happenings" component={HappeningIndex} />
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
