@@ -55,7 +55,7 @@ describe('GET /users', () => {
             'city',
             'categories',
             'following',
-            'events',
+            'happenings',
             '__v'
           ])
         })
@@ -76,8 +76,11 @@ describe('GET /users', () => {
           expect(user.bio).to.be.a('string')
           expect(user.city).to.be.a('string')
           expect(user.categories).to.be.a('array')
+          expect(user.categories[0]).to.be.a('string')
           expect(user.following).to.be.a('array')
-          expect(user.events).to.be.a('array')
+          expect(user.following[0]).to.be.a('object')
+          expect(user.happenings).to.be.a('array')
+          expect(user.happenings[0]).to.be.a('object')
         })
         done()
       })
