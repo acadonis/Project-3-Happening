@@ -1,18 +1,18 @@
 const router = require('express').Router()
 const happeningsController = require('../controllers/happenings')
 const usersController = require('../controllers/users')
-// const secureRoute = require('../lib/secureRoute')
+const secureRoute = require('../lib/secureRoute')
 
 // ## Happenings Routes
 
 router.route('/happenings')
   .get(happeningsController.index)
-  .post(happeningsController.create)
+  .post(secureRoute, happeningsController.create)
 
 router.route('/happenings/:id')
   .get(happeningsController.show)
-  .put(happeningsController.update)
-  .delete(happeningsController.delete)
+  .put(secureRoute, happeningsController.update)
+  .delete(secureRoute, happeningsController.delete)
 
 //## User Routes
 
