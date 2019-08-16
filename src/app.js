@@ -14,7 +14,7 @@ import SecureRoute from './components/common/SecureRoute'
 // import HappeningNew from './components/happenings/HappeningNew'
 
 // import UserIndex from './components/happenings/UserIndex'
-// import UserShow from './components/happenings/UserShow'
+import UserShow from './components/users/UserShow'
 // import UserEdit from './components/happenings/UserEdit'
 
 import Register from './components/auth/Register'
@@ -36,7 +36,7 @@ class App extends React.Component {
 
         <Switch>
 
-
+          <Route path="/users/:id" component={UserShow} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
 
