@@ -15,13 +15,15 @@ const app = express()
 //Not yet using the below
 // app.use(queryHandler)
 // app.use(errorHandler)
-
-
 app.use(bodyParser.json())
+
+
 app.use(router)
 mongoose.connect(dbURI, { useNewUrlParser: true })
 
-app.listen(4000, () => console.log('Mind the gap on port 4000'))
+app.listen(4000, () => console.log('Listening to port 4000'))
 
 //Not using the below yet. This is needed once we set up testing
 // module.exports = app
+
+module.exports = app // Export the app for testing

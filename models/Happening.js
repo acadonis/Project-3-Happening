@@ -8,7 +8,7 @@ const happeningSchema = new mongoose.Schema({
   local_date: {type: String, required: 'YYYY-MM-DD'},
   local_time: {type: String, required: 'hh:mm in 24'},
   time: {type: Number, required: 'Please provide a {PATH}'},
-  plain_text_description: {type: String, required: 'Please provide a {PATH}'},
+  description: {type: String, required: 'Please provide a {PATH}'},
   photo: {type: String, required: 'Please provide a {PATH}'},
   venue: {type: String, required: 'Please provide a {PATH}'},
   attendance_count: {type: Number, required: 'Please provide a {PATH}'},

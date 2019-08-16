@@ -30,7 +30,7 @@ function userIndexRoute(req, res) {
 
 function userShowRoute(req, res) {
   User.findById(req.params.id)
-    .then(user=> {
+    .then(user => {
       if(!user) return res.sendStatus(404)
 
       return res.json(user)
