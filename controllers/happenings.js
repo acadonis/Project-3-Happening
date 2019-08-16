@@ -49,17 +49,17 @@ function deleteRoute(req, res) {
 }
 
 function commentCreateRoute(req, res) {
-
   req.body.user = req.currentUser._id
+  console.log(req.body.user)
 
   Happening.findById(req.params.id)
-    .then(station => {
-      if(!station) return res.sendStatus(404)
-      station.comments.push(req.body)
-      return station.save()
+    .then(happening => {
+      if(!happening) return res.sendStatus(404)
+      happening.comments.push(req.body)
+      return happening.save()
     })
-    .then(station => Happening.populate(station, 'user comments.user'))
-    .then(station => res.json(station))
+    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => res.json(happening))
 }
 
 module.exports = {
@@ -68,5 +68,5 @@ module.exports = {
   show: showRoute,
   update: updateRoute,
   delete: deleteRoute,
-  createComment: commentCreateRoute
+  commentCreate: commentCreateRoute
 }

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const commentSchema = new mongoose.Schema({
   content: {type: String, required: 'Please provide a {PATH}'},
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: 'Please provide a {PATH}'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
 const happeningSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const happeningSchema = new mongoose.Schema({
   venue: { type: String, required: 'Please provide a {PATH}' },
   attendance_count: { type: Number, required: 'Please provide a {PATH}' },
   event_hosts: { type: [ String ], required: 'Please provide a {PATH}' },
-  comment: { type: [ commentSchema ], required: false },
+  comments: { type: [ commentSchema ], required: false },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 })
 
