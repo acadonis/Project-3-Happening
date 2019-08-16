@@ -11,6 +11,7 @@ import Navbar from './components/common/Navbar'
 // import HappeningIndex from './components/happenings/HappeningIndex'
 
 import HappeningShow from './components/happenings/HappeningShow'
+import HappeningCard from './components/happenings/HappeningCard'
 
 // import HappeningEdit from './components/happenings/HappeningEdit'
 // import HappeningNew from './components/happenings/HappeningNew'
@@ -32,19 +33,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <HashRouter>
-        <Navbar />
-        <ToastContainer position="bottom-right" hideProgressBar={true} />
-        <Switch>
+      <div>
+        <HappeningCard
+          name="jo" local_date="je" local_time="ja" photo="js" venue="jn" description="jp"
+        />
+        <HashRouter>
+          <Navbar />
+          <ToastContainer position="bottom-right" hideProgressBar={true} />
+          <Switch>
 
-          <Route path="/happenings/:id" component={HappeningShow} />
-          <Route path="/users/:id/edit" component={UserEdit} />
-          <Route path="/users/:id" component={UserShow} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+            <Route path="/happenings/:id" component={HappeningShow} />
+            <Route path="/users/:id/edit" component={UserEdit} />
+            <Route path="/users/:id" component={UserShow} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
 
-        </Switch>
-      </HashRouter>
+          </Switch>
+        </HashRouter>
+      </div>
     )
   }
 }

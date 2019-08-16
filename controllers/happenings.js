@@ -48,10 +48,25 @@ function deleteRoute(req, res) {
     })
 }
 
+function commentCreateRoute(req, res) {
+
+  req.body.user = req.currentUser._id
+
+  Happening.findById(req.params.id)
+    .then(station => {
+      if(!station) return res.sendStatus(404)
+      station.comments.push(req.body)
+      return station.save()
+    })
+    .then(station => Happening.populate(station, 'user comments.user'))
+    .then(station => res.json(station))
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  createComment: commentCreateRoute
 }
