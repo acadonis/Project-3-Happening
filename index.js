@@ -18,7 +18,8 @@ const app = express()
 app.use(bodyParser.json())
 
 
-app.use(router)
+app.use('/api', router)
+
 mongoose.connect(dbURI, { useNewUrlParser: true })
 
 app.listen(4000, () => console.log('Listening to port 4000'))
