@@ -50,7 +50,7 @@ describe('GET /happenings/:id', () => {
           'venue',
           'city',
           'attendance_count',
-          'event_hosts'
+          'happening_hosts'
         ])
         done()
       })
@@ -70,7 +70,7 @@ describe('GET /happenings/:id', () => {
         expect(res.body.venue).to.be.a('string')
         expect(res.body.city).to.be.a('string')
         expect(res.body.attendance_count).to.be.a('number')
-        expect(res.body.event_hosts).to.be.an('array')
+        expect(res.body.happening_hosts).to.be.an('array')
         done()
       })
   })

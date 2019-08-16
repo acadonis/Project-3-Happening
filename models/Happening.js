@@ -12,7 +12,7 @@ const happeningSchema = new mongoose.Schema({
   photo: {type: String, required: 'Please provide a imagine URL'},
   venue: {type: String, required: 'Please provide a {PATH}'},
   attendance_count: {type: Number, required: 'Please provide a {PATH}'},
-  event_hosts: {type: [String], required: 'Please provide a {PATH}'},
+  happening_hosts: {type: [String], required: 'Please provide a {PATH}'},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 })
 

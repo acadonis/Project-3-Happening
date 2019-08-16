@@ -10,5 +10,5 @@ module.exports = [{
   venue: 'Emirates Stadium',
   city: 'London',
   attendance_count: 1000,
-  event_hosts: ['admin','admin2']
+  happening_hosts: ['admin','admin2']
 }]
