@@ -12,7 +12,7 @@ router.route('/happenings')
 router.route('/happenings/:id')
   .get(happeningsController.show)
   .put(secureRoute, happeningsController.update)
-  .delete(secureRoute, happeningsController.delete)
+  .delete(happeningsController.delete)
 
 //## User Routes
 
