@@ -15,7 +15,7 @@ import SecureRoute from './components/common/SecureRoute'
 
 // import UserIndex from './components/happenings/UserIndex'
 import UserShow from './components/users/UserShow'
-// import UserEdit from './components/happenings/UserEdit'
+import UserEdit from './components/users/UserEdit'
 
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
@@ -35,7 +35,7 @@ class App extends React.Component {
         <ToastContainer position="bottom-right" hideProgressBar={true} />
 
         <Switch>
-
+          <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
