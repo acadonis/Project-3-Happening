@@ -89,8 +89,17 @@ class Navbar extends React.Component {
                   </Link>
                 }
                 {Auth.isAuthenticated() &&
-                  <Link to={`/users/${Auth.getCurrentUser()}/edit`} className="button is-dark">
+                  <Link to={`/users/${Auth.getCurrentUser()}/edit`} className="button is-info">
                     Account
+                  </Link>
+                }
+                {Auth.isAuthenticated() &&
+                  <Link
+                    to="/"
+                    className="button is-dark"
+                    onClick={this.logout}
+                  >
+                    Logout
                   </Link>
                 }
               </div>

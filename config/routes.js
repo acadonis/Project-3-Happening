@@ -3,7 +3,9 @@ const happeningsController = require('../controllers/happenings')
 const usersController = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 
-// ## Happenings Routes
+// ### Happenings Routes ###
+
+// ## Basic Routes ##
 
 router.route('/happenings')
   .get(happeningsController.index)
@@ -12,9 +14,14 @@ router.route('/happenings')
 router.route('/happenings/:id')
   .get(happeningsController.show)
   .put(secureRoute, happeningsController.update)
-  .delete(happeningsController.delete)
+  .delete(secureRoute, happeningsController.delete)
 
-//## User Routes
+// ## Comment Routes ##
+
+router.post('/happenings/:id/comments', secureRoute, happeningsController.commentCreate)
+router.delete('/happenings/:id/comments/:commentId', secureRoute, happeningsController.commentDelete)
+
+//### User Routes ###
 
 router.get('/users', usersController.userIndex)
 router.post('/register', usersController.register)
