@@ -1,9 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 //Not yet using the below
-// mongoose.plugin(require('mongoose-unique-validator'), {
-//   message: 'Please choose another {PATH}'
-// })
+mongoose.plugin(require('mongoose-unique-validator'), {
+  message: 'Please choose another {PATH}'
+})
 
 const bodyParser = require('body-parser')
 //Not yet using the below

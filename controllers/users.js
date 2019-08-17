@@ -4,13 +4,14 @@ const { secret } = require('../config/environment')
 
 
 //or create
-function registerRoute(req, res) {
+function registerRoute(req, res, next) {
   User.create(req.body)
     .then(() => res.json({ message: 'Registration successful' }))
+    .catch(next)
 
 }
 
-function loginRoute(req, res) {
+function loginRoute(req, res, next) {
   User.findOne({ email: req.body.email })
     .then(user => {
       if(!user || !user.validatePassword(req.body.password)) {
@@ -19,26 +20,29 @@ function loginRoute(req, res) {
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
       res.json({ message: `Welcome back ${user.name}!`, token })
     })
+    .catch(next)
 
 }
 
-function userIndexRoute(req, res) {
+function userIndexRoute(req, res, next) {
   User.find(req.query)
     .then(users => res.json(users))
+    .catch(next)
 
 }
 
-function userShowRoute(req, res) {
+function userShowRoute(req, res, next) {
   User.findById(req.params.id)
     .then(user => {
       if(!user) return res.sendStatus(404)
 
       return res.json(user)
     })
+    .catch(next)
 
 }
 
-function userUpdateRoute(req, res) {
+function userUpdateRoute(req, res, next) {
   User.findById(req.params.id)
     .then(user => {
       if(!user) return res.sendStatus(404)
@@ -46,15 +50,17 @@ function userUpdateRoute(req, res) {
     })
     .then(user => user.save())
     .then(user => res.json(user))
+    .catch(next)
 
 }
 
-function userDeleteRoute(req, res) {
+function userDeleteRoute(req, res, next) {
   User.findById(req.params.id)
     .then(user => {
       if(!user) return res.sendStatus(404)
       return user.remove()
         .then(() => res.sendStatus(204))
+        .catch(next)
     })
 }
 
