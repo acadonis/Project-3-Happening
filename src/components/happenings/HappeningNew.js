@@ -22,6 +22,7 @@ class HappeningNew extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.state.formData)
     e.preventDefault()
 
     axios.post('/api/happenings', this.state.formData)
@@ -32,7 +33,7 @@ class HappeningNew extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log()
     return (
       <section className="section">
         <div className="container">
@@ -78,12 +79,12 @@ class HappeningNew extends React.Component {
               <div className="control">
                 <input
                   className="input"
-                  name="time"
+                  name="local_time"
                   placeholder="eg"
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.time && <small className="help is-danger">{this.state.errors.time}</small>}
+              {this.state.errors.local_time && <small className="help is-danger">{this.state.errors.local_time}</small>}
             </div>
             <div className="field">
               <label className="label">Description</label>

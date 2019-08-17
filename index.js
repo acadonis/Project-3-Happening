@@ -14,12 +14,12 @@ const { dbURI } = require('./config/environment')
 const app = express()
 //Not yet using the below
 // app.use(queryHandler)
-app.use(errorHandler)
 app.use(bodyParser.json())
 
 
 app.use('/api', router)
 
+app.use(errorHandler)
 mongoose.connect(dbURI, { useNewUrlParser: true })
 
 app.listen(4000, () => console.log('Listening to port 4000'))
