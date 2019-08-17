@@ -99,7 +99,7 @@ class Navbar extends React.Component {
                     className="button is-dark"
                     onClick={this.logout}
                   >
-                    Account
+                    Logout
                   </Link>
                 }
               </div>
