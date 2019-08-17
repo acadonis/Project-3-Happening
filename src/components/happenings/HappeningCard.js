@@ -1,7 +1,11 @@
 import React from 'react'
 
+<<<<<<< HEAD
 // style={{ backgroundImage: `url(${photo})` }}/>
 const HappeningCard = ({ name, localDate, localTime, photo, venue, description }) => {
+=======
+const Card = ({ name, localDate, localTime, photo, venue, description }) => {
+>>>>>>> development
   return (
 
     <div className="column">
@@ -10,6 +14,12 @@ const HappeningCard = ({ name, localDate, localTime, photo, venue, description }
           <div className="card-header-title">{name}</div>
           <div className="card-header-subtitle">{localDate}</div>
           <div className="card-header-subtitle">{localTime}</div>
+<<<<<<< HEAD
+=======
+        </div>
+        <div className="card-image">
+          <figure className="image" style={{ backgroundImage: `url(${photo})` }}/>
+>>>>>>> development
         </div>
         <article className="media">
           <figure className="media-left">

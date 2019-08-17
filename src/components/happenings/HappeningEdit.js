@@ -8,7 +8,7 @@ class HappeningEdit extends React.Component {
     super()
     this.state = {
       formData: {},
-      error: {}
+      errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,9 +36,17 @@ class HappeningEdit extends React.Component {
   }
 
   render() {
+    console.log(this.state.formData.name)
+    const selectedName = (this.state.formData.name || [])
+    const selectedVenue = (this.state.formData.venue || [])
+    const selectedDate = (this.state.formData.local_date || [])
+    const selectedTime = (this.state.formData.local_time || [])
+    const selectedPhoto = (this.state.formData.photo || [])
+    const selectedDescription = (this.state.formData.description || [])
     return (
       <section className="section">
         <div className="container">
+
           <form onSubmit={this.handleSubmit}>
             <div className="field">
               <label className="label">Event Name</label>
@@ -46,7 +54,7 @@ class HappeningEdit extends React.Component {
                 className="input"
                 name="name"
                 placeholder="eg: End of Summer Party"
-                value={this.state.formData.name || ''}
+                value={selectedName}
                 onChange={this.handleChange}
               />
               {this.state.errors.name && <small className="help is-danger">{this.state.errors.name}</small>}
@@ -57,7 +65,7 @@ class HappeningEdit extends React.Component {
                 className="input"
                 name="venue"
                 placeholder="The Queen's Head Pup"
-                value={this.state.formData.venue || ''}
+                value={selectedVenue}
                 onChange={this.handleChange}
               />
               {this.state.errors.venue && <small className="help is-danger">{this.state.errors.venue}</small>}
@@ -68,7 +76,7 @@ class HappeningEdit extends React.Component {
                 className="input"
                 name="local_date"
                 placeholder="eg: 2019-08-31"
-                value={this.state.formData.local_date || ''}
+                value={selectedDate}
                 onChange={this.handleChange}
               />
               {this.state.errors.local_date && <small className="help is-danger">{this.state.errors.local_date}</small>}
@@ -79,7 +87,7 @@ class HappeningEdit extends React.Component {
                 className="input"
                 name="local_time"
                 placeholder="Must be in 24hour format, eg: 20:30"
-                value={this.state.formData.local_time || ''}
+                value={selectedTime}
                 onChange={this.handleChange}
               />
               {this.state.errors.local_time && <small className="help is-danger">{this.state.errors.local_time}</small>}
@@ -90,7 +98,7 @@ class HappeningEdit extends React.Component {
                 className="input"
                 name="photo"
                 placeholder="url link eg: http://me.com/myawesomephoto.jpg"
-                value={this.state.formData.photo || ''}
+                value={selectedPhoto}
                 onChange={this.handleChange}
               />
               {this.state.errors.photo && <small className="help is-danger">{this.state.errors.photo}</small>}
@@ -101,7 +109,7 @@ class HappeningEdit extends React.Component {
                 className="textarea"
                 name="description"
                 placeholder="Come celebrate the end of the summer with like minded people... "
-                value={this.state.formData.description || ''}
+                value={selectedDescription}
                 onChange={this.handleChange}
               />
               {this.state.errors.description && <small className="help is-danger">{this.state.errors.description}</small>}
