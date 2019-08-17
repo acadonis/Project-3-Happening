@@ -13,7 +13,7 @@ import Navbar from './components/common/Navbar'
 import HappeningShow from './components/happenings/HappeningShow'
 
 // import HappeningEdit from './components/happenings/HappeningEdit'
-// import HappeningNew from './components/happenings/HappeningNew'
+import HappeningNew from './components/happenings/HappeningNew'
 // import UserIndex from './components/happenings/UserIndex'
 
 
@@ -37,8 +37,9 @@ class App extends React.Component {
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
 
-          <Route path="/happenings/:id" component={HappeningShow} />
+          <Route path="/happenings/new" component={HappeningNew} />
           <Route path="/users/:id/edit" component={UserEdit} />
+          <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />

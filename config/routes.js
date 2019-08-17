@@ -7,7 +7,7 @@ const secureRoute = require('../lib/secureRoute')
 
 router.route('/happenings')
   .get(happeningsController.index)
-  .post(secureRoute, happeningsController.create)
+  .post(happeningsController.create)
 
 router.route('/happenings/:id')
   .get(happeningsController.show)

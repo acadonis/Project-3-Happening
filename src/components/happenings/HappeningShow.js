@@ -8,7 +8,7 @@ class HappeningShow extends React.Component {
     this.state = {}
 
     this.handleDelete = this.handleDelete.bind(this)
-    
+
   }
 
   componentDidMount() {
