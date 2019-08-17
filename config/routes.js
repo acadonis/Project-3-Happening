@@ -19,6 +19,7 @@ router.route('/happenings/:id')
 // ## Comment Routes ##
 
 router.post('/happenings/:id/comments', secureRoute, happeningsController.commentCreate)
+router.delete('/happenings/:id/comments/:commentId', secureRoute, happeningsController.commentDelete)
 
 //### User Routes ###
 

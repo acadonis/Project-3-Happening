@@ -13,7 +13,6 @@ function indexRoute(req, res) {
 }
 
 function createRoute(req, res) {
-  console.log(req.body)
   const happening = new Happening(req.body)
 
   happening.save()
@@ -50,12 +49,25 @@ function deleteRoute(req, res) {
 
 function commentCreateRoute(req, res) {
   req.body.user = req.currentUser._id
-  console.log(req.body.user)
 
   Happening.findById(req.params.id)
     .then(happening => {
       if(!happening) return res.sendStatus(404)
       happening.comments.push(req.body)
+      return happening.save()
+    })
+    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => res.json(happening))
+}
+
+function commentDeleteRoute(req, res) {
+  console.log('HERE')
+  Happening.findById(req.params.id)
+    .then(happening => {
+      if(!happening) return res.sendStatus(404)
+      const comment = happening.comments.id(req.params.commentId)
+      if(!comment) return res.sendStatus(404)
+      comment.remove()
       return happening.save()
     })
     .then(happening => Happening.populate(happening, 'user comments.user'))
@@ -68,5 +80,6 @@ module.exports = {
   show: showRoute,
   update: updateRoute,
   delete: deleteRoute,
-  commentCreate: commentCreateRoute
+  commentCreate: commentCreateRoute,
+  commentDelete: commentDeleteRoute
 }
