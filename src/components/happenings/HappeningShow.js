@@ -61,11 +61,10 @@ class HappeningShow extends React.Component {
             </div>
             <div className="column is-two-fifths">
               <div className="box">
-                <h2 className="title">Details</h2>
+                <h2 className="title">Happening Details</h2>
                 <h2 className="subtitle is-5">Date: {this.state.happening.local_date}</h2>
                 <h2 className="subtitle is-5">Time: {this.state.happening.local_time}</h2>
-                <h2 className="subtitle is-5">Created by: {this.state.happening.user}</h2>
-                <h2 className="subtitle is-5">{this.state.happening.local_time}</h2>
+                {this.state.happening.user && <h2 className="subtitle is-5">Created by: {this.state.happening.user.name}</h2>}
               </div>
             </div>
           </div>
