@@ -9,12 +9,12 @@ const bodyParser = require('body-parser')
 //Not yet using the below
 const router = require('./config/routes')
 // const queryHandler = require('./lib/queryHandler')
-// const errorHandler = require('./lib/errorHandler')
+const errorHandler = require('./lib/errorHandler')
 const { dbURI } = require('./config/environment')
 const app = express()
 //Not yet using the below
 // app.use(queryHandler)
-// app.use(errorHandler)
+app.use(errorHandler)
 app.use(bodyParser.json())
 
 
