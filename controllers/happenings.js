@@ -61,13 +61,12 @@ function commentCreateRoute(req, res, next) {
       happening.comments.push(req.body)
       return happening.save()
     })
-    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
     .then(happening => res.json(happening))
     .catch(next)
 }
 
 function commentDeleteRoute(req, res, next) {
-  console.log('HERE')
   Happening.findById(req.params.id)
     .then(happening => {
       if(!happening) return res.sendStatus(404)
@@ -76,7 +75,7 @@ function commentDeleteRoute(req, res, next) {
       comment.remove()
       return happening.save()
     })
-    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
     .then(happening => res.json(happening))
     .catch(next)
 }
