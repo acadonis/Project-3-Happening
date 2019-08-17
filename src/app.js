@@ -11,7 +11,6 @@ import Navbar from './components/common/Navbar'
 // import HappeningIndex from './components/happenings/HappeningIndex'
 
 import HappeningShow from './components/happenings/HappeningShow'
-import HappeningCard from './components/happenings/HappeningCard'
 
 // import HappeningEdit from './components/happenings/HappeningEdit'
 // import HappeningNew from './components/happenings/HappeningNew'
@@ -33,26 +32,6 @@ class App extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div>
-        <HappeningCard
-          name="jo" local_date="je" local_time="ja" photo="js" venue="jn" description="jp"
-        />
-        <HashRouter>
-          <Navbar />
-          <ToastContainer position="bottom-right" hideProgressBar={true} />
-          <Switch>
-
-            <Route path="/happenings/:id" component={HappeningShow} />
-            <Route path="/users/:id/edit" component={UserEdit} />
-            <Route path="/users/:id" component={UserShow} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-
-          </Switch>
-        </HashRouter>
-      </div>
-=======
       <HashRouter>
         <Navbar />
         <ToastContainer position="bottom-right" hideProgressBar={true} />
@@ -67,7 +46,6 @@ class App extends React.Component {
 
         </Switch>
       </HashRouter>
->>>>>>> c414a7a624794a405528fc676d7e8de01223807d
     )
   }
 }
