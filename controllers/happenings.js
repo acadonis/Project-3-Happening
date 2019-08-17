@@ -47,10 +47,39 @@ function deleteRoute(req, res) {
     })
 }
 
+function commentCreateRoute(req, res) {
+  req.body.user = req.currentUser._id
+
+  Happening.findById(req.params.id)
+    .then(happening => {
+      if(!happening) return res.sendStatus(404)
+      happening.comments.push(req.body)
+      return happening.save()
+    })
+    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => res.json(happening))
+}
+
+function commentDeleteRoute(req, res) {
+  console.log('HERE')
+  Happening.findById(req.params.id)
+    .then(happening => {
+      if(!happening) return res.sendStatus(404)
+      const comment = happening.comments.id(req.params.commentId)
+      if(!comment) return res.sendStatus(404)
+      comment.remove()
+      return happening.save()
+    })
+    .then(happening => Happening.populate(happening, 'user comments.user'))
+    .then(happening => res.json(happening))
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  commentCreate: commentCreateRoute,
+  commentDelete: commentDeleteRoute
 }

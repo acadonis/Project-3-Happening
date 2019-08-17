@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { Link } from 'react-router-dom'
 
-import Auth from '../../lib/Auth'
+// import Auth from '../../lib/Auth'
 // import Comment from '../common/Comment'
 
 class Show extends React.Component {
@@ -16,7 +16,7 @@ class Show extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     // this.handleSubmit = this.handleSubmit.bind(this)
-    // this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +27,15 @@ class Show extends React.Component {
   handleChange(e) {
     const formData = {...this.state.formData, [e.target.name]: e.target.value}
     this.setState({formData})
+  }
+  handleDelete () {
+    // const token = Auth.getToken()
+    axios.delete(`/api/users/${this.props.match.params.id}`
+    //   , {
+    //   headers: { 'Authorization': `Bearer ${token}`}
+    // }
+    )
+      .then(() => this.props.history.push('/'))
   }
 
   // handleSubmit(e) {
@@ -67,7 +76,7 @@ class Show extends React.Component {
                       to={`/users/${this.state.user._id}/edit`}
                     >Edit</Link>
 
-                    <button className="button is-danger">Delete</button>
+                    <button onClick={this.handleDelete} className="button is-danger">Delete</button>
                   </div>
                 </div>
               </div>
