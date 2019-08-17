@@ -6,4 +6,6 @@ figure.image {
 }
 
 @charset "utf-8";
-@import "~bulma/bulma";
+@import "bulmaswatch/flatly/_variables.scss";
+@import "../node_modules/bulma/bulma.sass";
+@import "bulmaswatch/flatly/_overrides.scss";

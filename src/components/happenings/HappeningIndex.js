@@ -19,10 +19,10 @@ class HappeningIndex extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <div className="columns">
+          <div className="columns is-multiline">
             {!this.state.happenings && <h2 className="title is-2">Loading...</h2>}
             {this.state.happenings && this.state.happenings.map(happening =>
-              <div className="column" key={happening._id}>
+              <div className="column is-full" key={happening._id}>
                 <Link to={`/happenings/${happening._id}`}>
                   <HappeningCard
                     name={happening.name}

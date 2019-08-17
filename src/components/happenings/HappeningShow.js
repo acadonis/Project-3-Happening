@@ -6,9 +6,8 @@ class HappeningShow extends React.Component {
   constructor() {
     super()
     this.state = {}
-
     this.handleDelete = this.handleDelete.bind(this)
-    
+
   }
 
   componentDidMount() {

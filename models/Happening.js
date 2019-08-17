@@ -14,6 +14,6 @@ const happeningSchema = new mongoose.Schema({
   attendance_count: {type: Number, required: 'Please provide a {PATH}'},
   event_hosts: {type: [String], required: 'Please provide a {PATH}'},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
-})
+}) 
 
 module.exports = mongoose.model('Happening', happeningSchema)

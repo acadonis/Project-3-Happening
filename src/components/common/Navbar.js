@@ -28,11 +28,11 @@ class Navbar extends React.Component {
     }
   }
 
+  // <h1 className="title">Happening</h1>
   render() {
     return (
-      <nav className="navbar is-link" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <h1 className="title">Happening</h1>
           <a
             role="button"
             className="navbar-burger burger"
