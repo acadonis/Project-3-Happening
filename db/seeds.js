@@ -6,7 +6,10 @@ const happeningData = require('./data/happeningData')
 const usersData = require('./data/usersData')
 const { dbURI } = require('../config/environment')
 
-// I've changed the seeds so that they seed all the happenings with users. However this breaks the finally function. After you seed, you need to use control c to disconnect the database. Sorry for the incovenience.
+/*
+- I've changed the seeds so that they seed all the happenings with users. However this breaks the finally function. After you seed, you need to use control c to disconnect the database. Sorry for the incovenience.
+- I've also left the original code commented out below if want to use that instead.
+*/
 let retrieved = null
 
 mongoose.connect(dbURI, { useNewUrlParser: true })
@@ -21,3 +24,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true })
   .then(() => console.log('Successfully seeded!'))
   .catch((err) => console.log(err))
   // .finally(() => mongoose.connection.close())
+
+// mongoose.connect(dbURI, { useNewUrlParser: true })
+//   .then(() => mongoose.connection.db.dropDatabase())
+//   .then(() => Happening.create(happeningData))
+//   .then(() => User.create(usersData))
+//   .then(() => console.log('Successfully seeded!'))
+//   .catch((err) => console.log(err))
+//   .finally(() => mongoose.connection.close())

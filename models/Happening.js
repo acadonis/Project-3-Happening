@@ -20,7 +20,9 @@ const happeningSchema = new mongoose.Schema({
   attendance_count: { type: Number },
   event_hosts: { type: [ String ] },
   comments: { type: [ commentSchema ], required: false },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  // I've haven't made this required for testing etc, but I think it would be good to give this a required validators so someone has to give it at least one catagory
+  categories: { type: [ String ]}
 
 })
 
