@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import CatagoryCard from '../common/CategoryCard'
+import MainBox from './MainBox'
+import DetailsBox from './DetailsBox'
 
 class HappeningShow extends React.Component {
   constructor() {
@@ -19,21 +20,6 @@ class HappeningShow extends React.Component {
 
   }
 
-  noteFunctionDeleteMe(){
-    <div className="columns">
-      <div className="column">
-        <div className="buttons">
-          <Link
-            className="button"
-            to={`/happenings/${this.props.match.params.id}/edit`}
-          >Edit</Link>
-
-          <button onClick={this.handleDelete} className="button is-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-  }
-
   handleDelete() {
     axios.delete(`/api/happenings/${this.props.match.params.id}`)
       .then(() => this.props.history.push('/happenings'))
@@ -44,13 +30,19 @@ class HappeningShow extends React.Component {
     console.log(this.state)
     return(
       <main>
-        <section className="section">
+        <div className="section">
           <div className="hero is-light">
             <div className="hero-body">
-              <div className="container">
-                <h1 className="title">
+              <div className="container columns is-vcentered">
+                <h1 className="title column">
                   {this.state.happening.name}
                 </h1>
+                <Link
+                  to={`/happenings/${this.state.happening._id}/edit`}
+                  className="column is-1 is-offset-3"
+                >
+                  <button className="button">Update</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -58,44 +50,18 @@ class HappeningShow extends React.Component {
           <div className="container">
             <div className="columns is-variable is-4">
               <div className="column is-three-fifths">
-                <section className="box section">
-                  <figure className="image is-2by1">
-                    <img className="has-ratio" src={this.state.happening.photo} alt={this.state.happening.name} />
-                  </figure>
-                  <hr />
-                  <div className="container">
-                    <div className="columns is-multiline is-variable is-4">
-                      {' ' && this.state.happening.categories.map(category =>
-                        <CatagoryCard
-                          key={category}
-                          categoryName={category}
-                        />
-                      )}
-                    </div>
-                  </div>
-                  <hr />
-                  <h3 className="subtitle">Description</h3>
-                  <p>{this.state.happening.description}</p>
-                </section>
+                <MainBox {...this.state.happening} />
               </div>
               <div className="column is-two-fifths container">
-                <section className="box section">
-                  <p className="has-text-weight-bold">{this.state.happening.venue}</p>
-                  <p className="has-text-weight-medium">{this.state.happening.city}</p>
-                  <p>Adress line 1</p>
-                  <hr/>
-                  <p>Date: {this.state.happening.local_date}</p>
-                  <p>Time: {this.state.happening.local_time}</p>
-                  {this.state.happening.user && <p>Created by: {this.state.happening.user.name}</p>}
-                  <hr />
-                  <figure>
-                    <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2013/11/A-Small-Google-Maps-jQuery-Plugin-maplacejs.jpg?ssl=1" alt="placeholder map image" />
-                  </figure>
-                </section>
+                <DetailsBox
+                  localTime={this.state.happening.local_time}
+                  localDate={this.state.happening.local_date}
+                  {...this.state.happening}
+                />
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
     )
   }
