@@ -5,15 +5,16 @@ const CommentsBox = ({ comments }) => {
   return (
     <div className="box">
       <h3 className="subtitle has-text-weight-semibold">Comments</h3>
-      <div className="box">
-        {comments.map(comment => (
+      {comments[0] && <div className="box">
+        {comments.map((comment, i) => (
           <div key={comment._id}>
-            <p className="has-text-weight-semibold subtitle is-6">{comment.user.name}</p>
+            <p className="title has-text-weight-semibold is-5">{comment.user.name}</p>
+            <p className="subtitle has-text-weight-semibold is-7">{comment.createdAt.replace(/T|\..*/g, '    ')}</p>
             <p className="is-6">{comment.content}</p>
-            <hr />
+            {i !== comments.length - 1 ? <hr /> : ''}
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   )
 }

@@ -14,8 +14,8 @@ function indexRoute(req, res, next) {
 }
 
 function createRoute(req, res, next) {
-  console.log(req.currentUser)
   req.body.user = req.currentUser._id
+  req.body.attendees = [ req.currentUser._id ]
   const happening = new Happening(req.body)
 
   happening.save()
@@ -27,6 +27,7 @@ function showRoute(req, res, next) {
   Happening.findById(req.params.id)
     .populate({ path: 'user', select: 'name'})
     .populate({ path: 'comments.user', select: 'name'})
+    .populate({ path: 'attendees', model: 'User', select: 'name photo'})
     .then(happening => {
       console.log(happening)
       if (!happening) return res.sendStatus(404)

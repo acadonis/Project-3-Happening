@@ -3,8 +3,9 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import MainBox from './MainBox'
-import DetailsBox from './DetailsBox'
 import CommentsBox from './CommentsBox'
+import DetailsBox from './DetailsBox'
+import AttendeesBox from './AttendeesBox'
 
 class HappeningShow extends React.Component {
   constructor() {
@@ -27,7 +28,8 @@ class HappeningShow extends React.Component {
   }
   // FM - note to self: May want to give a more developed loading page as opposed to null
   render() {
-    if (!this.state.happening) return null
+    const happening = this.state.happening
+    if (!happening) return null
     console.log(this.state)
     return(
       <div className="section">
@@ -59,6 +61,7 @@ class HappeningShow extends React.Component {
                 localDate={this.state.happening.local_date}
                 {...this.state.happening}
               />
+              <AttendeesBox attendees={this.state.happening.attendees} />
             </div>
           </div>
         </div>
