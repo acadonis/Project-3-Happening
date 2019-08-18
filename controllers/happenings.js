@@ -26,6 +26,7 @@ function createRoute(req, res, next) {
 function showRoute(req, res, next) {
   Happening.findById(req.params.id)
     .populate({ path: 'user', select: 'name'})
+    .populate({ path: 'comments.user', select: 'name'})
     .then(happening => {
       console.log(happening)
       if (!happening) return res.sendStatus(404)

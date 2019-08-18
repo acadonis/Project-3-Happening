@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CatagoryCard = ({ categoryName }) => {
+const CategoryCard = ({ categoryName }) => {
   return (
     <div
       className="column is-one-fifth has-text-weight-semibold"
@@ -10,4 +10,4 @@ const CatagoryCard = ({ categoryName }) => {
   )
 }
 
-export default CatagoryCard
+export default CategoryCard
