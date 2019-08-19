@@ -1,7 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+
+import { categories } from '../../lib/Categories'
 import Auth from '../../lib/Auth'
 
+
+import Select from 'react-select'
 
 class HappeningNew extends React.Component {
 
@@ -14,6 +18,7 @@ class HappeningNew extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
   }
 
   handleChange(e) {
@@ -23,7 +28,7 @@ class HappeningNew extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state.formData)
+
     e.preventDefault()
 
     axios.post('/api/happenings', this.state.formData, {
@@ -35,8 +40,14 @@ class HappeningNew extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
+  handleCategoryChange(selectedCategories) {
+    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    this.setState({ formData })
+  }
+
   render() {
-    console.log(this.state)
+
+    const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
     return (
       <section className="section">
         <div className="container">
@@ -100,6 +111,16 @@ class HappeningNew extends React.Component {
                 />
               </div>
               {this.state.errors.description && <small className="help is-danger">{this.state.errors.description}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Category</label>
+              <Select
+                value= {selectedCategories}
+                options={categories}
+                isMulti
+                onChange={this.handleCategoryChange}
+              />
+              {this.state.errors.category && <small className="help is-danger">{this.state.errors.category}</small>}
             </div>
             <div className="field">
               <label className="label">Photo</label>

@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
   photo: { type: String, required: false },
   bio: { type: String, required: false },
   city: { type: String, required: false },
-  categories: { type: [ String ], required: false },
   following: { type: [ mongoose.Schema.ObjectId ], ref: 'User', required: false },
   happenings: { type: [ mongoose.Schema.ObjectId ], ref: 'Happening', required: false }
 }, {
