@@ -5,7 +5,7 @@ import '@fortawesome/free-solid-svg-icons'
 import '@fortawesome/react-fontawesome'
 
 import 'react-toastify/dist/ReactToastify.css'
-// import 'bulma'
+import 'bulma'
 import './style.scss'
 
 import { HashRouter, Route, Switch } from 'react-router-dom'
@@ -14,10 +14,10 @@ import { ToastContainer } from 'react-toastify'
 import Navbar from './components/common/Navbar'
 // import SecureRoute from './components/common/SecureRoute'
 // import Navbar from './components/common/Navbar'
- 
+
 import HappeningIndex from './components/happenings/HappeningIndex'
 
-import HappeningShow from './components/happenings/HappeningShow'
+import HappeningShow from './components/happenings/happeningShow/HappeningShow'
 
 
 // import HappeningEdit from './components/happenings/HappeningEdit'
@@ -26,7 +26,6 @@ import HappeningNew from './components/happenings/HappeningNew'
 
 import HappeningEdit from './components/happenings/HappeningEdit'
 import HappeningSearch from './components/happenings/happeningsearch/HappeningSearch'
-import MapView from './components/happenings/happeningsearch/MapView'
 import UserIndex from './components/users/UserIndex'
 
 
@@ -52,7 +51,6 @@ class App extends React.Component {
         <Switch>
           <Route path="/happenings/new" component={HappeningNew} />
           <Route path="/happenings/search" component={HappeningSearch} />
-          <Route path="/happenings/mapview" component={MapView} />
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id/edit" component={UserEdit} />
@@ -61,7 +59,6 @@ class App extends React.Component {
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-
         </Switch>
       </HashRouter>
     )

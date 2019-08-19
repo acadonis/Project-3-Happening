@@ -1,16 +1,8 @@
 import React from 'react'
 import ListView from './ListView'
+import MapView from './MapView'
 import Navbar from '../../common/Navbar'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import HappeningSearchCard from './HappeningSearchCard'
-// import mapboxgl from 'mapbox-gl'
-// import ReactMapboxGl from "react-mapbox-gl"
-// import { Layer, Feature, Source } from "react-mapbox-gl"
-//
-// const Map = ReactMapboxGl({
-//   accessToken: 'pk.eyJ1IjoibXRjb2x2YXJkIiwiYSI6ImNqemI4emZydjA2dHIzYm80ZG96ZmQyN2wifQ.kVp6eB7AkWjslUOtsJyLDQ'
-// })
 
 class HappeningSearch extends React.Component {
   constructor() {
@@ -31,20 +23,22 @@ class HappeningSearch extends React.Component {
       .then(res => this.setState({ happenings: res.data }))
   }
 
+  // <div className="hero is-small is-body is-primary">
+  //   <div className="hero-foot">
+  //     <Navbar />
+  //   </div>
+  //   <div className="hero-body is-primary">
+  //     <div className="container">
+  //       <h1 className="is-size-1">Find something Happening</h1>
+  //     </div>
+  //   </div>
+  // </div>
+
+
   render() {
     console.log(this.state)
     return (
       <section className="section">
-        <div className="hero is-small is-body is-primary">
-          <div className="hero-foot">
-            <Navbar />
-          </div>
-          <div className="hero-body is-primary">
-            <div className="container">
-              <h1 className="is-size-1">Find something Happening</h1>
-            </div>
-          </div>
-        </div>
         <div className="level">
           <p className="control has-icons-right">
             <input className="input is-medium" type="text" placeholder="Search"/>
@@ -53,7 +47,7 @@ class HappeningSearch extends React.Component {
             </span>
           </p>
         </div>
-        <div className="tabs is-toggle is-boxed is-medium is-right">
+        <div className="tabs is-medium is-boxed is-right">
           <ul>
             <li className={`${this.state.tabOpen ? 'is-active' : ''}`}>
               <a
@@ -89,25 +83,7 @@ class HappeningSearch extends React.Component {
           </div>
           <div className="tile is-parent">
             <div className="tile is-child box">
-              <div className="container">
-                <div className="columns is-multiline">
-                  {!this.state.happenings && <h2 className="title is-2">Loading...</h2>}
-                  {this.state.happenings && this.state.happenings.map(happening =>
-                    <div className="column is-full" key={happening._id}>
-                      <Link to={`/happenings/${happening._id}`}>
-                        <HappeningSearchCard
-                          name={happening.name}
-                          localDate={happening.time}
-                          localTime={happening.time}
-                          photo={happening.photo}
-                          venue={happening.venue}
-                          description={happening.description}
-                        />
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </div>
+              {this.state.tabOpen ? <ListView/>:<MapView/>}
             </div>
           </div>
         </div>

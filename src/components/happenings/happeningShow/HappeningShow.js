@@ -6,6 +6,7 @@ import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
 import DetailsBox from './DetailsBox'
 import AttendeesBox from './AttendeesBox'
+import SimilarHappeningsBox from './SimilarHappeningsBox'
 
 class HappeningShow extends React.Component {
   constructor() {
@@ -19,6 +20,10 @@ class HappeningShow extends React.Component {
   componentDidMount() {
     axios.get(`/api/happenings/${this.props.match.params.id}`)
       .then(res => this.setState({ happening: res.data }))
+      .then(() => {
+        axios.get('/api/happenings/limit/4')
+          .then(res => this.setState({ similarHappenings: res.data }))
+      })
 
   }
 
@@ -44,7 +49,9 @@ class HappeningShow extends React.Component {
   // FM - note to self: May want to give a more developed loading page as opposed to null
   render() {
     const happening = this.state.happening
-    if (!happening) return null
+    const similarHappenings = this.state.similarHappenings
+
+    if (!happening) return <h1>Loading ... </h1>
     console.log(this.state)
     return(
       <div className="section">
@@ -52,10 +59,10 @@ class HappeningShow extends React.Component {
           <div className="hero-body">
             <div className="container columns is-vcentered">
               <h1 className="title column">
-                {this.state.happening.name}
+                {happening.name}
               </h1>
               <Link
-                to={`/happenings/${this.state.happening._id}/edit`}
+                to={`/happenings/${happening._id}/edit`}
                 className="column is-1 is-offset-3"
               >
                 <button className="button has-text-weight-semibold is-link">Update</button>
@@ -67,16 +74,19 @@ class HappeningShow extends React.Component {
         <div className="container">
           <div className="columns is-variable is-4">
             <div className="column is-three-fifths">
-              <MainBox {...this.state.happening} />
-              <CommentsBox comments={this.state.happening.comments} />
+              <MainBox {...happening} />
+              <CommentsBox comments={happening.comments} />
             </div>
             <div className="column is-two-fifths container">
               <DetailsBox
-                localTime={this.state.happening.local_time}
-                localDate={this.state.happening.local_date}
-                {...this.state.happening}
+                localTime={happening.local_time}
+                localDate={happening.local_date}
+                {...happening}
               />
-              <AttendeesBox attendees={this.state.happening.attendees} />
+              <AttendeesBox attendees={happening.attendees} />
+              {similarHappenings && <SimilarHappeningsBox
+                happenings={this.state.similarHappenings}
+              />}
             </div>
           </div>
         </div>

@@ -5,12 +5,13 @@ mongoose.plugin(require('mongoose-unique-validator'), {
   message: 'Please choose another {PATH}'
 })
 
+const { port, dbURI } = require('./config/environment')
 const bodyParser = require('body-parser')
+const queryHandler = require('./lib/queryHandler')
 //Not yet using the below
 const router = require('./config/routes')
 // const queryHandler = require('./lib/queryHandler')
 const errorHandler = require('./lib/errorHandler')
-const { port, dbURI } = require('./config/environment')
 
 const app = express()
 //Not yet using the below
@@ -20,8 +21,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true })
 // static files are files like index.html, images, fonts, styles etc...
 app.use(express.static(`${__dirname}/dist`))
 app.use(bodyParser.json())
-
-
+app.use(queryHandler)
 app.use('/api', router)
 app.use(errorHandler)
 

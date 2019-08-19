@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CategoryCard from '../common/CategoryCard'
+import CategoryCard from '../../common/CategoryCard'
 
 const MainBox = ({ photo, name, categories, description, attendees}) => {
   return (

@@ -16,6 +16,9 @@ router.route('/happenings/:id')
   .put(secureRoute, happeningsController.update)
   .delete(secureRoute, happeningsController.delete)
 
+router.route('/happenings/limit/:n')
+  .get(happeningsController.index)
+
 // ## Comment Routes ##
 
 router.post('/happenings/:id/comments', secureRoute, happeningsController.commentCreate)
@@ -31,5 +34,7 @@ router.route('/users/:id')
   .get(usersController.userShow)
   .put(usersController.userUpdate)
   .delete(usersController.userDelete)
+
+router.put('/users/:id/follow', secureRoute, usersController.userFollow)  
 
 module.exports = router
