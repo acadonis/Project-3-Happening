@@ -10,7 +10,7 @@ import Navbar from './components/common/Navbar'
 
 import HappeningIndex from './components/happenings/HappeningIndex'
 
-import HappeningShow from './components/happenings/HappeningShow'
+import HappeningShow from './components/happenings/happeningShow/HappeningShow'
 
 
 // import HappeningEdit from './components/happenings/HappeningEdit'

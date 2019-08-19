@@ -40,7 +40,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true })
       user.happenings.push(...retrieved)
       return user.save()
     })
-    promies = [...promises, ...usersWithEvents]
+    promises = [...promises, ...usersWithEvents]
     return Promise.all(promises)
   })
   .then(() => console.log('Successfully seeded!'))

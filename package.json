@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "seed": "node db/seeds.js",
-    "serve": "nodemon",
     "serve:backend": "nodemon",
     "serve:frontend": "webpack-dev-server --mode development",
     "test": "mocha test/**/*_spec.js --require test/helper --recursive --exit",
-    "start": "yarn build && node index"
+    "start": "yarn build && node index",
+    "build": "webpack -p"
   },
   "dependencies": {
     "@babel/core": "^7.5.5",
@@ -25,6 +25,7 @@
     "bulma": "^0.7.5",
     "bulmaswatch": "^0.7.4-1",
     "css-loader": "^3.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "html-webpack-plugin": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
