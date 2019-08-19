@@ -26,11 +26,10 @@ class HappeningShow extends React.Component {
 
   linkToHappening(happeningId) {
     this.props.history.push(`/happenings/${happeningId}`)
-    window.scrollTo(0, 0)
   }
 
   loadHappening(happeningId) {
-    axios.get(`/api/happenings/${happeningId}`)
+    return axios.get(`/api/happenings/${happeningId}`)
       .then(res => {
         this.setState({ happening: res.data })
       })
