@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 
 class HappeningNew extends React.Component {
@@ -25,7 +26,9 @@ class HappeningNew extends React.Component {
     console.log(this.state.formData)
     e.preventDefault()
 
-    axios.post('/api/happenings', this.state.formData)
+    axios.post('/api/happenings', this.state.formData, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(() => {
         this.props.history.push('/happenings/')
       })
@@ -33,7 +36,7 @@ class HappeningNew extends React.Component {
   }
 
   render() {
-    console.log()
+    console.log(this.state)
     return (
       <section className="section">
         <div className="container">

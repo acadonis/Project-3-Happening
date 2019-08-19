@@ -50,7 +50,6 @@ class App extends React.Component {
           <Route path="/happenings/:id" component={HappeningShow} />
 
           <Route path="/users/:id/edit" component={UserEdit} />
-          <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/happenings" component={HappeningIndex} />
           <Route path="/users" component={UserIndex} />
