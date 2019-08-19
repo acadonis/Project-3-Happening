@@ -30,7 +30,6 @@ class HappeningSearch extends React.Component {
     axios.get('/api/happenings')
       .then(res => this.setState({ happenings: res.data }))
   }
-  // <Navbar />
 
   render() {
     console.log(this.state)
@@ -38,7 +37,7 @@ class HappeningSearch extends React.Component {
       <section className="section">
         <div className="hero is-small is-body is-primary">
           <div className="hero-foot">
-
+            <Navbar />
           </div>
           <div className="hero-body is-primary">
             <div className="container">

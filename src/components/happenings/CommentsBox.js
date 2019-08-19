@@ -18,5 +18,5 @@ const CommentsBox = ({ comments }) => {
     </div>
   )
 }
-
+ 
 export default CommentsBox

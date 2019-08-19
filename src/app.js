@@ -11,7 +11,7 @@ import '@fortawesome/react-fontawesome'
 // library.add(fab, faCheckSquare, faCoffee)
 // import '@fortawesome/fontawesome-free/js/all.js'
 import 'react-toastify/dist/ReactToastify.css'
-import 'bulma'
+// import 'bulma'
 import './style.scss'
 
 import { HashRouter, Route, Switch } from 'react-router-dom'
@@ -52,7 +52,7 @@ class App extends React.Component {
   render() {
     return (
       <HashRouter>
-        <Navbar />
+      <Navbar />
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
