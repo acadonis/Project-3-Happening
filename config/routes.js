@@ -16,6 +16,9 @@ router.route('/happenings/:id')
   .put(secureRoute, happeningsController.update)
   .delete(secureRoute, happeningsController.delete)
 
+router.route('/happenings/limit/:n')
+  .get(happeningsController.index)
+
 // ## Comment Routes ##
 
 router.post('/happenings/:id/comments', secureRoute, happeningsController.commentCreate)

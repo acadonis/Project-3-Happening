@@ -8,9 +8,9 @@ const Happening = require('../models/Happening')
 */
 
 function indexRoute(req, res, next) {
-  Happening.find(req.query) // This won't work until we have the query handler plugged in
-    .limit(5)
-    .then(happening => res.json(happening))
+  Happening.find(req.query)
+    .limit(+req.params.n)
+    .then(happenings => res.json(happenings))
     .catch(next)
 }
 
