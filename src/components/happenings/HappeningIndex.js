@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import HappeningCard from './HappeningCard'
+import HappeningCard from './happeningsearch/HappeningSearchCard'
 import axios from 'axios'
 
 class HappeningIndex extends React.Component {

@@ -22,6 +22,21 @@ class HappeningShow extends React.Component {
 
   }
 
+  noteFunctionDeleteMe(){
+    <div className="columns">
+      <div className="column">
+        <div className="buttons">
+          <Link
+            className="button"
+            to={`/happenings/${this.props.match.params.id}/edit`}
+          >Edit</Link>
+
+          <button onClick={this.handleDelete} className="button is-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  }
+
   handleDelete() {
     axios.delete(`/api/happenings/${this.props.match.params.id}`)
       .then(() => this.props.history.push('/happenings'))

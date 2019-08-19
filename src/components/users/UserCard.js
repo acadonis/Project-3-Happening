@@ -16,7 +16,7 @@ const Card = ({ name, city, categories, photo }) => {
             <p>{city}</p>
           </div>
           <div className="content">
-            <p>{categories.join(", ")}</p>
+            <p>{categories.join(', ')}</p>
           </div>
         </div>
       </div>
