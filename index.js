@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const router = require('./config/routes')
 // const queryHandler = require('./lib/queryHandler')
 const errorHandler = require('./lib/errorHandler')
-
 const { port, dbURI } = require('./config/environment')
 
 const app = express()
