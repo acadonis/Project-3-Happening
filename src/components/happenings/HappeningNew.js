@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+
 import { categories } from '../../lib/Categories'
+import Auth from '../../lib/Auth'
+
 
 import Select from 'react-select'
 
@@ -28,7 +31,9 @@ class HappeningNew extends React.Component {
 
     e.preventDefault()
 
-    axios.post('/api/happenings', this.state.formData)
+    axios.post('/api/happenings', this.state.formData, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
       .then(() => {
         this.props.history.push('/happenings/')
       })
@@ -41,6 +46,7 @@ class HappeningNew extends React.Component {
   }
 
   render() {
+
     const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
     return (
       <section className="section">

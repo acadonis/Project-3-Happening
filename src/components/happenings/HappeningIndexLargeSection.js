@@ -14,8 +14,6 @@ class HappeningIndexLargeSection extends React.Component {
 
       .then(res =>
         this.setState({ happenings: res.data }))
-      .then(res =>
-        this.setState({ happenings: res.data }))
 
   }
 
