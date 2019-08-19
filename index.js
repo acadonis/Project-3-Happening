@@ -10,8 +10,8 @@ const bodyParser = require('body-parser')
 const router = require('./config/routes')
 // const queryHandler = require('./lib/queryHandler')
 const errorHandler = require('./lib/errorHandler')
-const { dbURI } = require('./config/environment')
-const { port, dbURI } = require('./config/enviroment')
+
+const { port, dbURI } = require('./config/environment')
 
 const app = express()
 //Not yet using the below
@@ -19,7 +19,7 @@ const app = express()
 mongoose.connect(dbURI, { useNewUrlParser: true })
 // look for static files in the 'dist' folder
 // static files are files like index.html, images, fonts, styles etc...
-app.us(express.static(`${__dirname}/dist`))
+app.use(express.static(`${__dirname}/dist`))
 app.use(bodyParser.json())
 
 
