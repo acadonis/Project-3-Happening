@@ -1,8 +1,8 @@
 import React from 'react'
-
+​
 const Card = ({ name, localDate, localTime, photo, venue, description }) => {
   return (
-
+​
     <div className="column">
       <div className="card">
         <div className="card header">
@@ -25,5 +25,5 @@ const Card = ({ name, localDate, localTime, photo, venue, description }) => {
     </div>
   )
 }
-
+​
 export default Card

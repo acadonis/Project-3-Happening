@@ -42,13 +42,9 @@ class App extends React.Component {
         <Navbar />
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
-
-
           <Route path="/happenings/new" component={HappeningNew} />
-
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
-
           <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/happenings" component={HappeningIndex} />
