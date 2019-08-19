@@ -19,6 +19,7 @@ const happeningSchema = new mongoose.Schema({
   venue: { type: String, required: 'Please provide a {PATH}' },
   attendance_count: { type: Number },
   event_hosts: { type: [ String ] },
+  category: { type: [ String ], required: 'Please provide a {PATH}'},
   comments: { type: [ commentSchema ], required: false },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 
