@@ -32,4 +32,6 @@ router.route('/users/:id')
   .put(usersController.userUpdate)
   .delete(usersController.userDelete)
 
+router.put('/users/:id/follow', secureRoute, usersController.userFollow)  
+
 module.exports = router

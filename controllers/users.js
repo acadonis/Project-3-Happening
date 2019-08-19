@@ -10,6 +10,13 @@ function registerRoute(req, res, next) {
     .catch(next)
 
 }
+function userFollowRoute (req, res, next) {
+  req.currentUser.following.addToSet(req.params.id) // push with no duplicates...
+
+  req.currentUser.save()
+    .then(user => res.json(user))
+    .catch(next)
+}
 
 function loginRoute(req, res, next) {
   User.findOne({ email: req.body.email })
@@ -33,6 +40,8 @@ function userIndexRoute(req, res, next) {
 
 function userShowRoute(req, res, next) {
   User.findById(req.params.id)
+    .populate({ path: 'happenings', select: 'name photo', model: 'Happening'})
+    .populate({ path: 'following', select: 'name photo', model: 'User'})
     .then(user => {
       if(!user) return res.sendStatus(404)
 
@@ -70,5 +79,6 @@ module.exports = {
   userIndex: userIndexRoute,
   userShow: userShowRoute,
   userUpdate: userUpdateRoute,
-  userDelete: userDeleteRoute
+  userDelete: userDeleteRoute,
+  userFollow: userFollowRoute
 }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-mongoose.Promise = require('bluebird')
+const Promise = require('bluebird')
+mongoose.Promise = Promise
 const Happening = require('../models/Happening')
 const User = require('../models/User')
 const happeningData = require('./data/happeningData')
@@ -17,25 +18,34 @@ mongoose.connect(dbURI, { useNewUrlParser: true })
   .then(() => Happening.create(happeningData))
   .then(happenings => retrieved = happenings)
   .then(() => User.create(usersData))
-  .then(users => retrieved.forEach(happening => {
-    happening.set({ user: users[0]._id })
-    happening.attendees.push(...users)
-    const commentContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    happening.comments.push(
-      {
-        content: commentContent,
-        user: users[0]
-      },
-      {
-        content: commentContent,
-        user: users[1]
-      },
-    )
-    happening.save()
-  }))
+  .then(users => {
+    let promises = retrieved.map(happening => {
+      happening.set({ user: users[0]._id })
+      happening.attendees.push(...users)
+      const commentContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      happening.comments.push(
+        {
+          content: commentContent,
+          user: users[0]
+        },
+        {
+          content: commentContent,
+          user: users[1]
+        },
+      )
+      return happening.save()
+    })
+
+    const usersWithEvents = users.map(user => {
+      user.happenings.push(...retrieved)
+      return user.save()
+    })
+    promies = [...promises, ...usersWithEvents]
+    return Promise.all(promises)
+  })
   .then(() => console.log('Successfully seeded!'))
   .catch((err) => console.log(err))
-  // .finally(() => mongoose.connection.close())
+  .finally(() => mongoose.connection.close())
 
 // mongoose.connect(dbURI, { useNewUrlParser: true })
 //   .then(() => mongoose.connection.db.dropDatabase())
