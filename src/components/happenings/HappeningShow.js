@@ -1,12 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
-
+import CategoryCard from '../common/CategoryCard'
+import Navbar from '../common/Navbar'
 class HappeningShow extends React.Component {
   constructor() {
     super()
     this.state = {}
+
     this.handleDelete = this.handleDelete.bind(this)
 
   }
@@ -17,36 +18,95 @@ class HappeningShow extends React.Component {
 
   }
 
+  noteFunctionDeleteMe(){
+    <div className="columns">
+      <div className="column">
+        <div className="buttons">
+          <Link
+            className="button"
+            to={`/happenings/${this.props.match.params.id}/edit`}
+          >Edit</Link>
+
+          <button onClick={this.handleDelete} className="button is-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  }
+
   handleDelete() {
     axios.delete(`/api/happenings/${this.props.match.params.id}`)
       .then(() => this.props.history.push('/happenings'))
   }
 
+  // FM - note to self: May want to give a more developed loading page as opposed to null
   render() {
     if (!this.state.happening) return null
+    console.log(this.state)
     return(
-      <section className="section">
-        <div className="columns">
-          <div className="column">
-            <div className="buttons">
-              <Link
-                className="button"
-                to={`/happenings/${this.props.match.params.id}/edit`}
-              >Edit</Link>
-
-              <button onClick={this.handleDelete} className="button is-danger">Delete</button>
+      <main>
+        <section className="section">
+          <div className="hero is-small is-body is-primary">
+            <div className="hero-foot">
+              <Navbar />
+            </div>
+            <div className="hero-body is-primary">
+              <div className="container">
+                <h1 className="is-size-1">Find something Happening</h1>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <h1 className="title is-2">{this.state.happening.name}</h1>
-          <h2 className="subtitle is-4">{this.state.happening.local_date}</h2>
-          <h2 className="subtitle is-4">{this.state.happening.local_time}</h2>
-          <figure className="image">
-            <img src={this.state.happening.photo} alt={this.state.happening.name} />
-          </figure>
-        </div>
-      </section>
+          <div className="hero is-light">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">
+                  {this.state.happening.name}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="container">
+            <div className="columns is-variable is-4">
+              <div className="column is-three-fifths">
+                <section className="box section">
+                  <figure className="image is-2by1">
+                    <img className="has-ratio" src={this.state.happening.photo} alt={this.state.happening.name} />
+                  </figure>
+                  <hr />
+                  <div className="container">
+                    <div className="columns is-multiline is-variable is-4">
+                      {this.state.happening.categories && this.state.happening.categories.map(category =>
+                        <CategoryCard
+                          key={category}
+                          categoryName={category}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <hr />
+                  <h3 className="subtitle">Description</h3>
+                  <p>{this.state.happening.description}</p>
+                </section>
+              </div>
+              <div className="column is-two-fifths container">
+                <section className="box section">
+                  <p className="has-text-weight-bold">{this.state.happening.venue}</p>
+                  <p className="has-text-weight-medium">{this.state.happening.city}</p>
+                  <p>Address line 1</p>
+                  <hr/>
+                  <p>Date: {this.state.happening.local_date}</p>
+                  <p>Time: {this.state.happening.local_time}</p>
+                  {this.state.happening.user && <p>Created by: {this.state.happening.user.name}</p>}
+                  <hr />
+                  <figure>
+                    <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2013/11/A-Small-Google-Maps-jQuery-Plugin-maplacejs.jpg?ssl=1" alt="placeholder map image" />
+                  </figure>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     )
   }
 }

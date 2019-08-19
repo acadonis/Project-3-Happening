@@ -15,6 +15,11 @@ class HappeningEdit extends React.Component {
     this.handleArrayChange = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    axios.get(`/api/happenings/${this.props.match.params.id}`)
+      .then(res => this.setState({ formData: res.data }))
+  }
+
   handleSubmit(e) {
     e.preventDefault()
 
