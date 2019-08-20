@@ -23,7 +23,7 @@ class Auth {
     return payload && now < payload.exp
   }
 
-  static getCurrentUser() {
+  static getCurrentUserId() {
     const payload = this.getPayload()
     return payload && payload.sub
   }
@@ -33,7 +33,7 @@ class Auth {
     - However, this can be reverted, keeping in the new function and then work to combine them later perhaps.
   */
   static isCurrentUser(user) {
-    return this.getCurrentUser() === user._id
+    return this.getCurrentUserId() === user._id
   }
 
 

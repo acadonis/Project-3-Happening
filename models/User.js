@@ -16,11 +16,18 @@ const userSchema = new mongoose.Schema({
   categories: {type: [String], required: false}
 }, {
   toJSON: {
+    virtuals: true,
     transform(doc, json){
       delete json.password
       return json
     }
   }
+})
+
+userSchema.virtual('followers', {
+  localField: '_id',
+  foreignField: 'following',
+  ref: 'User'
 })
 
 userSchema.virtual('passwordConfirmation')
