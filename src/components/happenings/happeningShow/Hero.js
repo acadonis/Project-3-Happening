@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Hero = ({ name, _id}) => {
+import Auth from '../../../lib/Auth'
+
+const Hero = ({ name, _id, user}) => {
   return (
     <div>
       <div className="hero is-light">
@@ -10,12 +12,12 @@ const Hero = ({ name, _id}) => {
             <h1 className="title column is-10">
               {name}
             </h1>
-            <Link
+            {Auth.isCurrentUser(user) && <Link
               to={`/happenings/${_id}/edit`}
               className="column is-centered"
             >
               <button className="button has-text-weight-semibold is-primary">Update</button>
-            </Link>
+            </Link>}
           </div>
         </div>
       </div>

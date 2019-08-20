@@ -3,7 +3,6 @@ import React from 'react'
 const Comments = ({ comments, commentsAreExpanded }) => {
   let sliceArgs = [0, 3]
   if (commentsAreExpanded) sliceArgs = [0]
-  console.log('slice Args', sliceArgs, commentsAreExpanded)
   return (
     <div>
       {comments[0] && <div className="box">

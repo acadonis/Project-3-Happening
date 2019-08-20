@@ -34,9 +34,7 @@ class HappeningNew extends React.Component {
     axios.post('/api/happenings', this.state.formData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(() => {
-        this.props.history.push('/happenings/')
-      })
+      .then(res => this.props.history.push(`/happenings/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
