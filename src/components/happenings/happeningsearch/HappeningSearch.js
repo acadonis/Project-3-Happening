@@ -3,15 +3,22 @@ import ListView from './ListView'
 import MapView from './MapView'
 import Navbar from '../../common/Navbar'
 import axios from 'axios'
+import _ from 'lodash'
+import Select from 'react-select'
+import { categories } from '../../../lib/Categories'
 
 class HappeningSearch extends React.Component {
   constructor() {
     super()
     this.state = {
       happenings: [],
-      tabOpen: true
+      tabOpen: true,
+      formData: {},
+      errors: {}
     }
     this.toggleTab = this.toggleTab.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
+
   }
 
   toggleTab() {
@@ -22,6 +29,15 @@ class HappeningSearch extends React.Component {
     axios.get('/api/happenings')
       .then(res => this.setState({ happenings: res.data }))
   }
+
+  handleCategoryChange(selectedCategories) {
+    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    this.setState({ formData })
+  }
+
+
+
+
 
   // <div className="hero is-small is-body is-primary">
   //   <div className="hero-foot">
@@ -37,6 +53,7 @@ class HappeningSearch extends React.Component {
 
   render() {
     console.log(this.state)
+    const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
     return (
       <section className="section">
         <div className="level">
@@ -69,8 +86,17 @@ class HappeningSearch extends React.Component {
           <div className="tile is-4 is-vertical is-parent">
             <div className="tile is-child">
               <div className="tile is-child box">
-                <p className="title">One</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                <p className="title">Search by Catagory</p>
+                <div className="field">
+                  <label className="label">Category</label>
+                  <Select
+                    value= {selectedCategories}
+                    options={categories}
+                    isMulti
+                    onChange={this.handleCategoryChange}
+                  />
+                  {this.state.errors.category && <small className="help is-danger">{this.state.errors.category}</small>}
+                </div>
               </div>
               <div className="tile is-child">
                 <hr/>
