@@ -9,7 +9,7 @@ const Card = ({ name, city, categories, photo }) => {
           <div className="card-header-title">{name}</div>
         </div>
         <div className="card-image">
-          <figure className="image" style={{ backgroundImage: `url(${photo})` }}/>
+          <figure className="image image-user" style={{ backgroundImage: `url(${photo})` }}/>
         </div>
         <div className="card-content">
           <div className="content-subtitle">
