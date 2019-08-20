@@ -62,11 +62,6 @@ class App extends React.Component {
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-<<<<<<< HEAD
-          <Route path="/" component={Home} />
-
-=======
->>>>>>> development
         </Switch>
       </HashRouter>
     )
