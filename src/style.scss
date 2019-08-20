@@ -23,3 +23,10 @@
 // @import "bulmaswatch/flatly/_variables.scss";
 // @import "../node_modules/bulma/bulma.sass";
 // @import "bulmaswatch/flatly/_overrides.scss";
+
+figure.image {
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
