@@ -45,10 +45,7 @@ class HappeningShow extends React.Component {
     axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
-      .then(res => this.setState({ happening: res.data }))
-      .then(() => {
-        if (!this.state.errors['comments.0.content']) this.toggleCommentInput()
-      })
+      .then(res => this.setState({ happening: res.data, commentInputIsOpen: false }))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -85,7 +82,6 @@ class HappeningShow extends React.Component {
   }
   // FM - note to self: May want to give a more developed loading page
   render() {
-    console.log(this.state.errors)
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
     if (!happening) return <h1 className="title">Loading ... </h1>
