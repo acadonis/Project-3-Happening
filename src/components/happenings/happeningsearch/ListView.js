@@ -2,6 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import HappeningSearchCard from './HappeningSearchCard'
 import axios from 'axios'
+import HappeningSearch from './HappeningSearch'
+
+
+// const ListView = (props) => {
+//   return
+// }
 
 class ListView extends React.Component {
   constructor() {
@@ -9,10 +15,10 @@ class ListView extends React.Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    axios.get('/api/happenings')
-      .then(res => this.setState({ happenings: res.data }))
-  }
+  // componentDidMount() {
+  //   axios.get('/api/happenings')
+  //     .then(res => this.setState({ happenings: res.data }))
+  // }
 
   render() {
     console.log(this.state)
@@ -21,8 +27,8 @@ class ListView extends React.Component {
         <div className="tile is-child box">
           <div className="container">
             <div className="columns is-multiline">
-              {!this.state.happenings && <h2 className="title is-2">Loading...</h2>}
-              {this.state.happenings && this.state.happenings.map(happening =>
+              {!this.props.happenings && <h2 className="title is-2">Loading...</h2>}
+              {this.props.happenings && this.props.happenings.map(happening =>
                 <div className="column is-full" key={happening._id}>
                   <Link to={`/happenings/${happening._id}`}>
                     <HappeningSearchCard

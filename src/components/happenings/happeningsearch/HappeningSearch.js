@@ -18,6 +18,7 @@ class HappeningSearch extends React.Component {
     }
     this.toggleTab = this.toggleTab.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.filterHappeningsByCategory = this.filterHappeningsByCategory.bind(this)
 
   }
 
@@ -33,6 +34,13 @@ class HappeningSearch extends React.Component {
   handleCategoryChange(selectedCategories) {
     const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
     this.setState({ formData })
+  }
+
+  filterHappeningsByCategory() {
+    const field = this.state.formData
+    const filterByCategory = this.state.happenings.filter(happening => {
+      return happening.categories.includes(this.state.formData)
+    })
   }
 
 
@@ -109,7 +117,7 @@ class HappeningSearch extends React.Component {
           </div>
           <div className="tile is-parent">
             <div className="tile is-child box">
-              {this.state.tabOpen ? <ListView/>:<MapView/>}
+              {this.state.tabOpen ? <ListView happenings={this.state.happenings}/>:<MapView happenings={this.state.happenings}/>}
             </div>
           </div>
         </div>

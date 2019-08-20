@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
 import axios from 'axios'
+import HappeningSearch from './HappeningSearch'
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibXRjb2x2YXJkIiwiYSI6ImNqemI4emZydjA2dHIzYm80ZG96ZmQyN2wifQ.kVp6eB7AkWjslUOtsJyLDQ'
@@ -13,10 +14,10 @@ class MapView extends React.Component {
     this.selectHappening = this.selectHappening.bind(this)
   }
 
-  componentDidMount() {
-    axios.get('/api/happenings')
-      .then(res => this.setState({ happenings: res.data }))
-  }
+  // componentDidMount() {
+  //   axios.get('/api/happenings')
+  //     .then(res => this.setState({ happenings: res.data }))
+  // }
 
   selectHappening(happening) {
     this.setState({ selectedHappening: happening })
@@ -27,8 +28,8 @@ class MapView extends React.Component {
 
     return (
       <div className="has-ratio">
-        {!this.state.happenings && <h2 className="title is-2">Loading...</h2>}
-        {this.state.happenings &&
+        {!this.props.happenings && <h2 className="title is-2">Loading...</h2>}
+        {this.props.happenings &&
             <Map
               center={[-0.088817, 51.514271]}
               style="mapbox://styles/mapbox/streets-v9"
@@ -37,7 +38,7 @@ class MapView extends React.Component {
                 width: '100vh'
               }}
             >
-              {this.state.happenings.map(happening =>
+              {this.props.happenings.map(happening =>
                 <div key={happening._id}>
                   <Marker
                     coordinates={[happening.lon, happening.lat]}
