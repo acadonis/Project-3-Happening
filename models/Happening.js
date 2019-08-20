@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const commentSchema = new mongoose.Schema({
-  content: {type: String, required: 'Please provide {PATH}', maxlength: [100, 'poop']},
+  content: {type: String, required: 'Please provide {PATH}', maxlength: [450, 'Comment exeeds maximum (450). Please enter a shorter comment.']},
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
