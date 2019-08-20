@@ -37,5 +37,5 @@ const CommentsBox = ({ comments, commentInputIsOpen, errors, toggleCommentInput,
     </div>
   )
 }
-
+ 
 export default CommentsBox
