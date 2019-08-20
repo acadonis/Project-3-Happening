@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   photo: { type: String, required: false },
   bio: { type: String, required: false },
   city: { type: String, required: false },
+  // FM: We need to make how we're representing arrays consistent before we finish
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   happenings: [{ type: mongoose.Schema.ObjectId, ref: 'Happening', required: false }],
   categories: {type: [String], required: false}

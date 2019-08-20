@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
@@ -14,44 +14,48 @@ class HappeningShow extends React.Component {
     this.state = {}
 
     this.handleDelete = this.handleDelete.bind(this)
+    this.loadHappening = this.loadHappening.bind(this)
+    this.linkToHappening = this.linkToHappening.bind(this)
 
-  }
-
-  componentDidMount() {
-    axios.get(`/api/happenings/${this.props.match.params.id}`)
-      .then(res => this.setState({ happening: res.data }))
-      .then(() => {
-        axios.get('/api/happenings/limit/4')
-          .then(res => this.setState({ similarHappenings: res.data }))
-      })
-
-  }
-
-  noteFunctionDeleteMe(){
-    <div className="columns">
-      <div className="column">
-        <div className="buttons">
-          <Link
-            className="button"
-            to={`/happenings/${this.props.match.params.id}/edit`}
-          >Edit</Link>
-
-          <button onClick={this.handleDelete} className="button is-danger">Delete</button>
-        </div>
-      </div>
-    </div>
   }
 
   handleDelete() {
     axios.delete(`/api/happenings/${this.props.match.params.id}`)
       .then(() => this.props.history.push('/happenings'))
   }
+
+  linkToHappening(happeningId) {
+    this.props.history.push(`/happenings/${happeningId}`)
+  }
+
+  loadHappening(happeningId) {
+    return axios.get(`/api/happenings/${happeningId}`)
+      .then(res => {
+        this.setState({ happening: res.data })
+      })
+      // Does the below need to be chained? Would it be better to have them both requested at the same time
+      .then(() => {
+        axios.get('/api/happenings/limit/4')
+          .then(res => this.setState({ similarHappenings: res.data }))
+      })
+  }
+
+  componentDidMount() {
+    this.loadHappening(this.props.match.params.id)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ happening: null })
+      this.loadHappening(this.props.match.params.id)
+    }
+  }
   // FM - note to self: May want to give a more developed loading page as opposed to null
   render() {
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
 
-    if (!happening) return <h1>Loading ... </h1>
+    if (!happening) return <h1 className="title">Loading ... </h1>
     console.log(this.state)
     return(
       <div className="section">
@@ -86,6 +90,7 @@ class HappeningShow extends React.Component {
               <AttendeesBox attendees={happening.attendees} />
               {similarHappenings && <SimilarHappeningsBox
                 happenings={this.state.similarHappenings}
+                linkToHappening={this.linkToHappening}
               />}
             </div>
           </div>
@@ -95,4 +100,4 @@ class HappeningShow extends React.Component {
   }
 }
 
-export default HappeningShow
+export default withRouter(HappeningShow)
