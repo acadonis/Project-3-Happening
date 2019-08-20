@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
+import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/Auth'
@@ -83,16 +84,17 @@ class Show extends React.Component {
   }
 
   getFollowings() {
+    const showFollowers = this.state.user.following.slice(0, 4)
     return (
       <div className="columns is-multiline">
         {!this.state.user.following[0] && <h2 className="subtitle is-4">Not following</h2>}
-        {this.state.user.following[0] && this.state.user.following.map(follow =>
-          <Link className="column is-offset-0 is-one-third has-text-centered"
+        {this.state.user.following[0] && showFollowers.map(follow =>
+          <Link className="column is-offset-0 is-half has-text-centered"
             key={follow._id}
             to={`/users/${follow._id}`}
           >
             <div>
-              <figure className="image is-128x128">
+              <figure className="image is-64x64 has-image-centered">
                 <img className="is-rounded" src={follow.photo} />
               </figure>
               <p className="is-6 has-text-weight-semibold">{follow.name}</p>
@@ -110,7 +112,7 @@ class Show extends React.Component {
 
     return (
       <div className="columns is-multiline">
-        {!this.state.user.happenings[0] && <h2 className="subtitle is-4">No events</h2>}
+        {!this.state.user.happenings[0] && <h2 className="subtitle is-6">No events</h2>}
         {this.state.user.happenings[0] && threeHappenings.map(hap =>
           <Link className="column"
             key={hap._id}
@@ -138,7 +140,7 @@ class Show extends React.Component {
     const threeHappenings = [ ...this.state.user.happenings.slice(3) ]
     return (
       <div className="columns is-multiline">
-        {!this.state.user.happenings[0] && <h2 className="subtitle is-4">No events</h2>}
+        {!this.state.user.happenings[0] && <h2 className="subtitle is-6">No events</h2>}
         {this.state.user.happenings[0] && threeHappenings.map(hap =>
           <Link className="column is-one-fifth"
             key={hap._id}
@@ -150,7 +152,7 @@ class Show extends React.Component {
                   <div className="card-header-title">{hap.name}</div>
                 </div>
                 <div className="card-image">
-                  <figure className="image image-user" style={{ backgroundImage: `url(${hap.photo})` }}/>
+                  <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${hap.photo})` }}/>
                 </div>
               </div>
             </div>
@@ -200,7 +202,14 @@ class Show extends React.Component {
           {this.state.user && <div>
             <div className="columns">
               <div className="column">
-                <figure className="image image-user" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>
+                {!this.state.user.photo &&
+                  <Link
+                    className="button"
+                    to={`/users/${this.state.user._id}/edit`}
+                  >Add photo
+                  </Link>
+                }
+                {this.state.user.photo && <figure className="image image-user  has-image-centered" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
               </div>
               <div className="column">
                 <h1 className="title is-2">{this.state.user.name}</h1>
@@ -209,6 +218,13 @@ class Show extends React.Component {
                 <h2 className="subtitle is-4" >About me:</h2>
                 {!this.state.user.bio && <p>Tell about yourself</p>}
                 {this.state.user.bio && <p>{this.state.user.bio}</p>}
+              </div>
+              <div className="column box">
+                {this.getFollowings()}
+                <Link
+                  className="button"
+                  to={`/users/${this.state.user._id}/FollowingAll`}
+                >Show all</Link>
               </div>
             </div>
             {Auth.isCurrentUser(this.state.user) && <div className="buttons">
@@ -219,7 +235,7 @@ class Show extends React.Component {
 
               <button onClick={this.handleDelete} className="button is-danger">Delete</button>
             </div>}
-            {!this.isFollowing() && !this.isCurrentUser() && <div className="buttons">
+            { !this.isFollowing() && !this.isCurrentUser() && <div className="buttons">
               <button onClick={this.followUser} className="button">Follow</button>
             </div>}
             {this.isFollowing() &&  !this.isCurrentUser() && <div className="buttons">
@@ -234,14 +250,16 @@ class Show extends React.Component {
               )}
               <hr />
             </div>
-            {this.getFollowings()}
-            <h1 className="title is-4">Future events</h1>
-            <hr />
-            {this.getFutureEvents()}
-            <h1 className="title is-4">Past events</h1>
-            <hr />
-            {this.getPastEvents()}
-
+            <div className="box">
+              <h1 className="title is-4">Future events</h1>
+              <hr />
+              {this.getFutureEvents()}
+            </div>
+            <div className="box">
+              <h1 className="title is-4">Past events</h1>
+              <hr />
+              {this.getPastEvents()}
+            </div>
           </div>}
 
         </div>

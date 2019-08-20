@@ -38,6 +38,13 @@ function userUnfollowRoute (req, res, next) {
     .catch(next)
 }
 
+function followingAll (req, res, next) {
+  User.findById(req.params.id)
+    .populate({ path: 'following', select: 'name photo' })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
 function loginRoute(req, res, next) {
   User.findOne({ email: req.body.email })
     .then(user => {
@@ -103,5 +110,6 @@ module.exports = {
   userUpdate: userUpdateRoute,
   userDelete: userDeleteRoute,
   userFollow: userFollowRoute,
-  userUnfollow: userUnfollowRoute
+  userUnfollow: userUnfollowRoute,
+  followingAll: followingAll
 }

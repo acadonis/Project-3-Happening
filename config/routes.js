@@ -36,6 +36,8 @@ router.route('/users/:id')
   .delete(usersController.userDelete)
 
 router.put('/users/:id/follow', secureRoute, usersController.userFollow)
-router.put('/users/:id/unfollow', secureRoute, usersController.userUnfollow)  
+router.put('/users/:id/unfollow', secureRoute, usersController.userUnfollow)
+
+router.get('/users/:id/followingAll', secureRoute, usersController.followingAll)  
 
 module.exports = router

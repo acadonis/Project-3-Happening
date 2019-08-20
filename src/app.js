@@ -5,7 +5,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 // import Home from './components/pages/Home'
 import Navbar from './components/common/Navbar'
-// import SecureRoute from './components/common/SecureRoute'
+import SecureRoute from './components/common/SecureRoute'
 // import Navbar from './components/common/Navbar'
 
 import HappeningIndex from './components/happenings/HappeningIndex'
@@ -24,6 +24,7 @@ import UserIndex from './components/users/UserIndex'
 
 
 import UserShow from './components/users/UserShow'
+import FollowingAll from './components/users/FollowingAll'
 import UserEdit from './components/users/UserEdit'
 
 import Register from './components/auth/Register'
@@ -46,6 +47,7 @@ class App extends React.Component {
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/users/:id/edit" component={UserEdit} />
+          <SecureRoute path="/users/:id/followingAll" component={FollowingAll} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/happenings" component={HappeningIndex} />
           <Route path="/users" component={UserIndex} />
