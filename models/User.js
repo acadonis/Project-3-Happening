@@ -12,15 +12,22 @@ const userSchema = new mongoose.Schema({
   city: { type: String, required: false },
   // FM: We need to make how we're representing arrays consistent before we finish
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  happenings: { type: [ mongoose.Schema.ObjectId ], ref: 'Happening', required: false },
+  happenings: [{ type: mongoose.Schema.ObjectId, ref: 'Happening', required: false }],
   categories: {type: [String], required: false}
 }, {
   toJSON: {
+    virtuals: true,
     transform(doc, json){
       delete json.password
       return json
     }
   }
+})
+
+userSchema.virtual('followers', {
+  localField: '_id',
+  foreignField: 'following',
+  ref: 'User'
 })
 
 userSchema.virtual('passwordConfirmation')
