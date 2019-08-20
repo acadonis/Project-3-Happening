@@ -11,6 +11,41 @@ function registerRoute(req, res, next) {
 
 }
 
+function userFollowRoute (req, res, next) {
+  req.currentUser.following.addToSet(req.params.id) // push with no duplicates...
+
+  req.currentUser.save()
+    .then(() => {
+      return User.findById(req.params.id)
+        .populate({ path: 'happenings', select: 'name photo' })
+        .populate({ path: 'following', select: 'name photo' })
+        .populate({ path: 'followers', select: 'name photo -following' })
+    })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
+function userUnfollowRoute (req, res, next) {
+  req.currentUser.following.pull(req.params.id) // push with no duplicates...
+
+  req.currentUser.save()
+    .then(() => {
+      return User.findById(req.params.id)
+        .populate({ path: 'happenings', select: 'name photo' })
+        .populate({ path: 'following', select: 'name photo' })
+        .populate({ path: 'followers', select: 'name photo -following' })
+    })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
+function followingAll (req, res, next) {
+  User.findById(req.params.id)
+    .populate({ path: 'following', select: 'name photo' })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
 function loginRoute(req, res, next) {
   User.findOne({ email: req.body.email })
     .then(user => {
@@ -33,7 +68,11 @@ function userIndexRoute(req, res, next) {
 
 function userShowRoute(req, res, next) {
   User.findById(req.params.id)
+    .populate({ path: 'happenings', select: 'name photo' })
+    .populate({ path: 'following', select: 'name photo' })
+    .populate({ path: 'followers', select: 'name photo -following' })
     .then(user => {
+      console.log(user)
       if(!user) return res.sendStatus(404)
 
       return res.json(user)
@@ -70,5 +109,8 @@ module.exports = {
   userIndex: userIndexRoute,
   userShow: userShowRoute,
   userUpdate: userUpdateRoute,
-  userDelete: userDeleteRoute
+  userDelete: userDeleteRoute,
+  userFollow: userFollowRoute,
+  userUnfollow: userUnfollowRoute,
+  followingAll: followingAll
 }

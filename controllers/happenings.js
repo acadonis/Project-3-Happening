@@ -8,8 +8,9 @@ const Happening = require('../models/Happening')
 */
 
 function indexRoute(req, res, next) {
-  Happening.find(req.query) // This won't work until we have the query handler plugged in
-    .then(happening => res.json(happening))
+  Happening.find(req.query)
+    .limit(+req.params.n)
+    .then(happenings => res.json(happenings))
     .catch(next)
 }
 
@@ -64,10 +65,11 @@ function commentCreateRoute(req, res, next) {
   Happening.findById(req.params.id)
     .then(happening => {
       if(!happening) return res.sendStatus(404)
-      happening.comments.push(req.body)
+      happening.comments.unshift(req.body)
       return happening.save()
     })
     .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
     .catch(next)
 }
