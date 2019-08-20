@@ -1,10 +1,13 @@
 import React from 'react'
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, commentsAreExpanded }) => {
+  let sliceArgs = [0, 3]
+  if (commentsAreExpanded) sliceArgs = [0]
+  console.log('slice Args', sliceArgs, commentsAreExpanded)
   return (
     <div>
       {comments[0] && <div className="box">
-        {comments.map((comment, i) => (
+        {comments.slice(...sliceArgs).map((comment, i) => (
           <div key={comment._id}>
             <p className="title has-text-weight-semibold is-5">{comment.user.name}</p>
             <p className="subtitle has-text-weight-semibold is-7">{comment.createdAt.replace(/T|\..*/g, ' ')}</p>

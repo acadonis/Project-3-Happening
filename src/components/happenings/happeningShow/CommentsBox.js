@@ -3,7 +3,7 @@ import React from 'react'
 import CommentsForm from './CommentsForm'
 import Comments from './Comments'
 
-const CommentsBox = ({ comments, commentFormIsOpen, errors, toggleCommentForm, storeCommentFormData, submitComment}) => {
+const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors, toggleComments, toggleCommentForm, storeCommentFormData, submitComment}) => {
   // FM: Need to add moment to comments to display comment.createdAt
   return (
     <div className="box">
@@ -25,7 +25,15 @@ const CommentsBox = ({ comments, commentFormIsOpen, errors, toggleCommentForm, s
           storeCommentFormData
         }}
       />}
-      <Comments {...{comments}} />
+      <Comments {...{comments, commentsAreExpanded}} />
+      <br />
+      <div className="level">
+        <div className="level-left"></div>
+        <button
+          className="button level-right is-primary"
+          onClick={toggleComments}
+        >See All</button>
+      </div>
     </div>
   )
 }

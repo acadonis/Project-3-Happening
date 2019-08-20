@@ -14,17 +14,27 @@ class HappeningShow extends React.Component {
     super()
     this.state = {
       happening: null,
+      commentsAreExpanded: false,
       commentFormIsOpen: false,
       commentFromData: {},
       errors: {}
     }
 
+    this.toggleComments = this.toggleComments.bind(this)
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
     this.submitComment = this.submitComment.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
+  }
+
+  toggleComments() {
+    console.log(this.state.commentsAreExpanded)
+    let commentsAreExpanded = null
+    if (this.state.commentsAreExpanded === true) commentsAreExpanded = false
+    else commentsAreExpanded = true
+    this.setState({ commentsAreExpanded })
   }
 
   toggleCommentForm() {
@@ -101,8 +111,10 @@ class HappeningShow extends React.Component {
               <MainBox {...happening} />
               <CommentsBox
                 comments={happening.comments}
+                commentsAreExpanded={this.state.commentsAreExpanded}
                 commentFormIsOpen={this.state.commentFormIsOpen}
                 errors={this.state.errors}
+                toggleComments={this.toggleComments}
                 toggleCommentForm={this.toggleCommentForm}
                 storeCommentFormData={this.storeCommentFormData}
                 submitComment={this.submitComment}
