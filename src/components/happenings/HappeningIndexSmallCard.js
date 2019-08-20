@@ -1,18 +1,23 @@
 import React from 'react'
+import CategoryCard from '../common/CategoryCard'
 
-const HappeningIndexSmallCard = ({ name, category, localDate, photo}) => {
+
+const HappeningIndexSmallCard = ({ name, categories, localDate, photo}) => {
   return (
-    <div className="column">
-      <div className="card">
-        <div className="card header">
-          <div className="card-header-title">{name}</div>
-          <div className="card-header-subtitle">{category}</div>
-          <div className="card-header-subtitle">{localDate}</div>
-        </div>
+    <div className="card card-equal-height">
+      <div className="card-content">
+        <div className="title is-6">{name}</div>
         <div className="card-image">
-          <figure className="image" style={{ backgroundImage: `url(${photo})` }}/>
+          <div className="card-image">
+            <figure className="image">
+              <img src={photo} alt={name} />
+            </figure>
+          </div>
         </div>
+        <br/>
+        <p className="content">{localDate}</p>
       </div>
+
     </div>
   )
 }

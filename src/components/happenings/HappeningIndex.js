@@ -1,20 +1,18 @@
 import React from 'react'
 
+import HappeningIndexMusic from './HappeningIndexTheatre'
+import Hero from '../common/Hero'
 
-import HappeningIndexLargeSection from './HappeningIndexLargeSection'
-import HappeningIndexSmallSection from './HappeningIndexSmallSection'
-
-
-const HappeningIndex = () => {
-
+const HappeningIndex= () => {
   return (
-    <section className="section">
+    <section className= "section">
       <div className="container">
-        <HappeningIndexLargeSection/>
-        <HappeningIndexSmallSection/>
+        <HappeningIndexMusic/>
+      </div>
+      <div className="container">
+        <Hero/>
       </div>
     </section>
-
   )
 }
 

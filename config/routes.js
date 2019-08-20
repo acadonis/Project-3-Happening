@@ -7,7 +7,15 @@ const secureRoute = require('../lib/secureRoute')
 
 // ## Basic Routes ##
 
-router.route('/happenings')
+router.route('/happenings/')
+  .get(happeningsController.index)
+  .post(secureRoute, happeningsController.create)
+
+router.route('/happenings/limit/:n/category/:categoryId')
+  .get(happeningsController.index)
+  .post(secureRoute, happeningsController.create)
+
+router.route('/happenings/limit/:n')
   .get(happeningsController.index)
   .post(secureRoute, happeningsController.create)
 
@@ -16,7 +24,7 @@ router.route('/happenings/:id')
   .put(secureRoute, happeningsController.update)
   .delete(secureRoute, happeningsController.delete)
 
-// ## Comment Routes ##
+
 
 router.post('/happenings/:id/comments', secureRoute, happeningsController.commentCreate)
 router.delete('/happenings/:id/comments/:commentId', secureRoute, happeningsController.commentDelete)

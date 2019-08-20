@@ -45,9 +45,9 @@ class App extends React.Component {
           <Route path="/happenings/new" component={HappeningNew} />
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
+          <Route path="/happenings" component={HappeningIndex} />
           <Route path="/users/:id/edit" component={UserEdit} />
           <Route path="/users/:id" component={UserShow} />
-          <Route path="/happenings" component={HappeningIndex} />
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />

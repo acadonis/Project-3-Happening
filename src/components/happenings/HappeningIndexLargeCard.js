@@ -1,31 +1,35 @@
 import React from 'react'
+import CategoryCard from '../common/CategoryCard'
 
-const HappeningIndexLargeCard = ({ name, category, localDate, time, photo, attendance_count, description }) => {
+const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendance_count, description }) => {
+
+
   return (
-
-
-
-    <div className="column">
-      <div className="card">
-        <div className="card header">
-          <div className="card-header-title">{name}</div>
-          <div className="card-header-subtitle">{category}</div>
-          <div className="card-header-subtitle">{time}</div>
-          <div className="card-header-subtitle">{localDate}</div>
-        </div>
+    <div className="card card-equal-height">
+      <div className="card-content">
+        <p className="title is-4">{name}</p>
         <div className="card-image">
-          <figure className="image" style={{ backgroundImage: `url(${photo})` }}/>
+          <figure className="image">
+            <img src={photo} alt={name} />
+          </figure>
         </div>
-        <div className="card-content">
-          <div className="content-subtitle">
-            <p>{attendance_count}</p>
-          </div>
-          <div className="content">
-            <p>{description}</p>
-          </div>
+        <br />
+        <div className="columns is-multiline is-4">
+          {' ' && categories.map(category =>
+            <CategoryCard
+              key={category}
+              categoryName={category}
+            />
+          )}
         </div>
+        <p className="content">{time}</p>
+        <p className="content">{localDate}</p>
+        <p className="content">{attendance_count}</p>
+        <p className="content">{description}</p>
+
       </div>
     </div>
+
   )
 }
 

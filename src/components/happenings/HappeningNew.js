@@ -41,13 +41,13 @@ class HappeningNew extends React.Component {
   }
 
   handleCategoryChange(selectedCategories) {
-    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    const formData = { ...this.state.formData, categories: selectedCategories.map(option => option.value) }
     this.setState({ formData })
   }
 
   render() {
 
-    const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
+    const selectedCategories = (this.state.formData.categories || [ ]).map(categories => ({ label: categories, value: categories }))
     return (
       <section className="section">
         <div className="container">
@@ -120,7 +120,7 @@ class HappeningNew extends React.Component {
                 isMulti
                 onChange={this.handleCategoryChange}
               />
-              {this.state.errors.category && <small className="help is-danger">{this.state.errors.category}</small>}
+              {this.state.errors.categories && <small className="help is-danger">{this.state.errors.categories}</small>}
             </div>
             <div className="field">
               <label className="label">Photo</label>
