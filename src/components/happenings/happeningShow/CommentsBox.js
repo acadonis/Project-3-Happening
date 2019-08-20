@@ -44,5 +44,5 @@ const CommentsBox = ({ comments, openCommentInput, commentInputIsOpen, storeForm
     </div>
   )
 }
-
+ 
 export default CommentsBox
