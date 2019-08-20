@@ -10,6 +10,7 @@ function registerRoute(req, res, next) {
     .catch(next)
 
 }
+
 function userFollowRoute (req, res, next) {
   req.currentUser.following.addToSet(req.params.id) // push with no duplicates...
 

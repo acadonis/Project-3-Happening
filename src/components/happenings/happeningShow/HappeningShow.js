@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { Link, withRouter } from 'react-router-dom'
 
+import Hero from './Hero'
 import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
 import DetailsBox from './DetailsBox'
@@ -11,12 +11,30 @@ import SimilarHappeningsBox from './SimilarHappeningsBox'
 class HappeningShow extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      happening: null,
+      fromeData: {},
+      commentInputIsOpen: false
+    }
 
+    this.openCommentInput = this.openCommentInput.bind(this)
+    this.storeFormData = this.storeFormData.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
+  }
 
+  openCommentInput() {
+    this.setState({commentInputIsOpen: true})
+  }
+
+  storeFormData(e) {
+    const formData = { ...this.state.formData, [e.target.name]: e.target.value }
+    this.setState({ formData })
+  }
+
+  submitComment(e) {
+    e.preventDefualt()
   }
 
   handleDelete() {
@@ -50,7 +68,7 @@ class HappeningShow extends React.Component {
       this.loadHappening(this.props.match.params.id)
     }
   }
-  // FM - note to self: May want to give a more developed loading page as opposed to null
+  // FM - note to self: May want to give a more developed loading page
   render() {
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
@@ -59,28 +77,21 @@ class HappeningShow extends React.Component {
     console.log(this.state)
     return(
       <div className="section">
-        <div className="hero is-light">
-          <div className="hero-body">
-            <div className="container columns is-vcentered">
-              <h1 className="title column">
-                {happening.name}
-              </h1>
-              <Link
-                to={`/happenings/${happening._id}/edit`}
-                className="column is-1 is-offset-3"
-              >
-                <button className="button has-text-weight-semibold is-link">Update</button>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <hr />
+        <Hero {...happening}/>
         <div className="container">
+
           <div className="columns is-variable is-4">
+
             <div className="column is-three-fifths">
               <MainBox {...happening} />
-              <CommentsBox comments={happening.comments} />
+              <CommentsBox
+                comments={happening.comments}
+                commentInputIsOpen={this.state.commentInputIsOpen}
+                openCommentInput={this.openCommentInput}
+                storeFormData={this.storeFormData}
+              />
             </div>
+
             <div className="column is-two-fifths container">
               <DetailsBox
                 localTime={happening.local_time}
@@ -93,11 +104,13 @@ class HappeningShow extends React.Component {
                 linkToHappening={this.linkToHappening}
               />}
             </div>
+
           </div>
+
         </div>
       </div>
     )
   }
 }
 
-export default withRouter(HappeningShow)
+export default HappeningShow

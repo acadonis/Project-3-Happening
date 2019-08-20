@@ -12,10 +12,12 @@ const SimilarHappeningsBox = ({ happenings, linkToHappening }) => {
             className="column is-offset-0 is-half has-text-weight-semibold"
             onClick={() => linkToHappening(happening._id)}
           >
-            <figure className="image">
-              <img src={happening.photo} />
-            </figure>
-            <p className="is-6 is-transparent">{happening.name}</p>
+            <a>
+              <figure className="image">
+                <img src={happening.photo} />
+              </figure>
+              <p className="is-6 is-transparent">{happening.name}</p>
+            </a>
           </div>
         )}
       </div>
