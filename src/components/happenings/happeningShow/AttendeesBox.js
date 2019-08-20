@@ -10,17 +10,12 @@ const AttendeesBox = ({ attendees }) => {
       <h3 className="subtitle is-5 has-text-weight-semibold">Attendees</h3>
       <div className="columns is-multiline">
         {attendees.slice(0, attendeesToShow).map(user =>
-          <Link className="column is-offset-0 is-one-third has-text-centered"
-            key={user._id}
-            to={`/users/${user._id}`}
-          >
-            <div>
-              <figure className="image is-128x128">
-                <img className="is-rounded" src={user.photo} />
-              </figure>
-              <p className="is-6 has-text-weight-semibold">{user.name}</p>
-            </div>
-          </Link>
+          <div key={user._id}>
+            <figure className="image is-128x128">
+              <img className="is-rounded" src={user.photo} />
+            </figure>
+            <p className="is-6 has-text-weight-semibold">{user.name}</p>
+          </div>
         )}
       </div>
     </div>

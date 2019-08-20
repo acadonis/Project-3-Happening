@@ -22,6 +22,7 @@ class Show extends React.Component {
     this.getPastEvents = this.getPastEvents.bind(this)
     this.followUser = this.followUser.bind(this)
     this.getFollowings = this.getFollowings.bind(this)
+    this.linkToUser = this.linkToUser.bind(this)
   }
 
   componentDidMount() {
@@ -49,21 +50,27 @@ class Show extends React.Component {
       .then(() => console.log())
   }
 
+  linkToUser(userId) {
+    console.log()
+    this.props.history.push(`/users/${userId}`)
+  }
+
   getFollowings() {
     return (
       <div className="columns is-multiline">
         {!this.state.user.following[0] && <h2 className="subtitle is-4">Not following</h2>}
         {this.state.user.following[0] && this.state.user.following.map(follow =>
-          <div key={follow} className={`column is-${follow} is-one-sixth` }>
-            <div className="card">
-              <div className="card header">
-                <div className="card-header-title">{follow.name}</div>
-              </div>
-              <div className="card-image">
-                <figure className="image image-user" style={{ backgroundImage: `url(${follow.photo})` }}/>
-              </div>
+          <Link className="column is-offset-0 is-one-third has-text-centered"
+            key={follow._id}
+            to={`/users/${follow._id}`}
+          >
+            <div>
+              <figure className="image is-128x128">
+                <img className="is-rounded" src={follow.photo} />
+              </figure>
+              <p className="is-6 has-text-weight-semibold">{follow.name}</p>
             </div>
-          </div>
+          </Link>
         )}
 
       </div>
@@ -71,14 +78,14 @@ class Show extends React.Component {
   }
 
   getFutureEvents () {
-    console.log(this.state.user.following)
+    console.log()
     const threeHappenings = []
     threeHappenings.push(this.state.user.happenings[0], this.state.user.happenings[1], this.state.user.happenings[2])
     return (
       <div className="columns is-multiline">
         {!this.state.user.happenings[0] && <h2 className="subtitle is-4">No events</h2>}
         {this.state.user.happenings[0] && threeHappenings.map(hap =>
-          <div key={hap} className={`column is-${hap} is-one-third` }>
+          <div key={hap._id} className={`column is-${hap} is-one-third` }>
             <div className="card">
               <div className="card header">
                 <div className="card-header-title">{hap.name}</div>
@@ -102,7 +109,7 @@ class Show extends React.Component {
       <div className="columns is-multiline">
         {!this.state.user.happenings[0] && <h2 className="subtitle is-4">No events</h2>}
         {this.state.user.happenings[0] && threeHappenings.map(hap =>
-          <div key={hap} className={`column is-${hap} is-one-fifth` }>
+          <div key={hap._id} className={`column is-${hap} is-one-fifth` }>
             <div className="card">
               <div className="card header">
                 <div className="card-header-title">{hap.name}</div>
@@ -148,7 +155,6 @@ class Show extends React.Component {
   // }
 
   render() {
-    console.log(this.state.user)
     return (
       <section className="section">
         <div className="container">
