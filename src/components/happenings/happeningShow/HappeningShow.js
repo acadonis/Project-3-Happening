@@ -14,12 +14,12 @@ class HappeningShow extends React.Component {
     super()
     this.state = {
       happening: null,
-      commentInputIsOpen: false,
+      commentFormIsOpen: false,
       commentFromData: {},
       errors: {}
     }
 
-    this.toggleCommentInput = this.toggleCommentInput.bind(this)
+    this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
     this.submitComment = this.submitComment.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
@@ -27,11 +27,16 @@ class HappeningShow extends React.Component {
     this.linkToHappening = this.linkToHappening.bind(this)
   }
 
-  toggleCommentInput() {
-    let commentInputIsOpen = null
-    if (this.state.commentInputIsOpen === true) commentInputIsOpen = false
-    else commentInputIsOpen = true
-    this.setState({ commentInputIsOpen })
+  toggleCommentForm() {
+    let commentFormIsOpen = null
+    if (this.state.commentFormIsOpen === true) {
+      commentFormIsOpen = false
+    } else {
+      commentFormIsOpen = true
+      const commentFormData = { content: ''}
+      this.setState({ commentFormData })
+    }
+    this.setState({ commentFormIsOpen })
   }
 
   storeCommentFormData(e) {
@@ -45,7 +50,7 @@ class HappeningShow extends React.Component {
     axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
-      .then(res => this.setState({ happening: res.data, commentInputIsOpen: false }))
+      .then(res => this.setState({ happening: res.data, commentFormIsOpen: false }))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -96,9 +101,9 @@ class HappeningShow extends React.Component {
               <MainBox {...happening} />
               <CommentsBox
                 comments={happening.comments}
-                commentInputIsOpen={this.state.commentInputIsOpen}
+                commentFormIsOpen={this.state.commentFormIsOpen}
                 errors={this.state.errors}
-                toggleCommentInput={this.toggleCommentInput}
+                toggleCommentForm={this.toggleCommentForm}
                 storeCommentFormData={this.storeCommentFormData}
                 submitComment={this.submitComment}
               />
