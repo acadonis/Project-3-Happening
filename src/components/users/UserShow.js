@@ -60,7 +60,7 @@ class Show extends React.Component {
                 <div className="card-header-title">{follow.name}</div>
               </div>
               <div className="card-image">
-                <figure className="image" style={{ backgroundImage: `url(${follow.photo})` }}/>
+                <figure className="image image-user" style={{ backgroundImage: `url(${follow.photo})` }}/>
               </div>
             </div>
           </div>

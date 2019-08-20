@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   bio: { type: String, required: false },
   city: { type: String, required: false },
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  happenings: { type: [ mongoose.Schema.ObjectId ], ref: 'Happening', required: false },
+  happenings: [{ type: mongoose.Schema.ObjectId, ref: 'Happening', required: false }],
   categories: {type: [String], required: false}
 }, {
   toJSON: {
