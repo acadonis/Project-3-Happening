@@ -28,6 +28,7 @@ import UserEdit from './components/users/UserEdit'
 
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import Home from './components/pages/Home'
 
 // import '@fortawesome/fontawesome-free/js/all.js'
 import 'react-toastify/dist/ReactToastify.css'
@@ -51,6 +52,7 @@ class App extends React.Component {
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/" component={Home} />
 
         </Switch>
       </HashRouter>
