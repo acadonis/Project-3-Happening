@@ -6,13 +6,13 @@ const Hero = ({ name, _id}) => {
     <div>
       <div className="hero is-light">
         <div className="hero-body">
-          <div className="container columns is-vcentered">
-            <h1 className="title column">
+          <div className="container level is-vcentered">
+            <h1 className="title level-left">
               {name}
             </h1>
             <Link
               to={`/happenings/${_id}/edit`}
-              className="column is-1 is-offset-3"
+              className="level-right"
             >
               <button className="button has-text-weight-semibold is-primary">Update</button>
             </Link>

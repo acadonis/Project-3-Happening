@@ -24,7 +24,7 @@ class HappeningShow extends React.Component {
     this.linkToHappening = this.linkToHappening.bind(this)
   }
 
-  openCommentInput() {
+  toggleCommentInput() {
     this.setState({commentInputIsOpen: true})
   }
 
@@ -35,6 +35,9 @@ class HappeningShow extends React.Component {
 
   submitComment(e) {
     e.preventDefualt()
+    axios.put(`api/happenings/${this.props.match.params.id}/comments`, this.state.formData, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
   }
 
   handleDelete() {

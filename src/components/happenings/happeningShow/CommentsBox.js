@@ -5,11 +5,11 @@ const CommentsBox = ({ comments, openCommentInput, commentInputIsOpen, storeForm
   // FM: Need to add moment to comments to display comment.createdAt
   return (
     <div className="box">
-      <div className="columns">
-        <div className="column">
+      <div className="level">
+        <div className="level-left">
           <h3 className="subtitle has-text-weight-semibold">Comments</h3>
         </div>
-        <div className="column is-offset-7">
+        <div className="level-right">
           <button
             className="button is-primary"
             onClick={openCommentInput}
