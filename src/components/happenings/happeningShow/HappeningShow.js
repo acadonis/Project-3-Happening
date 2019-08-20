@@ -35,17 +35,20 @@ class HappeningShow extends React.Component {
   }
 
   storeCommentFormData(e) {
+    if (this.state.errors['comments.0.content']) this.setState({ errors: {} })
     const commentFormData = { ...this.state.commentFormData, [e.target.name]: e.target.value }
     this.setState({ commentFormData })
   }
 
   submitComment(e) {
     e.preventDefault()
-    // this.toggleCommentInput()
     axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => this.setState({ happening: res.data }))
+      .then(() => {
+        if (!this.state.errors['comments.0.content']) this.toggleCommentInput()
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -75,7 +78,7 @@ class HappeningShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.location.pathname !== this.props.location.pathname) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
       this.setState({ happening: null })
       this.loadHappening(this.props.match.params.id)
     }

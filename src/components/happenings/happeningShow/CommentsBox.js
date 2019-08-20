@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CommentsForm from './CommentsForm'
+
 const CommentsBox = ({ comments, commentInputIsOpen, errors, toggleCommentInput, storeCommentFormData, submitComment}) => {
   // FM: Need to add moment to comments to display comment.createdAt
   return (
@@ -15,24 +17,13 @@ const CommentsBox = ({ comments, commentInputIsOpen, errors, toggleCommentInput,
           >{!commentInputIsOpen ? 'Add Comment' : 'Close'}</button>
         </div>
       </div>
-      {commentInputIsOpen && <form
-        onSubmit={submitComment}
-      >
-        <div className="field">
-          <div className="control">
-            <textarea
-              className="textarea"
-              name="content"
-              placeholder="Enter comment"
-              onChange={storeCommentFormData}
-            />
-            {errors['comments.0.content'] && <small className="help is-danger">{errors['comments.0.content']}</small>}
-            <br />
-            <button className="button is-light">Submit</button>
-          </div>
-        </div>
-        <hr />
-      </form>}
+      {commentInputIsOpen && <CommentsForm
+        {...{
+          errors,
+          submitComment,
+          storeCommentFormData
+        }}
+      />}
       {comments[0] && <div className="box">
         {comments.map((comment, i) => (
           <div key={comment._id}>
