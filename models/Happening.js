@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const commentSchema = new mongoose.Schema({
-  content: {type: String, required: 'Please provide a {PATH}'},
+  content: {type: String, required: 'Please provide {PATH}'},
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true

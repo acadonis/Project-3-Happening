@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../../lib/Auth'
 
 import Hero from './Hero'
 import MainBox from './MainBox'
@@ -13,31 +14,39 @@ class HappeningShow extends React.Component {
     super()
     this.state = {
       happening: null,
-      fromeData: {},
-      commentInputIsOpen: false
+      commentInputIsOpen: false,
+      commentFromData: {},
+      errors: {}
     }
 
-    this.openCommentInput = this.openCommentInput.bind(this)
-    this.storeFormData = this.storeFormData.bind(this)
+    this.toggleCommentInput = this.toggleCommentInput.bind(this)
+    this.storeCommentFormData = this.storeCommentFormData.bind(this)
+    this.submitComment = this.submitComment.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
   }
 
   toggleCommentInput() {
-    this.setState({commentInputIsOpen: true})
+    let commentInputIsOpen = null
+    if (this.state.commentInputIsOpen === true) commentInputIsOpen = false
+    else commentInputIsOpen = true
+    this.setState({ commentInputIsOpen })
   }
 
-  storeFormData(e) {
-    const formData = { ...this.state.formData, [e.target.name]: e.target.value }
-    this.setState({ formData })
+  storeCommentFormData(e) {
+    const commentFormData = { ...this.state.commentFormData, [e.target.name]: e.target.value }
+    this.setState({ commentFormData })
   }
 
   submitComment(e) {
-    e.preventDefualt()
-    axios.put(`api/happenings/${this.props.match.params.id}/comments`, this.state.formData, {
+    e.preventDefault()
+    // this.toggleCommentInput()
+    axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
+      .then(res => this.setState({ happening: res.data }))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
   handleDelete() {
@@ -73,11 +82,10 @@ class HappeningShow extends React.Component {
   }
   // FM - note to self: May want to give a more developed loading page
   render() {
+    console.log(this.state.errors)
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
-
     if (!happening) return <h1 className="title">Loading ... </h1>
-    console.log(this.state)
     return(
       <div className="section">
         <Hero {...happening}/>
@@ -90,8 +98,10 @@ class HappeningShow extends React.Component {
               <CommentsBox
                 comments={happening.comments}
                 commentInputIsOpen={this.state.commentInputIsOpen}
-                openCommentInput={this.openCommentInput}
-                storeFormData={this.storeFormData}
+                errors={this.state.errors}
+                toggleCommentInput={this.toggleCommentInput}
+                storeCommentFormData={this.storeCommentFormData}
+                submitComment={this.submitComment}
               />
             </div>
 
