@@ -7,7 +7,7 @@ import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
 import DetailsBox from './DetailsBox'
 import AttendeesBox from './AttendeesBox'
-import SimilarHappeningsBox from './SimilarHappeningsBox'
+import OtherHappeningsBox from './OtherHappeningsBox'
 
 class HappeningShow extends React.Component {
   constructor() {
@@ -152,7 +152,7 @@ class HappeningShow extends React.Component {
                 {...happening}
               />
               <AttendeesBox attendees={happening.attendees} />
-              {similarHappenings && <SimilarHappeningsBox
+              {similarHappenings && <OtherHappeningsBox
                 happenings={this.state.similarHappenings}
                 linkToHappening={this.linkToHappening}
               />}

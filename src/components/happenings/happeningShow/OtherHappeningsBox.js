@@ -1,10 +1,10 @@
 import React from 'react'
 
-const SimilarHappeningsBox = ({ happenings, linkToHappening }) => {
+const OtherHappeningsBox = ({ happenings, linkToHappening }) => {
   console.log(happenings)
   return (
     <div className="box">
-      <h3 className="subtitle is-5 has-text-weight-semibold">Similar Happenings</h3>
+      <h3 className="subtitle is-5 has-text-weight-semibold">Other Happenings</h3>
       <div className="columns is-multiline">
         {happenings.map(happening =>
           <div
@@ -25,4 +25,4 @@ const SimilarHappeningsBox = ({ happenings, linkToHappening }) => {
   )
 }
 
-export default SimilarHappeningsBox
+export default OtherHappeningsBox
