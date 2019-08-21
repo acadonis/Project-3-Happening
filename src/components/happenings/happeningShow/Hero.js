@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../../lib/Auth'
 
-const Hero = ({ happening, deleteHappening }) => {
+const Hero = ({ happening, deleteHappening, attendHappening }) => {
   const { name, _id, user } = happening
+  console.log('hero', happening.attendees, happening.attendees.map(attendee => attendee._id).includes(Auth.getCurrentUserId()))
   return (
     <div>
       <div className="hero is-light">
@@ -26,6 +27,18 @@ const Hero = ({ happening, deleteHappening }) => {
                 >
                   <button className="button has-text-weight-semibold is-primary">Edit</button>
                 </Link>}
+              </div>
+              <div className="level-item">
+                {
+                  Auth.isAuthenticated() &&
+                  !Auth.isCurrentUser(user) &&
+                  !happening.attendees
+                    .map(attendee => attendee._id)
+                    .includes(Auth.getCurrentUserId()) &&
+                  <button
+                    className="button has-text-weight-semibold is-primary"
+                    onClick={attendHappening}
+                  >Attending</button>}
               </div>
             </div>
           </div>

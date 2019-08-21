@@ -10,7 +10,7 @@ const MainBox = ({ photo, name, categories, description, attendees}) => {
       </figure>
       <hr />
       <div className="container">
-        <div className="columns is-multiline is-variable is-4">
+        <div className="columns is-multiline is-variable is-4 is-mobile">
           {' ' && categories.map(category =>
             <CategoryCard
               key={category}

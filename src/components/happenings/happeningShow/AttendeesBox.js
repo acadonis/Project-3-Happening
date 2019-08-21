@@ -8,7 +8,7 @@ const AttendeesBox = ({ attendees }) => {
   return (
     <div className="box">
       <h3 className="subtitle is-5 has-text-weight-semibold">Attendees</h3>
-      <div className="columns is-multiline">
+      <div className="columns is-multiline is-mobile">
         {attendees.slice(0, attendeesToShow).map(user =>
           <Link
             key={user._id}

@@ -20,6 +20,7 @@ class HappeningShow extends React.Component {
       errors: {}
     }
 
+    this.attendHappening = this.attendHappening.bind(this)
     this.toggleComments = this.toggleComments.bind(this)
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
@@ -27,6 +28,13 @@ class HappeningShow extends React.Component {
     this.deleteHappening = this.deleteHappening.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
+  }
+
+  attendHappening() {
+    axios.put(`/api/happenings/${this.props.match.params.id}/attend`, {}, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ happening: res.data }))
   }
 
   toggleComments() {
@@ -71,10 +79,6 @@ class HappeningShow extends React.Component {
       .then(() => this.props.history.push('/happenings'))
   }
 
-  linkToHappening(happeningId) {
-    this.props.history.push(`/happenings/${happeningId}`)
-  }
-
   loadHappening(happeningId) {
     return axios.get(`/api/happenings/${happeningId}`)
       .then(res => {
@@ -85,6 +89,10 @@ class HappeningShow extends React.Component {
         axios.get('/api/happenings/limit/4')
           .then(res => this.setState({ similarHappenings: res.data }))
       })
+  }
+
+  linkToHappening(happeningId) {
+    this.props.history.push(`/happenings/${happeningId}`)
   }
 
   componentDidMount() {
@@ -106,6 +114,7 @@ class HappeningShow extends React.Component {
       <div className="section">
         <Hero
           deleteHappening={this.deleteHappening}
+          attendHappening={this.attendHappening}
           {...{happening}}
         />
         <div className="container">

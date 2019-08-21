@@ -1,4 +1,5 @@
 const Happening = require('../models/Happening')
+const User = require('../models/User')
 
 /* Note to team:
 - I'm not building is user related pieces yet (e.g. populating records)
@@ -30,7 +31,6 @@ function showRoute(req, res, next) {
     .populate({ path: 'comments.user', select: 'name'})
     .populate({ path: 'attendees', model: 'User', select: 'name photo'})
     .then(happening => {
-      console.log(happening)
       if (!happening) return res.sendStatus(404)
       return res.json(happening)
     })
@@ -88,6 +88,40 @@ function commentDeleteRoute(req, res, next) {
     .catch(next)
 }
 
+function attendRoute(req, res, next) {
+  req.currentUser.happenings.addToSet(req.params.id)
+  req.currentUser.save()
+  Happening.findById(req.params.id)
+    .then(happening => {
+      happening.attendees.addToSet(req.currentUser)
+      return happening.save()
+    })
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
+    .then(happening => res.json(happening))
+    // .then(() => {
+    //   return User.findById(req.params.id)
+    //     .populate({ path: 'happenings', select: 'name photo' })
+    //     .populate({ path: 'following', select: 'name photo' })
+    //     .populate({ path: 'followers', select: 'name photo -following' })
+    // })
+    // .then(user => res.json(user))
+    .catch(next)
+}
+
+function unAttendRoute (req, res, next) {
+  req.currentUser.following.pull(req.params.id)
+  // removes first matching
+  req.currentUser.save()
+    .then(() => {
+      return User.findById(req.params.id)
+        .populate({ path: 'happenings', select: 'name photo' })
+        .populate({ path: 'following', select: 'name photo' })
+        .populate({ path: 'followers', select: 'name photo -following' })
+    })
+    .then(user => res.json(user))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
@@ -95,5 +129,6 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   commentCreate: commentCreateRoute,
-  commentDelete: commentDeleteRoute
+  commentDelete: commentDeleteRoute,
+  attend: attendRoute
 }

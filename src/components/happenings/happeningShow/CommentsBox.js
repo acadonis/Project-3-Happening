@@ -32,7 +32,7 @@ const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors,
         {comments.length > 3 && <button
           className="button level-right is-primary"
           onClick={toggleComments}
-        >See All</button>}
+        >{!commentsAreExpanded ? 'See All' : 'Close'}</button>}
       </div>
     </div>
   )
