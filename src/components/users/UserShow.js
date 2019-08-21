@@ -60,6 +60,9 @@ class Show extends React.Component {
   }
 
   followUser () {
+
+    if(!Auth.isAuthenticated()) return toast.error('You must be logged in!')
+
     axios.put(`/api/users/${this.props.match.params.id}/follow`, null, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
@@ -86,7 +89,7 @@ class Show extends React.Component {
   getFollowings() {
     const showFollowers = this.state.user.following.slice(0, 4)
     return (
-      <div className="columns is-multiline">
+      <div className="columns is-multiline is-one-fourth">
         {!this.state.user.following[0] && <h2 className="subtitle is-4">Not following</h2>}
         {this.state.user.following[0] && showFollowers.map(follow =>
           <Link className="column is-offset-0 is-half has-text-centered"
@@ -200,7 +203,7 @@ class Show extends React.Component {
           {!this.state.user && <h2 className="title is-2">Loading...</h2>}
 
           {this.state.user && <div>
-            <div className="columns">
+            <div className="columns box">
               <div className="column">
                 {!this.state.user.photo &&
                   <Link
@@ -211,6 +214,7 @@ class Show extends React.Component {
                 }
                 {this.state.user.photo && <figure className="image image-user  has-image-centered" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
               </div>
+
               <div className="column">
                 <h1 className="title is-2">{this.state.user.name}</h1>
                 <h2 className="title is-4">{this.state.user.city}</h2>
@@ -219,19 +223,23 @@ class Show extends React.Component {
                 {!this.state.user.bio && <p>Tell about yourself</p>}
                 {this.state.user.bio && <p>{this.state.user.bio}</p>}
               </div>
+
               <div className="column box">
                 {this.getFollowings()}
-                <Link
+                {this.state.user.following[0] && <Link
                   className="button"
                   to={`/users/${this.state.user._id}/FollowingAll`}
-                >Show all</Link>
+                >Show all<
+                /Link>}
               </div>
             </div>
+
             {Auth.isCurrentUser(this.state.user) && <div className="buttons">
               <Link
                 className="button"
                 to={`/users/${this.state.user._id}/edit`}
-              >Edit</Link>
+              >Edit<
+              /Link>
 
               <button onClick={this.handleDelete} className="button is-danger">Delete</button>
             </div>}
@@ -250,6 +258,7 @@ class Show extends React.Component {
               )}
               <hr />
             </div>
+
             <div className="box">
               <h1 className="title is-4">Future events</h1>
               <hr />
