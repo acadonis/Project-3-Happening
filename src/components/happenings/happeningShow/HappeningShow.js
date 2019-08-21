@@ -24,7 +24,7 @@ class HappeningShow extends React.Component {
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
     this.submitComment = this.submitComment.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+    this.deleteHappening = this.deleteHappening.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
   }
@@ -64,8 +64,10 @@ class HappeningShow extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-  handleDelete() {
-    axios.delete(`/api/happenings/${this.props.match.params.id}`)
+  deleteHappening() {
+    axios.delete(`/api/happenings/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(() => this.props.history.push('/happenings'))
   }
 
@@ -102,7 +104,10 @@ class HappeningShow extends React.Component {
     if (!happening) return <h1 className="title">Loading ... </h1>
     return(
       <div className="section">
-        <Hero {...happening}/>
+        <Hero
+          deleteHappening={this.deleteHappening}
+          {...{happening}}
+        />
         <div className="container">
 
           <div className="columns is-variable is-4">
@@ -126,6 +131,7 @@ class HappeningShow extends React.Component {
                 localTime={happening.local_time}
                 localDate={happening.local_date}
                 {...happening}
+                happening={happening}
               />
               <AttendeesBox attendees={happening.attendees} />
               {similarHappenings && <SimilarHappeningsBox
