@@ -22,7 +22,6 @@ class Edit extends React.Component {
   componentDidMount() {
     axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ formData: res.data }))
-    console.log(this.state.formData)
   }
 
   handleSubmit(e) {

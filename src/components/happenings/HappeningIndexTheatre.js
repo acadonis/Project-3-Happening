@@ -22,7 +22,6 @@ class HappeningIndexMusic extends React.Component {
     axios.get(`/api/happenings/limit/5/category/${categories[2].value}`)
       .then(res =>
         this.setState({ happenings: res.data }))
-
   }
   truncate(str, limit) {
     const stringLimit = limit
