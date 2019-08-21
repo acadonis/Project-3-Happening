@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import Auth from '../../../lib/Auth'
 
-const Hero = ({ happening, deleteHappening, attendHappening }) => {
+const Hero = ({ happening, deleteHappening, attendHappening, unAttendHappening }) => {
   const { name, _id, user } = happening
   console.log('hero', happening.attendees, happening.attendees.map(attendee => attendee._id).includes(Auth.getCurrentUserId()))
   return (
@@ -36,9 +36,21 @@ const Hero = ({ happening, deleteHappening, attendHappening }) => {
                     .map(attendee => attendee._id)
                     .includes(Auth.getCurrentUserId()) &&
                   <button
-                    className="button has-text-weight-semibold is-primary"
+                    className="button has-text-weight-semibold is-info"
                     onClick={attendHappening}
-                  >Attending</button>}
+                  >Attend</button>
+                }
+                {
+                  Auth.isAuthenticated() &&
+                  !Auth.isCurrentUser(user) &&
+                  happening.attendees
+                    .map(attendee => attendee._id)
+                    .includes(Auth.getCurrentUserId()) &&
+                  <button
+                    className="button has-text-weight-semibold is-primary"
+                    onClick={unAttendHappening}
+                  >Stop Attending</button>
+                }
               </div>
             </div>
           </div>

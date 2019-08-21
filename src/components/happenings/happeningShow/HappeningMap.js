@@ -9,7 +9,7 @@ const HappeningMap = ({lon, lat}) => {
   console.log('map', lon, lat)
   return (
     <div className="has-ratio">
-      {!lon && <h2 className="title is-2">Loading...</h2>}
+      {!lon && ''}
       {lon &&
           <Map
             center={[lon, lat]}

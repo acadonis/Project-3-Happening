@@ -27,6 +27,7 @@ router.delete('/happenings/:id/comments/:commentId', secureRoute, happeningsCont
 // ## Attend Routes ##
 
 router.put('/happenings/:id/attend', secureRoute, happeningsController.attend)
+router.put('/happenings/:id/unattend', secureRoute, happeningsController.unattend)
 
 //#### User Routes ####
 

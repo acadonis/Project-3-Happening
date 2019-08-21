@@ -21,6 +21,7 @@ class HappeningShow extends React.Component {
     }
 
     this.attendHappening = this.attendHappening.bind(this)
+    this.unAttendHappening = this.unAttendHappening.bind(this)
     this.toggleComments = this.toggleComments.bind(this)
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
@@ -32,6 +33,13 @@ class HappeningShow extends React.Component {
 
   attendHappening() {
     axios.put(`/api/happenings/${this.props.match.params.id}/attend`, {}, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ happening: res.data }))
+  }
+
+  unAttendHappening() {
+    axios.put(`/api/happenings/${this.props.match.params.id}/unattend`, {}, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.setState({ happening: res.data }))
@@ -107,6 +115,7 @@ class HappeningShow extends React.Component {
   }
   // FM - note to self: May want to give a more developed loading page
   render() {
+    console.log(this.state)
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
     if (!happening) return <h1 className="title">Loading ... </h1>
@@ -115,6 +124,7 @@ class HappeningShow extends React.Component {
         <Hero
           deleteHappening={this.deleteHappening}
           attendHappening={this.attendHappening}
+          unAttendHappening={this.unAttendHappening}
           {...{happening}}
         />
         <div className="container">

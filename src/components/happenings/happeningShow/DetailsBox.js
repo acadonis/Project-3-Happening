@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import HappeningMap from './HappeningMap'
 
@@ -10,7 +11,11 @@ const DetailsBox = ({ venue, city, localDate, localTime, user, lon, lat}) => {
       <hr/>
       <p>Date: {localDate}</p>
       <p>Time: {localTime}</p>
-      {<p>Created by: {user.name}</p>}
+      <p>Created by:
+        <Link to={`/users/${user._id}`}>
+          <span>{` ${user.name}`}</span>
+        </Link>
+      </p>
       <hr />
       <HappeningMap {...{lon, lat}}/>
     </div>

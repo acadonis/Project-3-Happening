@@ -1,12 +1,4 @@
 const Happening = require('../models/Happening')
-const User = require('../models/User')
-
-/* Note to team:
-- I'm not building is user related pieces yet (e.g. populating records)
-- I'm also not chaining the .catch(next) elements in yet
-- In both cases, that's becuase these are highly dependant elements we haven't assinged yet (secureRoute and errorHandler)
-- I haven't added anything related to comments becuase we're not building those in yet.
-*/
 
 function indexRoute(req, res, next) {
   Happening.find(req.query)
@@ -21,17 +13,19 @@ function createRoute(req, res, next) {
   const happening = new Happening(req.body)
 
   happening.save()
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.status(201).json(happening))
     .catch(next)
 }
 
 function showRoute(req, res, next) {
   Happening.findById(req.params.id)
-    .populate({ path: 'user', select: 'name'})
-    .populate({ path: 'comments.user', select: 'name'})
-    .populate({ path: 'attendees', model: 'User', select: 'name photo'})
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => {
-      if (!happening) return res.sendStatus(404)
       return res.json(happening)
     })
     .catch(next)
@@ -44,6 +38,9 @@ function updateRoute(req, res, next) {
       return happening.set(req.body)
     })
     .then(happening => happening.save())
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
     .catch(next)
 }
@@ -68,7 +65,8 @@ function commentCreateRoute(req, res, next) {
       happening.comments.unshift(req.body)
       return happening.save()
     })
-    .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
     .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
     .catch(next)
@@ -83,7 +81,9 @@ function commentDeleteRoute(req, res, next) {
       comment.remove()
       return happening.save()
     })
-    .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
     .catch(next)
 }
@@ -96,29 +96,26 @@ function attendRoute(req, res, next) {
       happening.attendees.addToSet(req.currentUser)
       return happening.save()
     })
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
     .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
-    // .then(() => {
-    //   return User.findById(req.params.id)
-    //     .populate({ path: 'happenings', select: 'name photo' })
-    //     .populate({ path: 'following', select: 'name photo' })
-    //     .populate({ path: 'followers', select: 'name photo -following' })
-    // })
-    // .then(user => res.json(user))
     .catch(next)
 }
 
-function unAttendRoute (req, res, next) {
-  req.currentUser.following.pull(req.params.id)
-  // removes first matching
+function unattendRoute (req, res, next) {
+  console.log()
+  req.currentUser.happenings.pull(req.params.id)
   req.currentUser.save()
-    .then(() => {
-      return User.findById(req.params.id)
-        .populate({ path: 'happenings', select: 'name photo' })
-        .populate({ path: 'following', select: 'name photo' })
-        .populate({ path: 'followers', select: 'name photo -following' })
+  Happening.findById(req.params.id)
+    .then(happening => {
+      happening.attendees.pull(req.currentUser)
+      return happening.save()
     })
-    .then(user => res.json(user))
+    .then(happening => Happening.populate(happening, { path: 'user', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'comments.user', modal: 'User', select: 'name' }))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
+    .then(happening => res.json(happening))
     .catch(next)
 }
 
@@ -130,5 +127,6 @@ module.exports = {
   delete: deleteRoute,
   commentCreate: commentCreateRoute,
   commentDelete: commentDeleteRoute,
-  attend: attendRoute
+  attend: attendRoute,
+  unattend: unattendRoute
 }

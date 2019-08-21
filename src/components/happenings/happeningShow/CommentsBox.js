@@ -13,7 +13,7 @@ const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors,
         </div>
         <div className="level-right">
           <button
-            className="button is-primary"
+            className={`button ${!commentFormIsOpen ? 'is-info' : 'is-link'}`}
             onClick={toggleCommentForm}
           >{!commentFormIsOpen ? 'Add Comment' : 'Close'}</button>
         </div>
@@ -30,7 +30,7 @@ const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors,
       <div className="level">
         <div className="level-left"></div>
         {comments.length > 3 && <button
-          className="button level-right is-primary"
+          className="button level-right is-link"
           onClick={toggleComments}
         >{!commentsAreExpanded ? 'See All' : 'Close'}</button>}
       </div>
