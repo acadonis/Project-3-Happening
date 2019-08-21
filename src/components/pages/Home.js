@@ -90,9 +90,9 @@ class Homepage extends React.Component {
 
         <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000">
           <div className="container">
-            <div className="columns">
+            <div className="columns is-vcentered">
               <div className="column" align-items="center" >
-                <h1 className="title is-2">Happening</h1>
+                <h1 className="title is-1">Happening</h1>
               </div>
               <div className="column">
                 <div className="section">
@@ -112,7 +112,7 @@ class Homepage extends React.Component {
 
         <div className="container">
           <div className="section">
-            <div className="columns box">
+            <div className="columns">
               <div className="column is-half">
                 <Link
                   to={`/happenings/${this.state.happenings[0]._id}`}
@@ -137,16 +137,18 @@ class Homepage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="container has-text-centered">
+
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
           <Link
             className="button is-primary is-outlined"
             to={'/happenings'}
           >Browse all happenings<
           /Link>
-        </div>
+        </LazyHero>
+
         <div className="container">
           <div className="section">
-            <div className="columns box is-multiline">
+            <div className="columns is-multiline">
               {this.getMainEvent()}
             </div>
           </div>

@@ -160,35 +160,6 @@ class Show extends React.Component {
     )
   }
 
-  // getHappeningsById(happenings) {
-  //   const listOfHappenings =[]
-  //   for(let i = 0; i<happenings.length; i++) {
-  //     const happening = happenings[i]
-  //     // console.log(this.state.user.happenings)
-  //     if(this.state.user.happenings.includes(happening._id)) {
-  //       listOfHappenings.push(happening)
-  //     }
-  //   }
-  //   console.log(listOfHappenings)
-  //   return listOfHappenings
-  // }
-
-  // handleSubmit(e) {
-  //   e.preventDefault()
-  // axios.post(`/api/users/${this.props.match.params.id}/comments`, this.state.formData, {
-  //   headers: {Authorization: `Bearer ${Auth.getToken()}`}
-  // })
-  //   .then(res => this.setState({user: res.data, formData: {rating: 1, content:""}}))
-  // }
-
-  // handleDelete (e) {
-  //   console.log(e.target.id)
-  //   axios.delete(`http://localhost:4000/users/${this.props.match.params.id}/comments/${e.target.id}`, {
-  //     headers: {Authorization: `Bearer ${Auth.getToken()}`}
-  //   })
-  //     .then(res => this.setState({user: res.data}))
-  // }
-
   render() {
     return (
       <section className="section">
@@ -221,7 +192,7 @@ class Show extends React.Component {
                     <button onClick={this.handleDelete} className="button is-dark">Delete</button>
                   </div>}
                   { !this.isFollowing() && !this.isCurrentUser() && <div className="buttons">
-                    <button onClick={this.followUser} className="button">Follow</button>
+                    <button onClick={this.followUser} className="button is-info">Follow</button>
                   </div>}
                   {this.isFollowing() &&  !this.isCurrentUser() && <div className="buttons">
                     <button onClick={this.unfollowUser} className="button is-dark">Unfollow</button>
