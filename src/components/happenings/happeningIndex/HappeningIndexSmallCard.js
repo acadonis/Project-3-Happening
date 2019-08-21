@@ -1,8 +1,6 @@
 import React from 'react'
-import CategoryCard from '../common/CategoryCard'
 
-
-const HappeningIndexSmallCard = ({ name, categories, localDate, photo}) => {
+const HappeningIndexSmallCard = ({ name, localDate, photo}) => {
   return (
     <div className="card card-equal-height">
       <div className="card-content">

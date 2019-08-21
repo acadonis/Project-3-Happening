@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryCard from '../common/CategoryCard'
+import CategoryCard from '../../common/CategoryCard'
 
 const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendance_count, description }) => {
 

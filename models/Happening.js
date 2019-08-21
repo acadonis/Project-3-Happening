@@ -22,11 +22,10 @@ const happeningSchema = new mongoose.Schema({
   attendees: { type: [ mongoose.Schema.ObjectId ], ref: 'User' },
   attendance_count: { type: Number }, //FM: Do we want to remove this and use the attendees to determine count?
   event_hosts: { type: [ String ] },
-  category: { type: [ String ], required: 'Please provide a {PATH}'},
   comments: { type: [ commentSchema ], required: false },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   // FM: I've haven't made this required for testing etc, but I think it would be good to give this a required validators so someone has to give it at least one catagory
-  categories: { type: [ String ]}
+  categories: { type: [ String ], required: 'Please provide a {PATH}'}
 
 })
 
