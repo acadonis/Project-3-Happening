@@ -29,10 +29,10 @@ const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors,
       <br />
       <div className="level">
         <div className="level-left"></div>
-        <button
+        {comments.length > 3 && <button
           className="button level-right is-primary"
           onClick={toggleComments}
-        >See All</button>
+        >See All</button>}
       </div>
     </div>
   )

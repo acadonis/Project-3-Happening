@@ -131,7 +131,6 @@ class HappeningShow extends React.Component {
                 localTime={happening.local_time}
                 localDate={happening.local_date}
                 {...happening}
-                happening={happening}
               />
               <AttendeesBox attendees={happening.attendees} />
               {similarHappenings && <SimilarHappeningsBox

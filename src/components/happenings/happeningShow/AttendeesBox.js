@@ -12,11 +12,11 @@ const AttendeesBox = ({ attendees }) => {
         {attendees.slice(0, attendeesToShow).map(user =>
           <Link
             key={user._id}
-            className="column is-offset-0 is-one-third has-text-centered"
+            className="column is-offset-0 is-one-third is-half-mobile has-text-centered"
             to={`/users/${user._id}`}
           >
             <div>
-              <figure className="image is-128x128">
+              <figure className="image is-square">
                 <img className="is-rounded" src={user.photo} />
               </figure>
               <p className="is-6 has-text-weight-semibold">{user.name}</p>
