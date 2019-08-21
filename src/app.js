@@ -10,7 +10,7 @@ import './style.scss'
 
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-// import Home from './components/pages/Home'
+import Home from './components/pages/Home'
 import Navbar from './components/common/Navbar'
 import SecureRoute from './components/common/SecureRoute'
 // import Navbar from './components/common/Navbar'
@@ -61,6 +61,7 @@ class App extends React.Component {
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/" component={Home} />
         </Switch>
       </HashRouter>
     )
