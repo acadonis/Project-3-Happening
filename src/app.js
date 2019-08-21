@@ -15,7 +15,7 @@ import Navbar from './components/common/Navbar'
 import SecureRoute from './components/common/SecureRoute'
 // import Navbar from './components/common/Navbar'
 
-import HappeningIndex from './components/happenings/HappeningIndex'
+import HappeningIndex from './components/happenings/happeningIndex/HappeningIndex'
 
 import HappeningShow from './components/happenings/happeningShow/HappeningShow'
 
