@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Link, withRouter } from 'react-router-dom'
+import Auth from '../../../lib/Auth'
 
+import Hero from './Hero'
 import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
 import DetailsBox from './DetailsBox'
@@ -11,12 +12,41 @@ import SimilarHappeningsBox from './SimilarHappeningsBox'
 class HappeningShow extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      happening: null,
+      commentInputIsOpen: false,
+      commentFromData: {},
+      errors: {}
+    }
 
+    this.toggleCommentInput = this.toggleCommentInput.bind(this)
+    this.storeCommentFormData = this.storeCommentFormData.bind(this)
+    this.submitComment = this.submitComment.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
+  }
 
+  toggleCommentInput() {
+    let commentInputIsOpen = null
+    if (this.state.commentInputIsOpen === true) commentInputIsOpen = false
+    else commentInputIsOpen = true
+    this.setState({ commentInputIsOpen })
+  }
+
+  storeCommentFormData(e) {
+    if (this.state.errors['comments.0.content']) this.setState({ errors: {} })
+    const commentFormData = { ...this.state.commentFormData, [e.target.name]: e.target.value }
+    this.setState({ commentFormData })
+  }
+
+  submitComment(e) {
+    e.preventDefault()
+    axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
+      .then(res => this.setState({ happening: res.data, commentInputIsOpen: false }))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
   handleDelete() {
@@ -45,42 +75,35 @@ class HappeningShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.location.pathname !== this.props.location.pathname) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
       this.setState({ happening: null })
       this.loadHappening(this.props.match.params.id)
     }
   }
-  // FM - note to self: May want to give a more developed loading page as opposed to null
+  // FM - note to self: May want to give a more developed loading page
   render() {
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
-
     if (!happening) return <h1 className="title">Loading ... </h1>
-    console.log(this.state)
     return(
       <div className="section">
-        <div className="hero is-light">
-          <div className="hero-body">
-            <div className="container columns is-vcentered">
-              <h1 className="title column">
-                {happening.name}
-              </h1>
-              <Link
-                to={`/happenings/${happening._id}/edit`}
-                className="column is-1 is-offset-3"
-              >
-                <button className="button has-text-weight-semibold is-link">Update</button>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <hr />
+        <Hero {...happening}/>
         <div className="container">
+
           <div className="columns is-variable is-4">
+
             <div className="column is-three-fifths">
               <MainBox {...happening} />
-              <CommentsBox comments={happening.comments} />
+              <CommentsBox
+                comments={happening.comments}
+                commentInputIsOpen={this.state.commentInputIsOpen}
+                errors={this.state.errors}
+                toggleCommentInput={this.toggleCommentInput}
+                storeCommentFormData={this.storeCommentFormData}
+                submitComment={this.submitComment}
+              />
             </div>
+
             <div className="column is-two-fifths container">
               <DetailsBox
                 localTime={happening.local_time}
@@ -93,11 +116,13 @@ class HappeningShow extends React.Component {
                 linkToHappening={this.linkToHappening}
               />}
             </div>
+
           </div>
+
         </div>
       </div>
     )
   }
 }
 
-export default withRouter(HappeningShow)
+export default HappeningShow

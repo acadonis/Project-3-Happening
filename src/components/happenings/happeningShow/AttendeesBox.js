@@ -10,8 +10,9 @@ const AttendeesBox = ({ attendees }) => {
       <h3 className="subtitle is-5 has-text-weight-semibold">Attendees</h3>
       <div className="columns is-multiline">
         {attendees.slice(0, attendeesToShow).map(user =>
-          <Link className="column is-offset-0 is-one-third has-text-centered"
+          <Link
             key={user._id}
+            className="column is-offset-0 is-one-third has-text-centered"
             to={`/users/${user._id}`}
           >
             <div>

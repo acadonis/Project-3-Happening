@@ -65,10 +65,11 @@ function commentCreateRoute(req, res, next) {
   Happening.findById(req.params.id)
     .then(happening => {
       if(!happening) return res.sendStatus(404)
-      happening.comments.push(req.body)
+      happening.comments.unshift(req.body)
       return happening.save()
     })
     .then(happening => Happening.populate(happening, { path: 'comments.user', select: 'name'}))
+    .then(happening => Happening.populate(happening, { path: 'attendees', model: 'User', select: 'name photo'}))
     .then(happening => res.json(happening))
     .catch(next)
 }

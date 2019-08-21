@@ -1,5 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/free-solid-svg-icons'
+import '@fortawesome/react-fontawesome'
+
+import 'react-toastify/dist/ReactToastify.css'
+import 'bulma'
+import './style.scss'
 
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -18,7 +25,7 @@ import HappeningNew from './components/happenings/HappeningNew'
 // import UserIndex from './components/happenings/UserIndex'
 
 import HappeningEdit from './components/happenings/HappeningEdit'
-// import HappeningNew from './components/happenings/HappeningNew'
+import HappeningSearch from './components/happenings/happeningsearch/HappeningSearch'
 import UserIndex from './components/users/UserIndex'
 
 
@@ -44,6 +51,7 @@ class App extends React.Component {
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
           <Route path="/happenings/new" component={HappeningNew} />
+          <Route path="/happenings/search" component={HappeningSearch} />
           <Route path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/happenings" component={HappeningIndex} />
@@ -53,7 +61,6 @@ class App extends React.Component {
           <Route path="/users" component={UserIndex} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-
         </Switch>
       </HashRouter>
     )

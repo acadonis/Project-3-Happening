@@ -1,25 +1,25 @@
 import React from 'react'
 import ListView from './ListView'
+import MapView from './MapView'
 import Navbar from '../../common/Navbar'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import HappeningSearchCard from './HappeningSearchCard'
-// import mapboxgl from 'mapbox-gl'
-// import ReactMapboxGl from "react-mapbox-gl"
-// import { Layer, Feature, Source } from "react-mapbox-gl"
-//
-// const Map = ReactMapboxGl({
-//   accessToken: 'pk.eyJ1IjoibXRjb2x2YXJkIiwiYSI6ImNqemI4emZydjA2dHIzYm80ZG96ZmQyN2wifQ.kVp6eB7AkWjslUOtsJyLDQ'
-// })
+import _ from 'lodash'
+import Select from 'react-select'
+import { categories } from '../../../lib/Categories'
 
 class HappeningSearch extends React.Component {
   constructor() {
     super()
     this.state = {
       happenings: [],
-      tabOpen: true
+      tabOpen: true,
+      formData: {},
+      errors: {}
     }
     this.toggleTab = this.toggleTab.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.filterHappeningsByCategory = this.filterHappeningsByCategory.bind(this)
+
   }
 
   toggleTab() {
@@ -30,22 +30,40 @@ class HappeningSearch extends React.Component {
     axios.get('/api/happenings')
       .then(res => this.setState({ happenings: res.data }))
   }
-  // <Navbar />
+
+  handleCategoryChange(selectedCategories) {
+    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    this.setState({ formData })
+  }
+
+  filterHappeningsByCategory() {
+    const field = this.state.formData
+    const filterByCategory = this.state.happenings.filter(happening => {
+      return happening.categories.includes(this.state.formData)
+    })
+  }
+
+
+
+
+
+  // <div className="hero is-small is-body is-primary">
+  //   <div className="hero-foot">
+  //     <Navbar />
+  //   </div>
+  //   <div className="hero-body is-primary">
+  //     <div className="container">
+  //       <h1 className="is-size-1">Find something Happening</h1>
+  //     </div>
+  //   </div>
+  // </div>
+
 
   render() {
     console.log(this.state)
+    const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
     return (
       <section className="section">
-        <div className="hero is-small is-body is-primary">
-          <div className="hero-foot">
-
-          </div>
-          <div className="hero-body is-primary">
-            <div className="container">
-              <h1 className="is-size-1">Find something Happening</h1>
-            </div>
-          </div>
-        </div>
         <div className="level">
           <p className="control has-icons-right">
             <input className="input is-medium" type="text" placeholder="Search"/>
@@ -54,7 +72,7 @@ class HappeningSearch extends React.Component {
             </span>
           </p>
         </div>
-        <div className="tabs is-toggle is-boxed is-medium is-right">
+        <div className="tabs is-medium is-boxed is-right">
           <ul>
             <li className={`${this.state.tabOpen ? 'is-active' : ''}`}>
               <a
@@ -76,8 +94,17 @@ class HappeningSearch extends React.Component {
           <div className="tile is-4 is-vertical is-parent">
             <div className="tile is-child">
               <div className="tile is-child box">
-                <p className="title">One</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                <p className="title">Search by Catagory</p>
+                <div className="field">
+                  <label className="label">Category</label>
+                  <Select
+                    value= {selectedCategories}
+                    options={categories}
+                    isMulti
+                    onChange={this.handleCategoryChange}
+                  />
+                  {this.state.errors.category && <small className="help is-danger">{this.state.errors.category}</small>}
+                </div>
               </div>
               <div className="tile is-child">
                 <hr/>
@@ -90,25 +117,7 @@ class HappeningSearch extends React.Component {
           </div>
           <div className="tile is-parent">
             <div className="tile is-child box">
-              <div className="container">
-                <div className="columns is-multiline">
-                  {!this.state.happenings && <h2 className="title is-2">Loading...</h2>}
-                  {this.state.happenings && this.state.happenings.map(happening =>
-                    <div className="column is-full" key={happening._id}>
-                      <Link to={`/happenings/${happening._id}`}>
-                        <HappeningSearchCard
-                          name={happening.name}
-                          localDate={happening.time}
-                          localTime={happening.time}
-                          photo={happening.photo}
-                          venue={happening.venue}
-                          description={happening.description}
-                        />
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </div>
+              {this.state.tabOpen ? <ListView happenings={this.state.happenings}/>:<MapView happenings={this.state.happenings}/>}
             </div>
           </div>
         </div>
