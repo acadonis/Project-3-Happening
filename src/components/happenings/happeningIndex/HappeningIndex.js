@@ -37,13 +37,15 @@ class HappeningIndex extends React.Component {
               <HappeningIndexSection
                 {...result}
               />
+              <LazyHero
+                ransitionTimingFunction="ease-in-out" isFixed={true}
+                imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+                <h1>Happening</h1>
+              </LazyHero>
+
             </div>
           )}
-          <LazyHero
-            ransitionTimingFunction="ease-in-out" isFixed={true}
-            imageSrc="https://unsplash.it/2000/1000">
-            <h1>Happening</h1>
-          </LazyHero>
+
         </div>
       </section>
     )

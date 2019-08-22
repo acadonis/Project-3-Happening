@@ -66,7 +66,7 @@ class Navbar extends React.Component {
                   Search by Catagory, Date or Location
                 </Link>
                 <Link to="/happenings/new" className="navbar-item">
-                    Create A Happnening
+                    Create A Happening
                 </Link>
               </div>
             </div>
