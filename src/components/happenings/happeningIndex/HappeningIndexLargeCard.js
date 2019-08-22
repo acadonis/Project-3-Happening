@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryCard from '../../common/CategoryCard'
+import CategoryIndexCard from '../../common/CategoryIndexCard'
 const moment = require('moment')
 
 const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendees, description }) => {
@@ -19,7 +19,7 @@ const amPm = moment(time).format('h:mm a')
         <br />
         <div className="columns is-multiline is-4">
           {' ' && categories.map(category =>
-            <CategoryCard
+            <CategoryIndexCard
               key={category}
               categoryName={category}
             />

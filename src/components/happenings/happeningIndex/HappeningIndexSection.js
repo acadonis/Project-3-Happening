@@ -22,7 +22,7 @@ const HappeningIndexSection = ({ name, happenings }) => {
                 className="column is-half-desktop is-half-tablet">
                 <Link to={`/happenings/${happening._id}`}>
                   <HappeningIndexLargeCard
-                    name={truncate(happening.name, 45)}
+                    name={truncate(happening.name, 35)}
                     categories={happening.categories}
                     localDate={happening.local_date}
                     localTime={happening.local_time}
