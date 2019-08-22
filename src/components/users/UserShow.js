@@ -112,7 +112,7 @@ class Show extends React.Component {
   }
 
   getFutureEvents () {
-    console.log(this.state.user.following)
+    console.log(this.state.user)
     const threeHappenings = [ ...this.state.user.happenings.slice(0, 3) ]
 
     return (
@@ -178,7 +178,7 @@ class Show extends React.Component {
                     >Add photo
                     </Link>
                   }
-                  {this.state.user.photo && <figure className="image image-user  has-image-centered" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
+                  {this.state.user.photo && <figure  className="image image-user is-rounded  has-image-centered" border-radius="50%" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
                 </div>
                 <br />
                 <div className="container">

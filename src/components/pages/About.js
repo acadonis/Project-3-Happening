@@ -53,25 +53,25 @@ class About extends React.Component {
               <div className="columns">
                 <div className="column">
                   <figure className="image is-128x128 has-image-centered">
-                    <img className="is-rounded" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzYwMjg2MjIw/nicolas-cage-9234498-1-402.jpg" />
+                    <img className="is-rounded" src="https://i.imgur.com/edNe43L.png" />
                   </figure>
                   <h1 className="subtitle">Fearchar</h1>
                 </div>
                 <div className="column">
                   <figure className="image is-128x128 has-image-centered">
-                    <img className="is-rounded" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzYwMjg2MjIw/nicolas-cage-9234498-1-402.jpg" />
+                    <img className="is-rounded" src="https://i.imgur.com/iwqp1nr.png" />
                   </figure>
                   <h1 className="subtitle">Alexis</h1>
                 </div>
                 <div className="column">
                   <figure className="image is-128x128 has-image-centered">
-                    <img className="is-rounded" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzYwMjg2MjIw/nicolas-cage-9234498-1-402.jpg" />
+                    <img className="is-rounded" src="https://i.imgur.com/YO0YdZR.jpg?1" />
                   </figure>
                   <h1 className="subtitle">Lana</h1>
                 </div>
                 <div className="column">
                   <figure className="image is-128x128 has-image-centered">
-                    <img className="is-rounded" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzYwMjg2MjIw/nicolas-cage-9234498-1-402.jpg" />
+                    <img className="is-rounded" src="https://i.imgur.com/rC7YbhX.png" />
                   </figure>
                   <h1 className="subtitle">Matthew</h1>
                 </div>

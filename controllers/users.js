@@ -31,7 +31,7 @@ function userUnfollowRoute (req, res, next) {
   req.currentUser.save()
     .then(() => {
       return User.findById(req.params.id)
-        .populate({ path: 'happenings', select: 'name photo' })
+        .populate({ path: 'happenings', select: 'name photo', modal: 'Happening'})
         .populate({ path: 'following', select: 'name photo' })
         .populate({ path: 'followers', select: 'name photo -following' })
     })
@@ -61,6 +61,7 @@ function loginRoute(req, res, next) {
 
 function userIndexRoute(req, res, next) {
   User.find(req.query)
+    .populate({ path: 'happenings', select: 'name photo', modal: 'Happening' })
     .then(users => res.json(users))
     .catch(next)
 
@@ -68,7 +69,7 @@ function userIndexRoute(req, res, next) {
 
 function userShowRoute(req, res, next) {
   User.findById(req.params.id)
-    .populate({ path: 'happenings', select: 'name photo' })
+    .populate({ path: 'happenings', select: 'name photo', modal: 'Happening'})
     .populate({ path: 'following', select: 'name photo' })
     .populate({ path: 'followers', select: 'name photo -following' })
     .then(user => {
