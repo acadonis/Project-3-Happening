@@ -9,6 +9,7 @@ const Happening = require('../models/Happening')
 
 function indexRoute(req, res, next) {
   Happening.find(req.query)
+    .populate({ path: 'attendees', model: 'User', select: 'name photo'})
     .then(happening => res.json(happening))
     .catch(next)
 }

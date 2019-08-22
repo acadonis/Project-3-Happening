@@ -5940,6 +5940,13 @@ react-dom@^16.9.0:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
+react-easy-swipe@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-easy-swipe/-/react-easy-swipe-0.0.16.tgz#5a3d949a8f975d05be92a818254315d1318a81ea"
+  integrity sha1-Wj2Umo+XXQW+kqgYJUMV0TGKgeo=
+  dependencies:
+    prop-types "^15.5.8"
+
 react-input-autosize@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.1.tgz#ec428fa15b1592994fb5f9aa15bb1eb6baf420f8"
@@ -5975,6 +5982,15 @@ react-mapbox-gl@^4.6.0:
     "@turf/helpers" "4.7.3"
     deep-equal "1.0.1"
     supercluster "3.0.2"
+
+react-responsive-carousel@^3.1.50:
+  version "3.1.50"
+  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.1.50.tgz#e5255f7760f3b4766efa5cd04361c74df4311960"
+  integrity sha512-f0Il76ykXn/4m49KwYlKanhWf5R5DkgZIIExI+rV8fEgSarOdUpIvS09hi13fgBcqpjzHmBnXazLtmzeQPSZYw==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.5.8"
+    react-easy-swipe "^0.0.16"
 
 react-router-dom@^5.0.1:
   version "5.0.1"
