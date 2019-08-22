@@ -75,7 +75,7 @@ class Homepage extends React.Component {
   }
 
   render() {
-    
+
     console.log(this.state.users)
     if(!this.state.happenings) return <h1>Loading...</h1>
     return (
@@ -210,21 +210,45 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="10vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="40vh">
           <div className="columns is-offset-0">
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings'}
-              >Find happening<
-              /Link>
+              <div className="section">
+                <i className="fas fa-search-location fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings'}
+                >Find happening<
+                /Link>
+              </div>
             </div>
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings/new'}
-              >Create happening<
-              /Link>
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+              <div className="section">
+                <i className="fas fa-map-marked-alt fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings/new'}
+                >Create happening<
+                /Link>
+              </div>
             </div>
           </div>
 
@@ -233,6 +257,7 @@ class Homepage extends React.Component {
         <div className="container">
           <div className="section">
           There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+          2019
           </div>
         </div>
 
