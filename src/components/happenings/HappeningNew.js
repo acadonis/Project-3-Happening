@@ -28,7 +28,6 @@ class HappeningNew extends React.Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault()
 
     axios.post('/api/happenings', this.state.formData, {
@@ -39,12 +38,12 @@ class HappeningNew extends React.Component {
   }
 
   handleCategoryChange(selectedCategories) {
-    const formData = { ...this.state.formData, categories: selectedCategories.map(option => option.value) }
+    const formData = { ...this.state.formData, categories: selectedCategories ? selectedCategories.map(option => option.value) : [] }
     this.setState({ formData })
   }
 
   render() {
-
+    console.log(this.state.errors)
     const selectedCategories = (this.state.formData.categories || [ ]).map(categories => ({ label: categories, value: categories }))
     return (
       <section className="section">
