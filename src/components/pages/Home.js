@@ -83,8 +83,8 @@ class Homepage extends React.Component {
 
         <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="45vh" opacity={0.7}>
           <div className="container">
-            <div className="columns is-vcentered">
-              <div className="column" align-items="center" >
+            <div className="columns is-vcentered has-text-left">
+              <div className="column" align-items="left" >
                 <h1 className="title is-1">Happening</h1>
               </div>
               <div className="column">
