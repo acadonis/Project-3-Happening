@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const axios = require('axios')
 
 const commentSchema = new mongoose.Schema({
   content: {type: String, required: 'Please provide {PATH}', maxlength: [450, 'Comment exeeds maximum (450). Please enter a shorter comment.']},
@@ -8,11 +9,11 @@ const commentSchema = new mongoose.Schema({
 })
 
 const happeningSchema = new mongoose.Schema({
-
   name: { type: String, required: 'Please provide a {PATH}' },
   city: { type: String, required: 'Please provide a {PATH}' },
-  lat: { type: Number },
-  lon: { type: Number },
+  postcode: { type: String, required: 'Please provide a {PATH}' },
+  lat: { type: Number, required: true },
+  lon: { type: Number, required: true },
   local_date: { type: String, required: 'YYYY-MM-DD' },
   local_time: { type: String, required: 'Please provide a {PATH}'},
   time: { type: Number},
@@ -26,7 +27,20 @@ const happeningSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   // FM: I've haven't made this required for testing etc, but I think it would be good to give this a required validators so someone has to give it at least one catagory
   categories: { type: [ String ], required: 'Please provide a {PATH}'}
+})
 
+happeningSchema.pre('validate', function getGeolocation(done) {
+  if(!this.isModified('postcode')) return done()
+
+  axios.post('https://postcodes.io/postcodes?filter=longitude,latitude', { postcodes: [this.postcode] })
+    .then((res) => {
+      console.log(res.data)
+      if(!res.data.result[0].result) return done()
+      const { latitude, longitude } = res.data.result[0].result
+      this.lat = latitude
+      this.lon = longitude
+      done()
+    })
 })
 
 module.exports = mongoose.model('Happening', happeningSchema)

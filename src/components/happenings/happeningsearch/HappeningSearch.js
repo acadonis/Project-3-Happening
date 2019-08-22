@@ -18,7 +18,8 @@ class HappeningSearch extends React.Component {
       tabOpen: true,
       formData: {},
       errors: {},
-      startDate: null
+      startDate: null,
+      date: null
     }
     this.toggleTab = this.toggleTab.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
@@ -41,14 +42,6 @@ class HappeningSearch extends React.Component {
     const formData = { ...this.state.formData, allSelectedCategories: selectedCategories.map(option => option.value) }
     this.setState({ formData })
   }
-
-  // const dateSelector = {}
-  // handleChange() {
-  //   const date =
-  //   this.setState({
-  //     startDate: date
-  //   })
-  // }
 
   handleChange(date){
     this.setState({
@@ -79,7 +72,7 @@ class HappeningSearch extends React.Component {
   }
 
   clearStartDate() {
-    this.setState({ startData: null })
+    this.setState({ startDate: null })
   }
 
 
@@ -127,14 +120,16 @@ class HappeningSearch extends React.Component {
               <div className="tile is-child">
                 <hr/>
               </div>
-              <div className="tile is-child box">
-                <DatePicker
-                  inline
-                  selected={this.state.startDate}
-                  onSelect={this.handleSelect}
-                  onClickOutside={this.clearStartDate}
-                  onChange={this.handleChange}
-                />
+              <div className="tile is-child is-center box">
+                <div className="is-center">
+                  <DatePicker
+                    inline
+                    selected={this.state.startDate}
+                    onSelect={this.handleSelect}
+                    onClickOutside={this.clearStartDate}
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -154,6 +149,7 @@ class HappeningSearch extends React.Component {
 }
 
 export default HappeningSearch
+
 
 
 // <div className="level">

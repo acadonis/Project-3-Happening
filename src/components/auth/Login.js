@@ -45,49 +45,52 @@ class Login extends React.Component {
   render() {
     return (
       <section className="section">
-        <h2 className="title is-2">Login</h2>
-        <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  placeholder="eg"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  placeholder="eg: ••••••••"
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-            </div>
+        <div className="columns">
+          <div className="column is-half-desktop">
+            <h2 className="title is-2">Login</h2>
+            <div className="container">
+              <form onSubmit={this.handleSubmit}>
+                <div className="field">
+                  <label className="label">Email</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="email"
+                      name="email"
+                      placeholder="eg"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Password</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="password"
+                      name="password"
+                      placeholder="eg: ••••••••"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+                </div>
 
-            <button className="button is-info">Submit</button>
-          </form>
-
-        </div>
-        <br />
-        <br />
-        <h3 className="title is-3 has-text-weight-medium">OR</h3>
-        <br />
-        <h2 className="title is-2">Register</h2>
-        <div className="container">
-          <button
-            className="button is-info"
-            onClick={this.redirectToSignUp}
-          >Sign Up</button>
+                <button className="button is-info">Submit</button>
+              </form>
+            </div>
+            <br />
+            <br />
+            <h3 className="title is-3 has-text-weight-medium">OR</h3>
+            <br />
+            <h2 className="title is-2">Register</h2>
+            <div className="container">
+              <button
+                className="button is-info"
+                onClick={this.redirectToSignUp}
+              >Sign Up</button>
+            </div>
+          </div>
         </div>
       </section>
     )
