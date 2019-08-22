@@ -75,7 +75,7 @@ class Homepage extends React.Component {
   }
 
   render() {
-    
+
     console.log(this.state.users)
     if(!this.state.happenings) return <h1>Loading...</h1>
     return (
@@ -210,21 +210,45 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="10vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="40vh">
           <div className="columns is-offset-0">
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings'}
-              >Find happening<
-              /Link>
+              <div className="section">
+                <i className="fas fa-search-location fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings'}
+                >Find happening<
+                /Link>
+              </div>
             </div>
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings/new'}
-              >Create happening<
-              /Link>
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+              <div className="section">
+                <i className="fas fa-map-marked-alt fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings/new'}
+                >Create happening<
+                /Link>
+              </div>
             </div>
           </div>
 
