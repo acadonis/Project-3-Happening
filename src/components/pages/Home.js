@@ -17,16 +17,6 @@ class Homepage extends React.Component {
     this.getAttendees = this.getAttendees.bind(this)
   }
 
-  // getUsers() {
-  //   axios.get('/api/users/')
-  //     .then(res => this.setState({ users: res.data }))
-  // }
-  //
-  // getEvents() {
-  //   axios.get('/api/happenings/')
-  //     .then(res => this.setState({ happenings: res.data }))
-  // }
-
   componentDidMount(){
     Promise.props({
       happenings: axios.get('/api/happenings/').then(res => res.data),
@@ -85,7 +75,8 @@ class Homepage extends React.Component {
   }
 
   render() {
-    console.log(this.state.happenings)
+    
+    console.log(this.state.users)
     if(!this.state.happenings) return <h1>Loading...</h1>
     return (
       <div>
