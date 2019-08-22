@@ -88,7 +88,7 @@ class Homepage extends React.Component {
     return (
       <div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="45vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="45vh" opacity={0.5}>
           <div className="container">
             <div className="columns is-vcentered">
               <div className="column" align-items="center" >
@@ -138,7 +138,7 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="10vh" >
           <Link
             className="button is-primary is-outlined"
             to={'/happenings'}
@@ -154,7 +154,7 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="10vh">
           <div className="columns is-offset-0">
             <div className="column">
               <Link
