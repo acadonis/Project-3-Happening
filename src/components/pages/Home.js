@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LazyHero from 'react-lazy-hero'
 import Promise from 'bluebird'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 
 class Homepage extends React.Component {
@@ -14,16 +16,6 @@ class Homepage extends React.Component {
     this.getMainEvent = this.getMainEvent.bind(this)
     this.getAttendees = this.getAttendees.bind(this)
   }
-
-  // getUsers() {
-  //   axios.get('/api/users/')
-  //     .then(res => this.setState({ users: res.data }))
-  // }
-  //
-  // getEvents() {
-  //   axios.get('/api/happenings/')
-  //     .then(res => this.setState({ happenings: res.data }))
-  // }
 
   componentDidMount(){
     Promise.props({
@@ -45,12 +37,12 @@ class Homepage extends React.Component {
             key={hap._id}
             to={`/happenings/${hap._id}`}
           >
-            <a>
+            <div>
               <figure className="image">
                 <img src={hap.photo} />
               </figure>
               <p className="is-6 is-transparent">{hap.name}</p>
-            </a>
+            </div>
           </Link>
         )}
 
@@ -83,25 +75,30 @@ class Homepage extends React.Component {
   }
 
   render() {
-    console.log(this.state.happenings)
+
+    console.log(this.state.users)
     if(!this.state.happenings) return <h1>Loading...</h1>
     return (
       <div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="45vh" opacity={0.7}>
           <div className="container">
-            <div className="columns is-vcentered">
-              <div className="column" align-items="center" >
+            <div className="columns is-vcentered has-text-left">
+              <div className="column" align-items="left" >
                 <h1 className="title is-1">Happening</h1>
               </div>
               <div className="column">
-                <div className="section">
-                  <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem</p>
+                <div className="section has-text-left">
+                  <div>
+                    <p>Find events. Meet new friends. Go to the events with your new friends.</p>
+                    <br></br>
+                    <p>It&apos;s all Happening. </p>
+                  </div>
                 </div>
                 <div className="section">
                   <Link
                     className="button is-primary is-outlined"
-                    to={'/users/register'}
+                    to={'/register'}
                   >Sign up<
                   /Link>
                 </div>
@@ -112,33 +109,92 @@ class Homepage extends React.Component {
 
         <div className="container">
           <div className="section">
-            <div className="columns">
-              <div className="column is-half">
-                <Link
-                  to={`/happenings/${this.state.happenings[0]._id}`}
-                >
-                  <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[0].photo})` }} />
-                  <div className="section">
-                    <h1 className="title is-6">{this.state.happenings[0].name}</h1>
+            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
+              <div className="section container">
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[0]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[0].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[0].name}</h1>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-              <div className="column is-half">
-                <p>{this.state.happenings[0].description}</p>
-                <br />
-                <div className="container">
-                  <h1 className="subtitle is-4">Attendees: </h1>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[0].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
                 </div>
-                <br />
-                <div className="container">
-                  {this.getAttendees()}
+              </div>
+
+              <div>
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[1]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[1].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[1].name}</h1>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[1].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div>
+                <img src="" />
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[2]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[2].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[2].name}</h1>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[2].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </Carousel>
+
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="10vh" >
           <Link
             className="button is-primary is-outlined"
             to={'/happenings'}
@@ -154,21 +210,45 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" >
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="40vh">
           <div className="columns is-offset-0">
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings'}
-              >Find happening<
-              /Link>
+              <div className="section">
+                <i className="fas fa-search-location fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings'}
+                >Find happening<
+                /Link>
+              </div>
             </div>
             <div className="column">
-              <Link
-                className="button is-primary is-outlined"
-                to={'/happenings/new'}
-              >Create happening<
-              /Link>
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+            </div>
+            <div className="column">
+              <div className="section">
+                <i className="fas fa-map-marked-alt fa-10x"></i>
+              </div>
+              <div>
+                <Link
+                  className="button is-primary is-outlined"
+                  to={'/happenings/new'}
+                >Create happening<
+                /Link>
+              </div>
             </div>
           </div>
 
@@ -177,6 +257,7 @@ class Homepage extends React.Component {
         <div className="container">
           <div className="section">
           There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+          2019
           </div>
         </div>
 

@@ -14,6 +14,7 @@
 // justify-content: space-between;
 
 
+
 .tile.is-child{
 
     background: white-ter;
@@ -29,6 +30,11 @@
 @import "bulmaswatch/lux/_variables.scss";
 @import "../node_modules/bulma/bulma.sass";
 @import "bulmaswatch/lux/_overrides.scss";
+@import "react-datepicker/src/stylesheets/variables.scss";
+@import "react-datepicker/src/stylesheets/datepicker-cssmodules.scss";
+@import "react-datepicker/src/stylesheets/mixins.scss";
+@import "react-datepicker/src/stylesheets/datepicker.scss";
+// CSS Modules, react-datepicker-cssmodules.css
 
 figure.image-user {
   height: 250px;
@@ -46,4 +52,10 @@ figure.image-user {
   -webkit-box-align: center;
      -ms-flex-align: center;
         align-items: center;
+
+}
+
+.carousel
+  .slide {
+  background-color: white;
 }

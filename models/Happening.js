@@ -14,8 +14,6 @@ const happeningSchema = new mongoose.Schema({
   postcode: { type: String, required: 'Please provide a {PATH}' },
   lat: { type: Number, required: true },
   lon: { type: Number, required: true },
-  local_date: { type: String, required: 'YYYY-MM-DD' },
-  local_time: { type: String, required: 'Please provide a {PATH}'},
   time: { type: Number},
   description: { type: String, required: 'Please provide a {PATH}' },
   photo: { type: String, required: 'Please provide a {PATH}' },

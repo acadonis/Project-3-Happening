@@ -168,9 +168,8 @@ class HappeningShow extends React.Component {
 
             <div className="column is-two-fifths container">
               <DetailsBox
-                localTime={happening.local_time}
-                localDate={happening.local_date}
                 {...happening}
+                time={happening.time}
               />
               <AttendeesBox attendees={happening.attendees} />
               {similarHappenings && <OtherHappeningsBox

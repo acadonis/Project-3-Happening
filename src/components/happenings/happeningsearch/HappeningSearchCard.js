@@ -1,5 +1,5 @@
 import React from 'react'
-const moment = require('moment')
+import moment from 'moment'
 
 
 const HappeningSearchCard = ({ name, localDate, localTime, photo, venue, description }) => {

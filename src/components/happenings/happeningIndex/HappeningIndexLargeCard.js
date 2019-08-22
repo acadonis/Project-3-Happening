@@ -1,8 +1,11 @@
 import React from 'react'
-import CategoryCard from '../../common/CategoryCard'
+import CategoryIndexCard from '../../common/CategoryIndexCard'
+const moment = require('moment')
 
-const HappeningIndexLargeCard = ({ name, categories, localDate, localTime, photo, attendees, description }) => {
+const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendees, description }) => {
 
+const dayDateMonth = moment(localDate).format('dddd, MMMM Do')
+const amPm = moment(time).format('h:mm a')
 
   return (
     <div className="card card-equal-height">
@@ -16,14 +19,14 @@ const HappeningIndexLargeCard = ({ name, categories, localDate, localTime, photo
         <br />
         <div className="columns is-multiline is-4">
           {' ' && categories.map(category =>
-            <CategoryCard
+            <CategoryIndexCard
               key={category}
               categoryName={category}
             />
           )}
         </div>
-        <p className="content">Time: {localTime}</p>
-        <p className="content">Date: {localDate}</p>
+        <p className="content">Time: {amPm}</p>
+        <p className="content">Date: {dayDateMonth}</p>
         <p className="content">Users attending: {attendees.length}</p>
         <p className="content">{description}</p>
 

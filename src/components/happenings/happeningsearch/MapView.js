@@ -8,37 +8,39 @@ const Map = ReactMapboxGl({
 })
 
 class MapView extends React.Component {
-  constructor() {
-    super()
-    this.state = {}
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
     this.selectHappening = this.selectHappening.bind(this)
   }
 
   // componentDidMount() {
-  //   axios.get('/api/happenings')
-  //     .then(res => this.setState({ happenings: res.data }))
+  //   const sendHappenings = this.props.sendHappenings
+  //   this.setState({sendHappenings})
   // }
 
   selectHappening(happening) {
     this.setState({ selectedHappening: happening })
   }
+  // if(!this.state.happenings) return null
 
   render() {
-    console.log(this.state)
+    console.log('maps', this.state.sendHappenings)
 
     return (
       <div className="has-ratio">
-        {!this.props.happenings && <h2 className="title is-2">Loading...</h2>}
-        {this.props.happenings &&
+        {!this.props.sendHappenings && <h2 className="title is-2">Loading...</h2>}
+        {this.props.sendHappenings &&
             <Map
               center={[-0.088817, 51.514271]}
               style="mapbox://styles/mapbox/streets-v9"
               containerStyle={{
                 height: '56.25vh',
-                width: '100vh'
+                width: '100%'
               }}
             >
-              {this.props.happenings.map(happening =>
+              {this.props.sendHappenings.map(happening =>
                 <div key={happening._id}>
                   <Marker
                     coordinates={[happening.lon, happening.lat]}
@@ -49,9 +51,20 @@ class MapView extends React.Component {
                   </Marker>
                   {this.state.selectedHappening === happening &&
                     <Popup
+                      className="tile is-parent"
+                      key={happening._id}
                       coordinates={[happening.lon, happening.lat]}
-                      offset={15}
-                    >{`${happening.name}`}</Popup>
+                      offset={{
+                        'bottom-left': [12, -38],
+                        'bottom': [0, -38],
+                        'bottom-right': [-12, -38]}}>
+                      <article className="tile is-child">
+                        <p className="is-size-6">{happening.name}</p>
+                        <figure className="image is-16by9">
+                          <img src={happening.photo}/>
+                        </figure>
+                      </article>
+                    </Popup>
                   }
                 </div>
               )}
