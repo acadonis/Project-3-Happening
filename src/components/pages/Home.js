@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LazyHero from 'react-lazy-hero'
 import Promise from 'bluebird'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 
 class Homepage extends React.Component {
@@ -88,7 +90,7 @@ class Homepage extends React.Component {
     return (
       <div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="45vh" opacity={0.5}>
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://i.imgur.com/OMLj28G.jpg" minHeight="45vh" opacity={0.7}>
           <div className="container">
             <div className="columns is-vcentered">
               <div className="column" align-items="center" >
@@ -116,29 +118,88 @@ class Homepage extends React.Component {
 
         <div className="container">
           <div className="section">
-            <div className="columns">
-              <div className="column is-half">
-                <Link
-                  to={`/happenings/${this.state.happenings[0]._id}`}
-                >
-                  <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[0].photo})` }} />
-                  <div className="section">
-                    <h1 className="title is-6">{this.state.happenings[0].name}</h1>
+            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
+              <div className="section container">
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[0]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[0].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[0].name}</h1>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-              <div className="column is-half">
-                <p>{this.state.happenings[0].description}</p>
-                <br />
-                <div className="container">
-                  <h1 className="subtitle is-4">Attendees: </h1>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[0].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
                 </div>
-                <br />
-                <div className="container">
-                  {this.getAttendees()}
+              </div>
+
+              <div>
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[1]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[1].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[1].name}</h1>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[1].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div>
+                <img src="" />
+                <div className="columns">
+                  <div className="column is-half">
+                    <Link
+                      to={`/happenings/${this.state.happenings[2]._id}`}
+                    >
+                      <figure className="image has-image-centered image-user" style={{ backgroundImage: `url(${this.state.happenings[2].photo})` }} />
+                      <div className="section">
+                        <h1 className="title is-6">{this.state.happenings[2].name}</h1>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="column is-half">
+                    <p>{this.state.happenings[2].description}</p>
+                    <br />
+                    <div className="container">
+                      <h1 className="subtitle is-4">Attendees: </h1>
+                    </div>
+                    <br />
+                    <div className="container">
+                      {this.getAttendees()}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </Carousel>
+
           </div>
         </div>
 
