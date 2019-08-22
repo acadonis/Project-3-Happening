@@ -94,7 +94,7 @@ class Show extends React.Component {
       <div className="columns is-multiline">
         {!this.state.user.following[0] && <h2 className="subtitle is-4">Not following</h2>}
         {this.state.user.following[0] && showFollowers.map(follow =>
-          <Link className="column is-offset-0 is-half has-text-centered"
+          <Link className="column is-offset-0 has-text-centered"
             key={follow._id}
             to={`/users/${follow._id}`}
           >
@@ -140,6 +140,7 @@ class Show extends React.Component {
 
     const threeHappenings = [ ...this.state.user.happenings.slice(3, 8) ]
     return (
+
       <div className="columns is-multiline">
         {!this.state.user.happenings[0] && <h2 className="subtitle is-6">No events</h2>}
         {this.state.user.happenings[0] && threeHappenings.map(hap =>
@@ -169,7 +170,7 @@ class Show extends React.Component {
 
           {this.state.user && <div>
             <div className="columns box">
-              <div className="column">
+              <div className="column is-one-fifth">
                 <div className="container">
                   {!this.state.user.photo &&
                     <Link
@@ -178,51 +179,69 @@ class Show extends React.Component {
                     >Add photo
                     </Link>
                   }
-                  {this.state.user.photo && <figure  className="image image-user is-rounded  has-image-centered" border-radius="50%" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
+                  {this.state.user.photo && <figure  className="image image-user is-rounded  has-image-centered" style={{ backgroundImage: `url(${this.state.user.photo})` }}/>}
                 </div>
                 <br />
                 <div className="container">
-                  {Auth.isCurrentUser(this.state.user) && <div className="buttons">
-                    <Link
-                      className="button"
-                      to={`/users/${this.state.user._id}/edit`}
-                    >Edit<
-                    /Link>
+                  <h1 className="title is-2">{this.state.user.name}</h1>
+                  <h2 className="subtitle is-6">{this.state.user.city}</h2>
+                  <div className="container ">
+                    {Auth.isCurrentUser(this.state.user) && <div className="buttons ">
+                      <Link
+                        className="button"
+                        to={`/users/${this.state.user._id}/edit`}
+                      >Edit<
+                      /Link>
 
-                    <button onClick={this.handleDelete} className="button is-dark">Delete</button>
-                  </div>}
-                  { !this.isFollowing() && !this.isCurrentUser() && <div className="buttons">
-                    <button onClick={this.followUser} className="button is-info">Follow</button>
-                  </div>}
-                  {this.isFollowing() &&  !this.isCurrentUser() && <div className="buttons">
-                    <button onClick={this.unfollowUser} className="button is-dark">Unfollow</button>
-                  </div>}
+                      <button onClick={this.handleDelete} className="button is-dark">Delete</button>
+                    </div>}
+                    { !this.isFollowing() && !this.isCurrentUser() && <div className="buttons">
+                      <button onClick={this.followUser} className="button is-info">Follow</button>
+                    </div>}
+                    {this.isFollowing() &&  !this.isCurrentUser() && <div className="buttons">
+                      <button onClick={this.unfollowUser} className="button is-dark">Unfollow</button>
+                    </div>}
+                  </div>
+                  <hr />
+                  <h2 className="subtitle is-4" >About me:</h2>
+                  {!this.state.user.bio && <p>Tell about yourself</p>}
+                  {this.state.user.bio && <p>{this.state.user.bio}</p>}
                 </div>
-              </div>
+                <br />
 
+              </div>
               <div className="column">
-                <h1 className="title is-2">{this.state.user.name}</h1>
-                <h2 className="title is-4">{this.state.user.city}</h2>
-                <hr />
-                <h2 className="subtitle is-4" >About me:</h2>
-                {!this.state.user.bio && <p>Tell about yourself</p>}
-                {this.state.user.bio && <p>{this.state.user.bio}</p>}
-              </div>
-
-              <div className="column box is-one-fifth">
-                <div className="section has-text-centered">
-                  {this.getFollowings()}
-                  {this.state.user.following[0] && <Link
-                    className="button"
-                    to={`/users/${this.state.user._id}/FollowingAll`}
-                  >Show all<
-                  /Link>}
+                <div className="container">
+                  <div className="container">
+                    <h1 className="title is-4">Future events</h1>
+                    <hr />
+                    {this.getFutureEvents()}
+                    <div className="container">
+                      <h1 className="title is-4">Past events</h1>
+                      <hr />
+                      {this.getPastEvents()}
+                    </div>
+                  </div>
+                </div>
+                <div className="section columns">
+                  <div className=" column box is-half">
+                    <div className="container columns  is-vcentered has-text-centered">
+                      <br />
+                      <div className="column is-two-thirds">
+                        {this.getFollowings()}
+                      </div>
+                      <div className="column">
+                        {this.state.user.following[0] && <Link
+                          className="button"
+                          to={`/users/${this.state.user._id}/FollowingAll`}
+                        >Show all<
+                        /Link>}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-
-
             <div className="container">
               <div className="section">
                 <div className="columns is-multiline is-variable is-4">
@@ -236,19 +255,7 @@ class Show extends React.Component {
                 </div>
               </div>
             </div>
-
-            <div className="box">
-              <h1 className="title is-4">Future events</h1>
-              <hr />
-              {this.getFutureEvents()}
-            </div>
-            <div className="box">
-              <h1 className="title is-4">Past events</h1>
-              <hr />
-              {this.getPastEvents()}
-            </div>
           </div>}
-
         </div>
       </section>
     )
