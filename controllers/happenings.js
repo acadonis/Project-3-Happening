@@ -49,7 +49,6 @@ function deleteRoute(req, res, next) {
   Happening.findById(req.params.id)
     .then(happening => {
       if (!happening) return res.sendStatus(404)
-
       return happening.remove()
         .then(() => res.sendStatus(204))
         .catch(next)

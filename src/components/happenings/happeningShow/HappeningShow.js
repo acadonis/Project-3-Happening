@@ -28,6 +28,7 @@ class HappeningShow extends React.Component {
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
     this.submitComment = this.submitComment.bind(this)
+    this.deleteComment = this.deleteComment.bind(this)
     this.deleteHappening = this.deleteHappening.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
@@ -88,6 +89,14 @@ class HappeningShow extends React.Component {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => this.setState({ happening: res.data, commentFormIsOpen: false }))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+  }
+
+  deleteComment(e) {
+    axios.delete(`api/happenings/${this.props.match.params.id}/comments/${e.target.value}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ happening: res.data }))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -153,6 +162,7 @@ class HappeningShow extends React.Component {
                 toggleCommentForm={this.toggleCommentForm}
                 storeCommentFormData={this.storeCommentFormData}
                 submitComment={this.submitComment}
+                deleteComment={this.deleteComment}
               />
             </div>
 

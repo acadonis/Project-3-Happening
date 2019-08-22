@@ -3,8 +3,8 @@ import React from 'react'
 import CommentsForm from './CommentsForm'
 import Comments from './Comments'
 
-const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors, toggleComments, toggleCommentForm, storeCommentFormData, submitComment}) => {
-  // FM: Need to add moment to comments to display comment.createdAt
+const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors, toggleComments, toggleCommentForm, storeCommentFormData, submitComment, deleteComment}) => {
+  console.log(errors)
   return (
     <div className="box">
       <div className="level container">
@@ -25,7 +25,11 @@ const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors,
           storeCommentFormData
         }}
       />}
-      <Comments {...{comments, commentsAreExpanded}} />
+      <Comments {...{
+        comments,
+        commentsAreExpanded,
+        deleteComment
+      }} />
       <br />
       <div className="level">
         <div className="level-left"></div>

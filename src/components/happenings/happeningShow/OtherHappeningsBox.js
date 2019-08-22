@@ -1,7 +1,7 @@
 import React from 'react'
 
 const OtherHappeningsBox = ({ happenings, linkToHappening }) => {
-  console.log(happenings)
+  happenings = happenings.slice(0, 4)
   return (
     <div className="box">
       <h3 className="subtitle is-5 has-text-weight-semibold">Other Happenings</h3>
