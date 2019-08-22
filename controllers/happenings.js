@@ -2,8 +2,8 @@ const Happening = require('../models/Happening')
 
 function indexRoute(req, res, next) {
   Happening.find(req.query)
-    .limit(+req.params.n)
-    .then(happenings => res.json(happenings))
+    .populate({ path: 'attendees', model: 'User', select: 'name photo'})
+    .then(happening => res.json(happening))
     .catch(next)
 }
 

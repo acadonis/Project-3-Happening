@@ -10,9 +10,9 @@ module.exports = [ {
   lat: 51.49759292602539,
   lon: -0.14260399341583252,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Outdoors & Adventure', 'Party', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-},{   
+},{
   event_hosts: ['Robert'],
   attendance_count: 500,
   time: 1566115200000,
@@ -24,7 +24,7 @@ module.exports = [ {
   lat: 51.51215744018555,
   lon: -0.09394600242376328,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Outdoors & Adventure', 'Party', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],

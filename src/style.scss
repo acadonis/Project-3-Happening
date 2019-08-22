@@ -19,11 +19,17 @@
     background: white-ter;
 }
 
+.card-equal-height {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+
 @charset "utf-8";
 @import "bulmaswatch/lux/_variables.scss";
 @import "../node_modules/bulma/bulma.sass";
 @import "bulmaswatch/lux/_overrides.scss";
-//
+
 figure.image-user {
   height: 250px;
   background-size: contain;
@@ -34,4 +40,10 @@ figure.image-user {
 .has-image-centered {
   margin-left: auto;
   margin-right: auto;
+}
+
+.columns.is-vcentered {
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
 }
