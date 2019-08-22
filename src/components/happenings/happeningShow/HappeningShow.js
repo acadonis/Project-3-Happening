@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../../lib/Auth'
+import { toast } from 'react-toastify'
 
 import Hero from './Hero'
 import MainBox from './MainBox'
@@ -21,6 +22,7 @@ class HappeningShow extends React.Component {
     }
 
     this.attendHappening = this.attendHappening.bind(this)
+    this.redirectNonUser = this.redirectNonUser.bind(this)
     this.unAttendHappening = this.unAttendHappening.bind(this)
     this.toggleComments = this.toggleComments.bind(this)
     this.toggleCommentForm = this.toggleCommentForm.bind(this)
@@ -31,7 +33,16 @@ class HappeningShow extends React.Component {
     this.linkToHappening = this.linkToHappening.bind(this)
   }
 
+  redirectNonUser() {
+    if (!Auth.isAuthenticated()) {
+      toast.error('You need to log in to perform this action')
+      this.props.history.push('/login')
+      return true
+    }
+  }
+
   attendHappening() {
+    if (this.redirectNonUser()) return
     axios.put(`/api/happenings/${this.props.match.params.id}/attend`, {}, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
@@ -54,6 +65,7 @@ class HappeningShow extends React.Component {
   }
 
   toggleCommentForm() {
+    if (this.redirectNonUser()) return
     let commentFormIsOpen = null
     if (this.state.commentFormIsOpen === true) {
       commentFormIsOpen = false

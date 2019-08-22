@@ -30,7 +30,6 @@ const Hero = ({ happening, deleteHappening, attendHappening, unAttendHappening }
               </div>
               <div className="level-item">
                 {
-                  Auth.isAuthenticated() &&
                   !Auth.isCurrentUser(user) &&
                   !happening.attendees
                     .map(attendee => attendee._id)
