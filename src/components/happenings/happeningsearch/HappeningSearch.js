@@ -6,6 +6,9 @@ import axios from 'axios'
 import _ from 'lodash'
 import Select from 'react-select'
 import { categories } from '../../../lib/Categories'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment'
 
 class HappeningSearch extends React.Component {
   constructor() {
@@ -14,12 +17,15 @@ class HappeningSearch extends React.Component {
       happenings: [],
       tabOpen: true,
       formData: {},
-      errors: {}
+      errors: {},
+      startDate: null
     }
     this.toggleTab = this.toggleTab.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
     this.filterHappeningsByCategory = this.filterHappeningsByCategory.bind(this)
-
+    this.handleChange = this.handleChange.bind(this)
+    this.filterHappeningsByDate = this.filterHappeningsByDate.bind(this)
+    this.clearStartDate = this.clearStartDate.bind(this)
   }
 
   toggleTab() {
@@ -32,46 +38,58 @@ class HappeningSearch extends React.Component {
   }
 
   handleCategoryChange(selectedCategories) {
-    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    const formData = { ...this.state.formData, allSelectedCategories: selectedCategories.map(option => option.value) }
     this.setState({ formData })
   }
 
-  filterHappeningsByCategory() {
-    const field = this.state.formData
-    const filterByCategory = this.state.happenings.filter(happening => {
-      return happening.categories.includes(this.state.formData)
+  // const dateSelector = {}
+  // handleChange() {
+  //   const date =
+  //   this.setState({
+  //     startDate: date
+  //   })
+  // }
+
+  handleChange(date){
+    this.setState({
+      startDate: date
     })
+  }
+
+  filterHappeningsByCategory(happenings) {
+    const { allSelectedCategories } = this.state.formData
+    if(!allSelectedCategories || !allSelectedCategories.length)
+      return happenings
+    return happenings.filter(happening => {
+      return _.intersection(happening.categories, allSelectedCategories).length
+    })
+  }
+
+  filterHappeningsByDate(happenings) {
+    if(!this.state.startDate) return happenings
+    const startDate = moment(this.state.startDate).format('YYYY-MM-DD')
+    return happenings.filter(happening => {
+      return startDate === happening.local_date
+    })
+  }
+
+  filterHappenings() {
+    const filteredByCategory = this.filterHappeningsByCategory(this.state.happenings)
+    return this.filterHappeningsByDate(filteredByCategory)
+  }
+
+  clearStartDate() {
+    this.setState({ startData: null })
   }
 
 
 
-
-
-  // <div className="hero is-small is-body is-primary">
-  //   <div className="hero-foot">
-  //     <Navbar />
-  //   </div>
-  //   <div className="hero-body is-primary">
-  //     <div className="container">
-  //       <h1 className="is-size-1">Find something Happening</h1>
-  //     </div>
-  //   </div>
-  // </div>
-
-
   render() {
-    console.log(this.state)
-    const selectedCategories = (this.state.formData.category || [ ]).map(category => ({ label: category, value: category }))
+    const selectedCategories = (this.state.formData.allSelectedCategories || [ ]).map(data => ({ label: data, value: data }))
     return (
+
       <section className="section">
-        <div className="level">
-          <p className="control has-icons-right">
-            <input className="input is-medium" type="text" placeholder="Search"/>
-            <span className="icon is-small is-right">
-              <i className="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
-        </div>
+
         <div className="tabs is-medium is-boxed is-right">
           <ul>
             <li className={`${this.state.tabOpen ? 'is-active' : ''}`}>
@@ -110,14 +128,23 @@ class HappeningSearch extends React.Component {
                 <hr/>
               </div>
               <div className="tile is-child box">
-                <p className="title">Two</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                <DatePicker
+                  inline
+                  selected={this.state.startDate}
+                  onSelect={this.handleSelect}
+                  onClickOutside={this.clearStartDate}
+                  onChange={this.handleChange}
+                />
               </div>
             </div>
           </div>
           <div className="tile is-parent">
             <div className="tile is-child box">
-              {this.state.tabOpen ? <ListView happenings={this.state.happenings}/>:<MapView happenings={this.state.happenings}/>}
+              {this.state.tabOpen ? (
+                <ListView sendHappenings={this.filterHappenings()}/>
+              ) : (
+                <MapView sendHappenings={this.filterHappenings()}/>
+              )}
             </div>
           </div>
         </div>
@@ -127,6 +154,42 @@ class HappeningSearch extends React.Component {
 }
 
 export default HappeningSearch
+
+
+// <div className="level">
+//   <p className="control has-icons-right">
+//     <input className="input is-medium" type="text" placeholder="Search"/>
+//     <span className="icon is-small is-right">
+//       <i className="fas fa-search" aria-hidden="true"></i>
+//     </span>
+//   </p>
+// </div>
+
+
+
+
+// <div className="hero is-small is-body is-primary">
+//   <div className="hero-foot">
+//     <Navbar />
+//   </div>
+//   <div className="hero-body is-primary">
+//     <div className="container">
+//       <h1 className="is-size-1">Find something Happening</h1>
+//     </div>
+//   </div>
+// </div>
+
+// componentDidMount() {
+//   axios.get('https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=-0.088817 &topic_category=242&page=20&lat=51.514271&key=41f587c2b7a2b2d7b6d514a1c64106c')
+//     .then(res => this.setState({ happenings: res.data }))
+// }
+
+
+// componentDidMount() {
+//   axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.API_KEY_WEATHER}/${city.lat},${city.long}`)
+//     .then(res => this.setState({cities: this.state.cities.concat(res.data)}))
+// }
+
 
 // <section className="section">
 //   <div className="hero is-small is-body is-primary">

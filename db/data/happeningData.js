@@ -10,7 +10,7 @@ module.exports = [ {
   lat: 51.49759292602539,
   lon: -0.14260399341583252,
   city: 'London',
-  categories: [ 'Outdoors & Adventure', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Outdoors & Adventure', 'Party', 'Comedy' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -24,7 +24,7 @@ module.exports = [ {
   lat: 51.51215744018555,
   lon: -0.09394600242376328,
   city: 'London',
-  categories: [ 'Outdoors & Adventure', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Outdoors & Adventure', 'Party' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -38,7 +38,7 @@ module.exports = [ {
   lat: 51.50324630737305,
   lon: -0.13510100543498993,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Party', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -52,7 +52,7 @@ module.exports = [ {
   lat: 51.50783920288086,
   lon: -0.09634900093078613,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Party', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -66,7 +66,7 @@ module.exports = [ {
   lat: 51.49759292602539,
   lon: -0.14260399341583252,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Party', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -80,7 +80,7 @@ module.exports = [ {
   lat: 51.52253723144531,
   lon: -0.15669099986553192,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Party', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -108,7 +108,7 @@ module.exports = [ {
   lat: 51.510005950927734,
   lon: -0.07652200013399124,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -122,7 +122,7 @@ module.exports = [ {
   lat: 51.497886657714844,
   lon: -0.14260399341583252,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -136,7 +136,7 @@ module.exports = [ {
   lat: 51.48829650878906,
   lon: -0.10585500299930573,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -150,7 +150,7 @@ module.exports = [ {
   lat: 51.48171615600586,
   lon: -0.010758000425994396,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -164,7 +164,7 @@ module.exports = [ {
   lat: 51.50421142578125,
   lon: -0.09003099799156189,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -178,7 +178,7 @@ module.exports = [ {
   lat: 51.504581451416016,
   lon: -0.16828800737857819,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -192,7 +192,7 @@ module.exports = [ {
   lat: 51.49759292602539,
   lon: -0.14260399341583252,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy', 'Music' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 },{
   event_hosts: ['Robert'],
@@ -206,6 +206,6 @@ module.exports = [ {
   lat: 51.50084686279297,
   lon: -0.051708001643419266,
   city: 'London',
-  categories: [ 'Night Life', 'Party', 'Comedy', 'Music' ],
+  categories: [ 'Night Life', 'Comedy' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 }]
