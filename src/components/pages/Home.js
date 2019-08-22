@@ -45,12 +45,12 @@ class Homepage extends React.Component {
             key={hap._id}
             to={`/happenings/${hap._id}`}
           >
-            <a>
+            <div>
               <figure className="image">
                 <img src={hap.photo} />
               </figure>
               <p className="is-6 is-transparent">{hap.name}</p>
-            </a>
+            </div>
           </Link>
         )}
 
@@ -88,7 +88,7 @@ class Homepage extends React.Component {
     return (
       <div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000">
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="45vh">
           <div className="container">
             <div className="columns is-vcentered">
               <div className="column" align-items="center" >
@@ -101,7 +101,7 @@ class Homepage extends React.Component {
                 <div className="section">
                   <Link
                     className="button is-primary is-outlined"
-                    to={'/users/register'}
+                    to={'/register'}
                   >Sign up<
                   /Link>
                 </div>
@@ -154,7 +154,7 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" >
+        <LazyHero ransitionTimingFunction="ease-in-out" isFixed={true} imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
           <div className="columns is-offset-0">
             <div className="column">
               <Link
