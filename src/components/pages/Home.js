@@ -95,8 +95,12 @@ class Homepage extends React.Component {
                 <h1 className="title is-1">Happening</h1>
               </div>
               <div className="column">
-                <div className="section">
-                  <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem</p>
+                <div className="section has-text-left">
+                  <div>
+                    <p>Find events. Meet new friends. Go to the events with your new friends.</p>
+                    <br></br>
+                    <p>It&apos;s all Happening. </p>
+                  </div>
                 </div>
                 <div className="section">
                   <Link

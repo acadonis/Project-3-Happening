@@ -1,6 +1,13 @@
 import React from 'react'
 
+const moment = require('moment')
+
+
+
 const HappeningIndexSmallCard = ({ name, localDate, photo}) => {
+
+  const dayDateMonth = moment(localDate).format('dddd, MMMM Do')
+
   return (
     <div className="card card-equal-height">
       <div className="card-content">
@@ -13,7 +20,7 @@ const HappeningIndexSmallCard = ({ name, localDate, photo}) => {
           </div>
         </div>
         <br/>
-        <p className="content">{localDate}</p>
+        <p className="content">{dayDateMonth}</p>
       </div>
 
     </div>
