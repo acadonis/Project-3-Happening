@@ -22,12 +22,12 @@ const HappeningIndexSection = ({ name, happenings }) => {
                 className="column is-half-desktop is-half-tablet">
                 <Link to={`/happenings/${happening._id}`}>
                   <HappeningIndexLargeCard
-                    name={truncate(happening.name, 35)}
+                    name={truncate(happening.name, 45)}
                     categories={happening.categories}
                     localDate={happening.local_date}
-                    time={happening.time}
+                    localTime={happening.local_time}
                     photo={happening.photo}
-                    attendance_count={happening.attendance_count}
+                    attendees={happening.attendees}
                     description={truncate(happening.description, 300)}
                   />
                 </Link>
@@ -43,8 +43,7 @@ const HappeningIndexSection = ({ name, happenings }) => {
                 className="column is-one-third-desktop is-one-third-tablet">
                 <Link to={`/happenings/${happening._id}`}>
                   <HappeningIndexSmallCard
-                    name={happening.name}
-                    categories={happening.categories}
+                    name={truncate(happening.name, 40)}
                     localDate={happening.local_date}
                     photo={happening.photo}
                   />

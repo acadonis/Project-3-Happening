@@ -11,7 +11,7 @@ class Hero extends React.Component {
         <div className="hero-body">
           <div className="container">
             <h1 className="is-size-1">
-              H.appening
+              Happening
             </h1>
           </div>
         </div>

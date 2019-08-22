@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { categories } from '../../../lib/Categories'
 import HappeningIndexSection from './HappeningIndexSection'
+import LazyHero from 'react-lazy-hero'
 
 class HappeningIndex extends React.Component {
 
@@ -13,7 +14,7 @@ class HappeningIndex extends React.Component {
   componentDidMount() {
     axios.get('/api/happenings')
       .then(res => {
-        const results = categories.map(category => {
+        const results = categories.slice(0,5).map(category => {
           return {
             name: category.value,
             happenings: res.data.filter(happening => happening.categories.includes(category.value)).slice(0,5)
@@ -32,11 +33,17 @@ class HappeningIndex extends React.Component {
         <div className="container">
           {!this.state.results && <h2 className="title is-2">Loading...</h2>}
           {this.state.results && this.state.results.map((result, i) =>
-            <HappeningIndexSection
-              key={i}
-              {...result}
-            />
+            <div key={i}>
+              <HappeningIndexSection
+                {...result}
+              />
+            </div>
           )}
+          <LazyHero
+            ransitionTimingFunction="ease-in-out" isFixed={true}
+            imageSrc="https://unsplash.it/2000/1000">
+            <h1>Happening</h1>
+          </LazyHero>
         </div>
       </section>
     )
@@ -45,17 +52,3 @@ class HappeningIndex extends React.Component {
 
 
 export default HappeningIndex
-
-// {i !== comments.length - 1 && <hr />}
-//
-// truncate(str, limit) {
-//   const stringLimit = limit
-//   const truncated = _.truncate(str, {length: stringLimit, separator: /,? +/, omission: ''})
-//   if(str === undefined) {
-//     return ''
-//   } else if (stringLimit < str.length) {
-//     return `${truncated} ...`
-//   } else {
-//     return truncated
-//   }
-// }

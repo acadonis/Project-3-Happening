@@ -26,8 +26,8 @@ function userFollowRoute (req, res, next) {
 }
 
 function userUnfollowRoute (req, res, next) {
-  req.currentUser.following.pull(req.params.id) // push with no duplicates...
-
+  req.currentUser.following.pull(req.params.id)
+  // removes first matching
   req.currentUser.save()
     .then(() => {
       return User.findById(req.params.id)
@@ -72,7 +72,6 @@ function userShowRoute(req, res, next) {
     .populate({ path: 'following', select: 'name photo' })
     .populate({ path: 'followers', select: 'name photo -following' })
     .then(user => {
-      console.log(user)
       if(!user) return res.sendStatus(404)
 
       return res.json(user)

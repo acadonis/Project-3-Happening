@@ -1,37 +1,80 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../../lib/Auth'
+import { toast } from 'react-toastify'
 
 import Hero from './Hero'
 import MainBox from './MainBox'
 import CommentsBox from './CommentsBox'
 import DetailsBox from './DetailsBox'
 import AttendeesBox from './AttendeesBox'
-import SimilarHappeningsBox from './SimilarHappeningsBox'
+import OtherHappeningsBox from './OtherHappeningsBox'
 
 class HappeningShow extends React.Component {
   constructor() {
     super()
     this.state = {
       happening: null,
-      commentInputIsOpen: false,
+      commentsAreExpanded: false,
+      commentFormIsOpen: false,
       commentFromData: {},
       errors: {}
     }
 
-    this.toggleCommentInput = this.toggleCommentInput.bind(this)
+    this.attendHappening = this.attendHappening.bind(this)
+    this.redirectNonUser = this.redirectNonUser.bind(this)
+    this.unAttendHappening = this.unAttendHappening.bind(this)
+    this.toggleComments = this.toggleComments.bind(this)
+    this.toggleCommentForm = this.toggleCommentForm.bind(this)
     this.storeCommentFormData = this.storeCommentFormData.bind(this)
     this.submitComment = this.submitComment.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+    this.deleteHappening = this.deleteHappening.bind(this)
     this.loadHappening = this.loadHappening.bind(this)
     this.linkToHappening = this.linkToHappening.bind(this)
   }
 
-  toggleCommentInput() {
-    let commentInputIsOpen = null
-    if (this.state.commentInputIsOpen === true) commentInputIsOpen = false
-    else commentInputIsOpen = true
-    this.setState({ commentInputIsOpen })
+  redirectNonUser() {
+    if (!Auth.isAuthenticated()) {
+      toast.error('You need to log in to perform this action')
+      this.props.history.push('/login')
+      return true
+    }
+  }
+
+  attendHappening() {
+    if (this.redirectNonUser()) return
+    axios.put(`/api/happenings/${this.props.match.params.id}/attend`, {}, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ happening: res.data }))
+  }
+
+  unAttendHappening() {
+    axios.put(`/api/happenings/${this.props.match.params.id}/unattend`, {}, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ happening: res.data }))
+  }
+
+  toggleComments() {
+    console.log(this.state.commentsAreExpanded)
+    let commentsAreExpanded = null
+    if (this.state.commentsAreExpanded === true) commentsAreExpanded = false
+    else commentsAreExpanded = true
+    this.setState({ commentsAreExpanded })
+  }
+
+  toggleCommentForm() {
+    if (this.redirectNonUser()) return
+    let commentFormIsOpen = null
+    if (this.state.commentFormIsOpen === true) {
+      commentFormIsOpen = false
+    } else {
+      commentFormIsOpen = true
+      const commentFormData = { content: ''}
+      this.setState({ commentFormData })
+    }
+    this.setState({ commentFormIsOpen })
   }
 
   storeCommentFormData(e) {
@@ -45,17 +88,15 @@ class HappeningShow extends React.Component {
     axios.post(`api/happenings/${this.props.match.params.id}/comments`, this.state.commentFormData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
-      .then(res => this.setState({ happening: res.data, commentInputIsOpen: false }))
+      .then(res => this.setState({ happening: res.data, commentFormIsOpen: false }))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
-  handleDelete() {
-    axios.delete(`/api/happenings/${this.props.match.params.id}`)
+  deleteHappening() {
+    axios.delete(`/api/happenings/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(() => this.props.history.push('/happenings'))
-  }
-
-  linkToHappening(happeningId) {
-    this.props.history.push(`/happenings/${happeningId}`)
   }
 
   loadHappening(happeningId) {
@@ -70,6 +111,10 @@ class HappeningShow extends React.Component {
       })
   }
 
+  linkToHappening(happeningId) {
+    this.props.history.push(`/happenings/${happeningId}`)
+  }
+
   componentDidMount() {
     this.loadHappening(this.props.match.params.id)
   }
@@ -82,12 +127,18 @@ class HappeningShow extends React.Component {
   }
   // FM - note to self: May want to give a more developed loading page
   render() {
+    console.log(this.state)
     const happening = this.state.happening
     const similarHappenings = this.state.similarHappenings
     if (!happening) return <h1 className="title">Loading ... </h1>
     return(
       <div className="section">
-        <Hero {...happening}/>
+        <Hero
+          deleteHappening={this.deleteHappening}
+          attendHappening={this.attendHappening}
+          unAttendHappening={this.unAttendHappening}
+          {...{happening}}
+        />
         <div className="container">
 
           <div className="columns is-variable is-4">
@@ -96,9 +147,11 @@ class HappeningShow extends React.Component {
               <MainBox {...happening} />
               <CommentsBox
                 comments={happening.comments}
-                commentInputIsOpen={this.state.commentInputIsOpen}
+                commentsAreExpanded={this.state.commentsAreExpanded}
+                commentFormIsOpen={this.state.commentFormIsOpen}
                 errors={this.state.errors}
-                toggleCommentInput={this.toggleCommentInput}
+                toggleComments={this.toggleComments}
+                toggleCommentForm={this.toggleCommentForm}
                 storeCommentFormData={this.storeCommentFormData}
                 submitComment={this.submitComment}
               />
@@ -111,7 +164,7 @@ class HappeningShow extends React.Component {
                 {...happening}
               />
               <AttendeesBox attendees={happening.attendees} />
-              {similarHappenings && <SimilarHappeningsBox
+              {similarHappenings && <OtherHappeningsBox
                 happenings={this.state.similarHappenings}
                 linkToHappening={this.linkToHappening}
               />}

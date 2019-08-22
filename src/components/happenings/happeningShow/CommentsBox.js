@@ -1,8 +1,9 @@
 import React from 'react'
 
 import CommentsForm from './CommentsForm'
+import Comments from './Comments'
 
-const CommentsBox = ({ comments, commentInputIsOpen, errors, toggleCommentInput, storeCommentFormData, submitComment}) => {
+const CommentsBox = ({ comments, commentsAreExpanded, commentFormIsOpen, errors, toggleComments, toggleCommentForm, storeCommentFormData, submitComment}) => {
   // FM: Need to add moment to comments to display comment.createdAt
   return (
     <div className="box">
@@ -12,30 +13,29 @@ const CommentsBox = ({ comments, commentInputIsOpen, errors, toggleCommentInput,
         </div>
         <div className="level-right">
           <button
-            className="button is-primary"
-            onClick={toggleCommentInput}
-          >{!commentInputIsOpen ? 'Add Comment' : 'Close'}</button>
+            className={`button ${!commentFormIsOpen ? 'is-info' : 'is-link'}`}
+            onClick={toggleCommentForm}
+          >{!commentFormIsOpen ? 'Add Comment' : 'Close'}</button>
         </div>
       </div>
-      {commentInputIsOpen && <CommentsForm
+      {commentFormIsOpen && <CommentsForm
         {...{
           errors,
           submitComment,
           storeCommentFormData
         }}
       />}
-      {comments[0] && <div className="box">
-        {comments.map((comment, i) => (
-          <div key={comment._id}>
-            <p className="title has-text-weight-semibold is-5">{comment.user.name}</p>
-            <p className="subtitle has-text-weight-semibold is-7">{comment.createdAt.replace(/T|\..*/g, ' ')}</p>
-            <p className="is-6">{comment.content}</p>
-            {i !== comments.length - 1 && <hr />}
-          </div>
-        ))}
-      </div>}
+      <Comments {...{comments, commentsAreExpanded}} />
+      <br />
+      <div className="level">
+        <div className="level-left"></div>
+        {comments.length > 3 && <button
+          className="button level-right is-link"
+          onClick={toggleComments}
+        >{!commentsAreExpanded ? 'See All' : 'Close'}</button>}
+      </div>
     </div>
   )
 }
- 
+
 export default CommentsBox

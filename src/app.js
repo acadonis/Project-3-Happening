@@ -50,12 +50,12 @@ class App extends React.Component {
         <Navbar />
         <ToastContainer position="bottom-right" hideProgressBar={true} />
         <Switch>
-          <Route path="/happenings/new" component={HappeningNew} />
+          <SecureRoute path="/happenings/new" component={HappeningNew} />
           <Route path="/happenings/search" component={HappeningSearch} />
-          <Route path="/happenings/:id/edit" component={HappeningEdit} />
+          <SecureRoute path="/happenings/:id/edit" component={HappeningEdit} />
           <Route path="/happenings/:id" component={HappeningShow} />
           <Route path="/happenings" component={HappeningIndex} />
-          <Route path="/users/:id/edit" component={UserEdit} />
+          <SecureRoute path="/users/:id/edit" component={UserEdit} />
           <SecureRoute path="/users/:id/followingAll" component={FollowingAll} />
           <Route path="/users/:id" component={UserShow} />
           <Route path="/users" component={UserIndex} />

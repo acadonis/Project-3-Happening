@@ -6,7 +6,7 @@ import Auth from '../../lib/Auth'
 
 const SecureRoute = (props) => {
   if(Auth.isAuthenticated()) return <Route {...props} />
-  toast.error('Remember to log in first')
+  toast.error('You need to log in to perform this action')
   return <Redirect to="/login" />
 }
 

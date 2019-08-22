@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryCard from '../../common/CategoryCard'
 
-const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendance_count, description }) => {
+const HappeningIndexLargeCard = ({ name, categories, localDate, localTime, photo, attendees, description }) => {
 
 
   return (
@@ -22,9 +22,9 @@ const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, att
             />
           )}
         </div>
-        <p className="content">{time}</p>
-        <p className="content">{localDate}</p>
-        <p className="content">{attendance_count}</p>
+        <p className="content">Time: {localTime}</p>
+        <p className="content">Date: {localDate}</p>
+        <p className="content">Users attending: {attendees.length}</p>
         <p className="content">{description}</p>
 
       </div>

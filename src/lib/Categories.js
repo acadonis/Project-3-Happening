@@ -1,5 +1,5 @@
 const categories = [
-  { label: 'Outdoors & Adventure', value: 'Outdoors & Adventures' },
+  { label: 'Outdoors & Adventure', value: 'Outdoors & Adventure' },
   { label: 'Tech', value: 'Tech' },
   { label: 'Family', value: 'Family' },
   { label: 'Sports & Fitness', value: 'Sports & Fitness' },

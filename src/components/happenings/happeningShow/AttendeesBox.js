@@ -8,15 +8,15 @@ const AttendeesBox = ({ attendees }) => {
   return (
     <div className="box">
       <h3 className="subtitle is-5 has-text-weight-semibold">Attendees</h3>
-      <div className="columns is-multiline">
+      <div className="columns is-multiline is-mobile">
         {attendees.slice(0, attendeesToShow).map(user =>
           <Link
             key={user._id}
-            className="column is-offset-0 is-one-third has-text-centered"
+            className="column is-offset-0 is-one-third is-half-mobile has-text-centered"
             to={`/users/${user._id}`}
           >
             <div>
-              <figure className="image is-128x128">
+              <figure className="image is-square">
                 <img className="is-rounded" src={user.photo} />
               </figure>
               <p className="is-6 has-text-weight-semibold">{user.name}</p>
