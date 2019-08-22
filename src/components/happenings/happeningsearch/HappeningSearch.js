@@ -32,7 +32,7 @@ class HappeningSearch extends React.Component {
   }
 
   handleCategoryChange(selectedCategories) {
-    const formData = { ...this.state.formData, category: selectedCategories.map(option => option.value) }
+    const formData = { ...this.state.formData, category: selectedCategories ? selectedCategories.map(option => option.value) : [] }
     this.setState({ formData })
   }
 

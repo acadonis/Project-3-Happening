@@ -28,7 +28,6 @@ class HappeningNew extends React.Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault()
 
     axios.post('/api/happenings', this.state.formData, {
@@ -39,12 +38,12 @@ class HappeningNew extends React.Component {
   }
 
   handleCategoryChange(selectedCategories) {
-    const formData = { ...this.state.formData, categories: selectedCategories.map(option => option.value) }
+    const formData = { ...this.state.formData, categories: selectedCategories ? selectedCategories.map(option => option.value) : [] }
     this.setState({ formData })
   }
 
   render() {
-
+    console.log(this.state.errors)
     const selectedCategories = (this.state.formData.categories || [ ]).map(categories => ({ label: categories, value: categories }))
     return (
       <section className="section">
@@ -73,6 +72,19 @@ class HappeningNew extends React.Component {
                 />
               </div>
               {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
+            </div>
+            <div className="field">
+              <label className="label">Postcode</label>
+              <div className="control">
+                <input
+                  className="input"
+                  name="postcode"
+                  placeholder="eg"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.errors.postcode && <small className="help is-danger">{this.state.errors.postcode}</small>}
+              {((this.state.errors.lon || this.state.errors.lat) && !this.state.errors.postcode) && <small className="help is-danger">Please provide a valid UK postcode</small>}
             </div>
             <div className="field">
               <label className="label">Date</label>
