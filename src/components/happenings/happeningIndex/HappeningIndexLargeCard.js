@@ -5,7 +5,7 @@ const moment = require('moment')
 const HappeningIndexLargeCard = ({ name, categories, localDate, time, photo, attendees, description }) => {
 
 const dayDateMonth = moment(localDate).format('dddd, MMMM Do')
-const amPm = moment(time).format('hh:mm a')
+const amPm = moment(time).format('h:mm a')
 
   return (
     <div className="card card-equal-height">
