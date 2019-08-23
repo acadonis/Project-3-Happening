@@ -92,7 +92,7 @@ class Show extends React.Component {
     const showFollowers = this.state.user.following.slice(0, 4)
     return (
       <div className="columns is-multiline">
-        {!this.state.user.following[0] && <h2 className="subtitle is-4">Not following</h2>}
+        {!this.state.user.following[0] && <h2 className="subtitle is-5">Not following any users!</h2>}
         {this.state.user.following[0] && showFollowers.map(follow =>
           <Link className="column is-offset-0 has-text-centered"
             key={follow._id}
