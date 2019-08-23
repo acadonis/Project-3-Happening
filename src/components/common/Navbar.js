@@ -51,6 +51,11 @@ class Navbar extends React.Component {
           className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}
         >
           <div className="navbar-start">
+            <Link to="/" className="navbar-item">
+              <div className="navbar-brand">
+                <div className="navbar-item title">Happening</div>
+              </div>
+            </Link>
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link">
                 Happenings
@@ -63,20 +68,13 @@ class Navbar extends React.Component {
                   Search by Catagory, Date or Location
                 </Link>
                 <Link to="/happenings/new" className="navbar-item">
-                    Create A Happnening
+                    Create A Happening
                 </Link>
               </div>
             </div>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-link">
-                Users
-              </div>
-              <div className="navbar-dropdown">
-                <Link to="/users" className="navbar-item">
-                    Browse Users
-                </Link>
-              </div>
-            </div>
+            <Link to="/about" className="navbar-item">
+            About
+            </Link>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

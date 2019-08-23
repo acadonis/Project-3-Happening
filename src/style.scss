@@ -14,24 +14,55 @@
 // justify-content: space-between;
 
 
+
 .tile.is-child{
 
     background: white-ter;
 }
 
-// @charset "utf-8";
-// @import "bulmaswatch/flatly/_variables.scss";
-// @import "../node_modules/bulma/bulma.sass";
-// @import "bulmaswatch/flatly/_overrides.scss";
-//
+.card-equal-height {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+
+@charset "utf-8";
+@import "bulmaswatch/lux/_variables.scss";
+@import "../node_modules/bulma/bulma.sass";
+@import "bulmaswatch/lux/_overrides.scss";
+@import "react-datepicker/src/stylesheets/variables.scss";
+@import "react-datepicker/src/stylesheets/datepicker-cssmodules.scss";
+@import "react-datepicker/src/stylesheets/mixins.scss";
+@import "react-datepicker/src/stylesheets/datepicker.scss";
+// CSS Modules, react-datepicker-cssmodules.css
+
 figure.image-user {
   height: 250px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 
 .has-image-centered {
   margin-left: auto;
   margin-right: auto;
 }
+
+.columns.is-vcentered {
+  -webkit-box-align: center;
+     -ms-flex-align: center;
+        align-items: center;
+
+}
+
+ul.slide {
+  background-color: #000;
+}
+
+ul.slide {
+  min-width:100%;
+  margin:0;
+  position:relative;
+  text-align:center;
+  background:#000}

@@ -1,19 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
-const DetailsBox = ({ venue, city, localDate, localTime, user}) => {
+import HappeningMap from './HappeningMap'
+
+const DetailsBox = ({ venue, city, user, lon, lat, time }) => {
+  const dayDateMonth = moment(time).format('dddd, MMMM Do')
+  const amPm = moment(time).format('h:mm a')
+  const year = moment(time).format('YYYY')
   return (
     <div className="box">
       <p className="has-text-weight-bold">{venue}</p>
       <p className="has-text-weight-medium">{city}</p>
-      <p>Adress line 1</p>
       <hr/>
-      <p>Date: {localDate}</p>
-      <p>Time: {localTime}</p>
-      {<p>Created by: {user.name}</p>}
+      <p>Time: {amPm}</p>
+      <p>Date: {dayDateMonth} {year}</p>
+      <p>Created by:
+        <Link to={`/users/${user._id}`}>
+          <span>{` ${user.name}`}</span>
+        </Link>
+      </p>
       <hr />
-      <figure>
-        <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2013/11/A-Small-Google-Maps-jQuery-Plugin-maplacejs.jpg?ssl=1" alt="placeholder map image" />
-      </figure>
+      <HappeningMap {...{lon, lat}}/>
     </div>
   )
 }

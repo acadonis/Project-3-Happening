@@ -28,10 +28,6 @@ class Auth {
     return payload && payload.sub
   }
 
-  /*FM: I've created the above function and changed the below:
-    - The new function above was repeating some of the work of the one below, so I've tried to combine them.
-    - However, this can be reverted, keeping in the new function and then work to combine them later perhaps.
-  */
   static isCurrentUser(user) {
     return this.getCurrentUserId() === user._id
   }
