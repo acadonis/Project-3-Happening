@@ -37,7 +37,6 @@ import UserEdit from './components/users/UserEdit'
 
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import Home from './components/pages/Home'
 
 
 import 'react-toastify/dist/ReactToastify.css'
