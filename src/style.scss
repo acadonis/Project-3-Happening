@@ -41,6 +41,7 @@ figure.image-user {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 
 .has-image-centered {
@@ -55,7 +56,13 @@ figure.image-user {
 
 }
 
-.carousel
-  .slide {
-  background-color: white;
+ul.slide {
+  background-color: #000;
 }
+
+ul.slide {
+  min-width:100%;
+  margin:0;
+  position:relative;
+  text-align:center;
+  background:#000}
