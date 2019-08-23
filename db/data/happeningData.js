@@ -12,7 +12,7 @@ module.exports = [ {
   city: 'London',
   categories: [ 'Outdoors & Adventure', 'Sports & Fitness' ],
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'SW16 1RU'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -27,7 +27,7 @@ module.exports = [ {
   lon: -0.09394600242376328,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'NW1 9NX'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -42,7 +42,7 @@ module.exports = [ {
   lon: -0.13510100543498993,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'NW5 2PB'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -57,7 +57,7 @@ module.exports = [ {
   lon: -0.09634900093078613,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'W8 5RL'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -72,7 +72,7 @@ module.exports = [ {
   lon: -0.14260399341583252,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'N8 8AA'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -87,7 +87,7 @@ module.exports = [ {
   lon: -0.15669099986553192,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'E4 8SQ'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -102,7 +102,7 @@ module.exports = [ {
   lon: -0.1300790011882782,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'SW2 1JG'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -117,7 +117,7 @@ module.exports = [ {
   lon: -0.07652200013399124,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'NW7 2JF'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -132,7 +132,7 @@ module.exports = [ {
   lon: -0.14260399341583252,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'SW4 7LA'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -147,7 +147,7 @@ module.exports = [ {
   lon: -0.10585500299930573,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'NW6 1SD'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -162,7 +162,7 @@ module.exports = [ {
   lon: -0.010758000425994396,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'SW2 4QY'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -177,7 +177,7 @@ module.exports = [ {
   lon: -0.09003099799156189,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'E2 0AZ'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -192,7 +192,7 @@ module.exports = [ {
   lon: -0.16828800737857819,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'GL5 2AJ'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -207,7 +207,7 @@ module.exports = [ {
   lon: -0.14260399341583252,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'W1C 1LW'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -222,7 +222,7 @@ module.exports = [ {
   lon: -0.051708001643419266,
   city: 'London',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  postcode: 'EC4A3DJ'
+  postcode: 'W1J 9HS'
 },{
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -235,7 +235,7 @@ module.exports = [ {
   venue: 'Acfa Holderness House',
   city: 'London',
   description: '\nHear more from Microsoft"s quantum team on their latest advances.\n \nMicrosoft has been working for over 10 years on the development of the theory, physics and engineering of Topological Quantum Computing, with the goal of building a truly scalable quantum computer. They have developed a quantum programming language Q#, quantum development kit and an Azure backed ready quantum platform.\n \nMore details to follow.\n \nThis event, at Microsoft"s Reactor space, will be filmed.\n ',
-  postcode: 'EC4A3DJ',
+  postcode: 'SW1Y 5BJ',
   lat: 51.50084686279297,
   lon: -0.051708001643419266
 },
@@ -251,12 +251,10 @@ module.exports = [ {
   description: '\nThe Speaker:\nEmerson Hardisty – >https://www.linkedin.com/in/ehardisty/\n\n \nIn this month"s DevOps Playground, Emerson Hardisty will provide you a unique insight into the running of our Playgrounds. You"ll get to see the inner workings of how we have evolved our Playground infrastructure to date, plans for the future, as well as some interesting general playground history.\n \nAnd of course you"ll get to get hands-on with Terraform and Ansible, where you will be able to create your very own Playground environment!\n \nAs always, no prior knowledge or software installation is required, however an understanding of linux command-line environments will be beneficial. Everything will be explained by the presenter as well as available in the documentation on Github, and, to top it all off, we will of course have our wonderful helpers should you need further assistance.\n \nA few things to keep in mind:\n- As this is a hands-on session, please remember to bring your laptop\n- Food and drinks will be provided\n- Doors open for networking/beers 18:30\n- Playground starts at 19:00\n \nLooking forward to seeing you there!\n \nThe DevOps Playground Team 🐼\n ',
   photo: 'https://secure.meetupstatic.com/photos/event/9/4/8/3/600_483998019.jpeg',
   city: 'London',
-  postcode: 'EC4A3DJ',
+  postcode: 'E14 9QS',
   lat: 51.49759292602539,
   lon: -0.14260399341583252
 },
-
-
 {
   event_hosts: ['Robert'],
   attendance_count: 500,
@@ -269,7 +267,7 @@ module.exports = [ {
   description: '\nReserve your seat \nPlease note there is a cost involved (GBP 175)\n \nAccelerate your journey to production ready Kubernetes by learning the practical techniques for reliably operating your software lifecycle using the GitOps pattern. The Weaveworks team will be running a full-day workshop, sharing their expertise as users and contributors of Kubernetes and Prometheus, as well as followers of GitOps (operations by pull request) practices.\n \nUsing a combination of instructor led demonstrations and hands-on exercises, the workshop will enable the attendee to go into detail on the following topics:\n \n- Developing and operating your Kubernetes microservices at scale\n \n- What does DevOps and GitOps look like in practice\n \n- Building with Kubernetes in production: caring for your apps, implementing CI/CD best practices, and utilizing the right metrics, monitoring tools, and automated alerts\n \n- Operating Kubernetes in production: Upgrading and managing Kubernetes, managing incident response, and adhering to security best practices for Kubernetes\n \nThis workshop is for you if:\n \nYou are a cluster operators/ administrators or DevOps engineers. We expect at working knowledge of Kubernetes - this course will not cover Kubernetes basics.\n \nYou have deployed a few applications to a test cluster, and now want a path forward of how to use Kubernetes in production - reliably and at scale.\n \nYour current pipeline and workflows are not bulletproof just yet and you are looking for tips and tricks to make operations smoother.\n \nPlease bring a laptop with a recent browser and wifi as we will cover hands on sessions in a sandbox environment.\n \nThis workshop doesn"t cover:\n \n- Deep knowledge of the Prometheus Query Language. We’ll be working through practical examples, but won’t cover the rest of PromQL.\n- Kubernetes Introduction and concepts. We won’t be going through an overview of Kubernetes, instead we focus on application in the real world.\n \nAgenda:\n \n- Welcome &amp; introduction\n \n- Getting started with your environment\n \n- What is “Production Ready” (cluster &amp; app checklist)\n \n- Monitoring a production cluster (Prometheus &amp; Observability)\n \n- Building for observability (HPA, Istio Canary, FluentD &amp; Prometheus)\n \n- Declarative infrastructure in practice (GitOps model, Infra as code)\n \n- DevOps and GitOps in practice (CI/CD pipelines, compliance tracking)\n \n- Advanced Deployment Patterns (Canary, Blue/Green, A/B testing)\n \n- Security best practices (RBAC, Kubernetes security groups, network policies)\n \n- Node management and Kubernetes upgrade\n \nLunch and refreshments will be provided.\nCosts: GBP 175\nReserve your seat https://www.eventbrite.com/e/workshop-your-path-to-production-ready-kubernetes-tickets-63028449790\n\n \nTrainer: Brice Fernandes\nBio: Brice fell in love with programming while studying physics and never really looked back since. He has a broad technology background that covers everything from embedded C to backendless browser apps using the trendiest javascript frameworks. He taught Game Development and Functional Programming online and founded his own education platform for developers before joining Weaveworks. He now spends his time helping companies make the most of Kubernetes.\n ',
   photo: 'https://secure.meetupstatic.com/photos/event/4/2/2/7/600_479716935.jpeg',
   city: 'London',
-  postcode: 'EC4A3DJ',
+  postcode: 'SE17 1RW',
   lat: 51.50084686279297,
   lon: -0.051708001643419266
 
@@ -286,7 +284,7 @@ module.exports = [ {
   description: '\nIn SEAM #29 we are joined by Nationwide"s Head of Digital Strategy, Rachel Robinson and Polystream"s Platform Architect, Scott Perham, who"ll be discussing going faster from very different contexts!\n \nAgenda:\n \n18:30 - 19:00 - Networking Drinks and Pizza\n19:00 - 19:30 - Scott Perham -\nAgility in a deep tech startup: How hard can it be?\n19:30 - 20:00 - Rachel Robinson -\nThe art of going faster: 5 ways to help your team win – whatever race you’re in\n20:00 - 20:30 - TBC\n \nRachel Robinson Bio\n \nRachel leads on digital strategy and digital product development at Nationwide Building Society, where she works with teams to shape Nationwide’s digital vision and roadmap and to set clear, value orientated goals. Rachel started her career in consultancy at Arthur Andersen and Ernst &amp; Young, before moving into digital product development. She’s worked with a wide variety of organisations, from start-ups and scale-ups to listed companies in retail, travel and housing/financial services, before joining Nationwide in 2013. Since joining the Building Society she has worked in a variety of leadership roles across digital banking, innovation and product development – and has played a lead role in Nationwide’s agile transformation story over the last 2 years.\n \nTalk: The art of going faster: 5 ways to help your team win – whatever race you’re in.\n \nWhatever business you’re in, chances are your customers are more demanding than ever before – and keeping up with expectations means going fast.\n \nGoing fast is not something that large, financial services organisations are typically very good at….but at Nationwide we know we need to be fit to compete in a rapidly changing world. Adopting the latest technology, devops, agile, lean and design-thinking can help us accelerate, but investing in technology or focusing on ways of working or process change in isolation is rarely a winning formula. [In this session] we’ll explore how focusing on team environment and culture can unlock performance and speed, whether you’re working in a start-up or scale-up – or a c20,000 employee financial services organisation with a proud 100+ year history that needs to transform!\n \nScot Perham Bio -\n \nScott is a technical architect specialising in cloud computing and distributed architecture. After a decade designing and building large scale, distributed systems for various industries including defence, telecoms and games, Scott joined Polystream in 2016. In his previous role at Microsoft, where he led Lionhead"s Online Service team, he combined his profession with his passion for video games, and is now using his talent to design and run Polystream"s cloud computing/streaming platform as Platform Architect.\n \nTalk - Agility in a deep tech startup: How hard can it be?\n \nIn the three years since Polystream was formed, they have built a cloud gaming platform capable of scaling many times larger than anything else that exists, enabling millions of people around the world the ability to access streamed, interactive 3D content at unrivalled reach and scale at a fraction of the cost.\n \nAs a fast-paced technology startup, keeping up with the demands of Polystream"s deep tech culture is a challenge in itself, things change often and move incredibly fast. Knowing what Polystream would become meant that as well as the daily challenges faced in building the worlds largest cloud gaming platform, we always had an eye on the future and ensured that we had a stable foundation on which to grow all aspects of the business. In this talk we will hear some of the technical, operational and cultural challenges that faced Polystream"s engineering teams as they grew to become listed as one of the most valuable games industry startups in the UK.\n ',
   photo: 'https://secure.meetupstatic.com/photos/event/d/1/0/600_484143344.jpeg',
   city: 'London',
-  postcode: 'EC4A3DJ',
+  postcode: 'SE16 4RA',
   lat: 51.50084686279297,
   lon: -0.051708001643419266
 },
@@ -302,7 +300,7 @@ module.exports = [ {
   description: '\nIn 2010, Eric Schmidt, the CEO of Google, put forward that designers should follow the “mobile first” rule in product design. Since then, mobile internet usage has surpassed desktop usage and in early in 2012, smartphone sales have overtaken PC sales.\n \nAs the world around us changes, so much our design practices. What are the best UX practices for mobile and how can they boost revenue? What will the future of mobile and banking look like?\n \nJoin us as we sit down for another fantastic evening of theoretical insight, case studies, discussions and more!\n \nFeaturing;\n \nMiklos Philips - Lead UX Designer and Product Design Strategist - Toptal\n \nChris Gibbins - User Experience Director &amp; Founder - The Wicked Company\n \nSilas Rooney - Head of Creative Design and Development - Lloyds Banking Group\n \n------------------------------------------------------------------------------------\n \nTICKET ONLY EVENT: \n \nPlease make sure you purchased a ticket to secure your place! Price includes entry to the event, plus drinks and Pizza! Tickets are NON-REFUNDABLE as we have to purchase the correct amount of drink.\n \n------------------------------------------------------------------------------------\n \nTESTING TIME AG has been recruiting and supplying selected test users for user tests, interviews, focus groups, diary studies and online surveys since 2014.\n \nKnowit is a niche recruitment agency that specialises in building Product, Engineering &amp; UX Design teams across London, Manchester and the USA.\n \nFuture Strategy Club is a not-for-profit collective of the best creative freelancers in London supporting and delivering great outcomes for its clients through transparency and partnership.\n \n------------------------------------------------------------------------------------\n \nTALKS AND DISCUSSIONS\n \nMiklos Philips - Lead UX Designer and Product Design Strategist - Toptal\n \nMiklos is a Lead UX Designer and Product Design Strategist with over 18 years of experience. Currently in London, he spent 18 years in New York, San Francisco and Los Angeles working across a variety of industries. While remaining a hands-on UX practitioner, over the last five years he’s also led small design teams.\n \nAs a champion of user-centered design practices and strategic thinking, he mediates between user needs, business objectives, and technical feasibility, resulting in product designs that please people, make their lives easier, and impact the bottom line.\n \nChris Gibbins - User Experience Director &amp; Founder - The Wicked Company\n \nChris is a UX, Human Centred Design &amp; Experimentation expert with 15+ years of agency experience leading high performing cross-functional teams. He is highly skilled in designing quality digital products/services that deliver real value to the end user &amp; significant returns to the business. Passionate about the continual improvement, optimisation and innovation of these experiences thereafter.\n \nSilas Rooney - Head of Creative Design and Development - Lloyds Banking Group\n \nDuring previously work at Barclays for 8 years, Silas set an internal digital design studio made up of multi-skilled designers and digital creatives. He was responsible for Design for Retail Banking / Wealth Banking / Premier Branding / Business / Branding.\n \nCurrently at Lloyds Banking Group with the Human Centred Design Department: he is tasked with creating engaging consumer experiences and visualising future states of the bank. Providing a framework of how could we do banking that makes a difference and not be detrimental to customers lives? Asking the questions of how could we get to a level of simplicity that doesn’t feel like a bank?\n ',
   photo: 'https://secure.meetupstatic.com/photos/event/3/3/c/9/600_483853257.jpeg',
   city: 'London',
-  postcode: 'EC4A3DJ',
+  postcode: 'SE16 3PN',
   lat: 51.50084686279297,
   lon: -0.051708001643419266
 },
@@ -318,7 +316,7 @@ module.exports = [ {
   description: '\n\n \nwww.SiliconRoundabout.tech\n \nAR &amp; VR: The Future of Mixed Reality Drinks will be provided during the Networking session and will stay available until stock lasts!\n \nAGENDA:\n \nLet"s meet and check out AR &amp; VR Startups, here is the programme:\n \n• 6:30pm to 7:00pm - Networking &amp; Drinks\n \n• 7:00pm to 8:00pm - Seed and Series A Startups Presentations\n \n• 8:00pm to 8:30pm - Expert Panel Discussion\n \n• 8:30pm to 9:00pm - Final Networking and Event Closing\n \nWHY ATTEND?\n \nConnect with Leading Corporates attending as Sponsors\n \nStay up to date with the most recent Tech\n \nExpand your own Brand Awareness and Outreach by Sponsoring\n \nTap into a Growing 14k+ Community of Tech Innovators\n \nYou can"t miss this events if you:\n \n- Want to promote your Startup or Business\n \n- Want to network with like-minded professionals and potential clients/partners\n \n- Want to get in-depth knowledge of this industry\n \n- Are looking to hire for/find a job\n \nThis is your chance to come and let us know whom you would like us to connect you with, what topics you want to see in the future, and how to launch your startup.\n \nEvent Sponsors: Oracle\n \nPLEASE DON"T BE THAT ANNOYING PERSON THAT FORGETS TO GIVE UP HIS/HER TICKET IF HE/SHE CANNOT ATTEND: Do like most of our friends in the community and free up your seat if are really going to miss having an awesome time with us :)\n \nWant to Co-Host an Event in Tech on Your Company"s Field?\n \n&gt;&gt; Email us at [masked] and tell us what you want to achieve: We"ll make it happen &lt;&lt;\n \nwww.siliconroundabout.tech ( \nYOU MUST REGISTER ON EVENTBRITE TO GAIN ACCESS TO THE EVENT:\n \n\n ',
   photo: 'https://secure.meetupstatic.com/photos/event/6/0/7/8/600_483564696.jpeg',
   city: 'London',
-  postcode: 'EC4A3DJ',
+  postcode: 'SE8 3DQ',
   lat: 51.50084686279297,
   lon: -0.051708001643419266
 },
