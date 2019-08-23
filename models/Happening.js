@@ -14,13 +14,11 @@ const happeningSchema = new mongoose.Schema({
   postcode: { type: String, required: 'Please provide a {PATH}' },
   lat: { type: Number, required: true },
   lon: { type: Number, required: true },
-  local_date: { type: String, required: 'YYYY-MM-DD' },
-  local_time: { type: String, required: 'Please provide a {PATH}'},
   time: { type: Number},
   description: { type: String, required: 'Please provide a {PATH}' },
   photo: { type: String, required: 'Please provide a {PATH}' },
   venue: { type: String, required: 'Please provide a {PATH}' },
-  attendees: { type: [ mongoose.Schema.ObjectId ], ref: 'User' },
+  attendees: { type: [mongoose.Schema.ObjectId] , ref: 'User' },
   attendance_count: { type: Number }, //FM: Do we want to remove this and use the attendees to determine count?
   event_hosts: { type: [ String ] },
   comments: { type: [ commentSchema ], required: false },
@@ -34,7 +32,6 @@ happeningSchema.pre('validate', function getGeolocation(done) {
 
   axios.post('https://postcodes.io/postcodes?filter=longitude,latitude', { postcodes: [this.postcode] })
     .then((res) => {
-      console.log(res.data)
       if(!res.data.result[0].result) return done()
       const { latitude, longitude } = res.data.result[0].result
       this.lat = latitude

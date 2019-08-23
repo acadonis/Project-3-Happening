@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 import { categories } from '../../lib/Categories'
 import Auth from '../../lib/Auth'
@@ -21,16 +22,25 @@ class HappeningNew extends React.Component {
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
   }
 
+  convertDateTime() {
+    if (this.state.formData.date && this.state.formData.time) {
+      const [year, month, day] = this.state.formData.date.split('-')
+      const [hour, minute] = this.state.formData.time.split(':')
+      return moment([+year, +month-1, +day, +hour, +minute, 0, 0]).format('x')
+    }
+  }
+
   handleChange(e) {
     const formData = { ...this.state.formData, [e.target.name]: e.target.value }
-    const errors = { ...this.state.errors, [e.target.name]: '' }
+    let errors = { ...this.state.errors, [e.target.name]: '' }
+    if (e.target.name === 'postcode') errors = { ...errors, lon: '', lat: ''}
     this.setState({ formData, errors })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-
-    axios.post('/api/happenings', this.state.formData, {
+    const formData = { ...this.state.formData, time: this.convertDateTime() }
+    axios.post('/api/happenings', formData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.props.history.push(`/happenings/${res.data._id}`))
@@ -43,7 +53,7 @@ class HappeningNew extends React.Component {
   }
 
   render() {
-    console.log(this.state.errors)
+    console.log(this.state)
     const selectedCategories = (this.state.formData.categories || [ ]).map(categories => ({ label: categories, value: categories }))
     return (
       <section className="section">
@@ -94,24 +104,26 @@ class HappeningNew extends React.Component {
                   <div className="control">
                     <input
                       className="input"
-                      name="local_date"
+                      type="date"
+                      name="date"
                       placeholder="eg 16/03/2020"
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.local_date && <small className="help is-danger">{this.state.errors.local_date}</small>}
+                  {this.state.errors.date && <small className="help is-danger">{this.state.errors.date}</small>}
                 </div>
                 <div className="field">
                   <label className="label">Time</label>
                   <div className="control">
                     <input
                       className="input"
-                      name="local_time"
+                      type="time"
+                      name="time"
                       placeholder="eg 09:30"
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.local_time && <small className="help is-danger">{this.state.errors.local_time}</small>}
+                  {this.state.errors.time && <small className="help is-danger">{this.state.errors.time}</small>}
                 </div>
               </div>
               <div className="column is-half-desktop">

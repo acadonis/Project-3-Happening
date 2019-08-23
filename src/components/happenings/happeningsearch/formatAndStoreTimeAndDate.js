@@ -1,4 +1,5 @@
 import 'react-datepicker/dist/react-datepicker.css'
+
 import moment from 'moment'
 
 //IN THE CLASS
@@ -14,7 +15,7 @@ handleChange(date) {
 
 ////IN THE RENDER
 const local_date = moment(this.state.date).format('YYYY-MM-DD')
-const local_time = moment(this.state.date).format('h:mm a')
+const local_time = moment(this.state.date).format('HH:hh')
 const time = moment(this.state.date).format('x')
 console.log(local_time)
 console.log(local_date)

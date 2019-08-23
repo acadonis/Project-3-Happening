@@ -1,6 +1,7 @@
 import React from 'react'
 
 const CommentsForm = ({ errors, submitComment, storeCommentFormData }) => {
+  console.log(errors)
   return (
     <form
       onSubmit={submitComment}
@@ -13,7 +14,7 @@ const CommentsForm = ({ errors, submitComment, storeCommentFormData }) => {
             placeholder="Enter comment"
             onChange={storeCommentFormData}
           />
-          {errors['comments.0.content'] && <small className="help is-danger">{errors['comments.0.content']}</small>}
+          {errors && errors['comments.0.content'] && <small className="help is-danger">{errors['comments.0.content']}</small>}
           <br />
           <button className="button is-light">Submit</button>
         </div>
