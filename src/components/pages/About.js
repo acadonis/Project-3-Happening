@@ -119,8 +119,30 @@ class About extends React.Component {
             </div>
             <div className="container">
               <div className="section">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+                <h1 className="title is-4">About</h1>
+                <p><span className="title is-6">HAPPENING</span> is a project created by <a href="https://github.com/Fearchar">Fearchar</a>, <a href="https://github.com/DucanKir">Lana</a>, <a href="https://github.com/acadonis">Alexis</a> and <a href="https://github.com/mtcolvard">Matthew</a> on the General Assembly Sofware Engineering Immersive course in London.</p>
+                <br />
+                <p>Tasked with creating a full-stack web application, we used</p>
+                <br />
+                <ul>
+                  <li> - React</li>
+                  <li> - Javascript</li>
+                  <li> - Node.js</li>
+                  <li> - HTML5</li>
+                  <li> - CSS3</li>
+                  <li> - Sass</li>
+                  <li> - Bulma</li>
+                  <li> - Express</li>
+                  <li> - MongoDB</li>
+                </ul>
+                <br />
+                <p>to build a events website which allows users to find and attend events and people to attend them with.</p>
+                <br />
+                <p>Over the 7 day timeframe we scoped the concept for the project and divided up workflow using Trello, allowing us to work collaboratively in the most efficient way. We then built the application to MVP before expanding it with more advanced features.</p>
+                <br />
+                <p>We learned to work effectively as a team, and how to manage version control using Git and GitHub. The project improved our understanding of the development of full-stack web applications and the underlying technologies used to build these.
+                </p>
+                <br />
               </div>
             </div>
           </div>
