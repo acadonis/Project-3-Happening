@@ -123,7 +123,7 @@ class Homepage extends React.Component {
                     </Link>
                   </div>
                   <div className="column is-half">
-                    <p>{this.state.happenings[0].description.substring(0, 300)+"..."}</p>
+                    <p>{this.state.happenings[0].description.substring(0, 300)+'...'}</p>
                     <br />
                     <div className="container">
                       <h1 className="subtitle is-4">Attendees: </h1>
@@ -149,7 +149,7 @@ class Homepage extends React.Component {
                     </Link>
                   </div>
                   <div className="column is-half">
-                    <p>{this.state.happenings[1].description.substring(0, 500)+"..."}</p>
+                    <p>{this.state.happenings[1].description.substring(0, 500)+'...'}</p>
                     <br />
                     <div className="container">
                       <h1 className="subtitle is-4">Attendees: </h1>
@@ -176,7 +176,7 @@ class Homepage extends React.Component {
                     </Link>
                   </div>
                   <div className="column is-half">
-                    <p>{this.state.happenings[2].description.substring(0, 300)+"..."}</p>
+                    <p>{this.state.happenings[2].description.substring(0, 300)+'...'}</p>
                     <br />
                     <div className="container">
                       <h1 className="subtitle is-4">Attendees: </h1>
