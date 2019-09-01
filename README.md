@@ -1,11 +1,178 @@
-# project-3-events-site
+# GA Project 4: Happening - A MERN stack app 
+
+### Link
+
+[Happening](https://project-3-happening.herokuapp.com/#/)
+
+### Brief
+
+Working in a group of 4, we were tasked with building a Mongoose, Express, React and Node.js (MERN) full-stack application from scratch. 
+
+Key deliverables were as follows:
+
+* Build a full-stack MERN application
+* Use an Express API to serve data from a Mongo database
+* Consume your API with a separate front-end built with React
+* Be a complete product, requiring multiple relationships and Create Read Update and Delete (CRUD)  functionality for at least two models
+* Have a visually impressive design
+* Have automated tests for RESTful resources on the back-end
+
+### Overview & concept of the project
+
+Having been allocated our group, we spent several hours discussed what kind of app we wished to build, and who it would serve. Several of the group were not from London, and the topic of knowing where to go in London for particular interests, plus finding people who shared these interests, came up. 
+
+While we were aware that apps such as Meetup and websites such as Time Out provide a similar service, we felt this type of app was a good opportunity to showcase our skills, given the function requirements for both events and users.
+
+Once the idea had been settled upon, the name came quickly. Realising that "event" is a variable set by browsers when an event handler is called, we decided to come up with a new description for use in the code, and happening was agreed on. Given the double meaning, this was quickly adopted as the overall title of the app.
+
+From the outset we wanted a stylish and attractive app which would draw users in and make them engage with the events, and as such visual design was given a high priority. 
+
+### Technologies used
+
+Mongoose, Express, React, Node.js, MongoDB, axios, Bulma, HTML5, ES6, CSS 3, SASS, Git, Github
+
+### Approach taken
+
+## Planning
+
+After agreeing the concept of the project, we spent an afternoon planning the app using wireframes:
+
+<img src="your image" style="transform:rotate(90deg);">
+
+We also talked through the process of collaborative working on github, reminding ourselves to work on a new branch for each feature and merge this frequently (once tested), with the main development branch.
+
+We then identified those features which were core MVP and those which we could cut out, setting up a Trello board with key tasks. We also identified the "foundation" tasks which had to be done before we would effectively work independently on key components. 
+
+These tasks included agreeing the models for happenings and users, routing, and common Bulma card components we would use across the site to display event and user information. 
+
+## Implementation
+
+We commenced by working together as a group, building the models to be used, agreeing routing and other basic requirements for the app. Once completed, we built a barebones front-end to check that we had a full-stack application working. 
+
+After this initial start, we split the building of the app into independent tasks and listed these on our Trello board, utilising a MoSCoW categorisation for must have, should have, could have and won't have. 
+
+My main contribution to the build were the new happenings create page and the main index page displaying the happenings. 
+
+### New happening create page
 
 
-JFJfjsdfjsdjf skdjflkjsdfkjsdfkjjsfklfsk
 
-UltraPrimeWin
-God will not forgive
-goodbye cruel world
+
+
+The new happening create page is a key part of the site, allowing users to create a new happenings. As we had decided a happening could belong to more than one category, I implemented a react-select input control to achieve this.
+
+
+```Javascript
+ <div className="field">
+   <label className="label">Category</label>
+   <Select
+     value= {selectedCategories}
+     options={categories}
+     isMulti
+     onChange={this.handleCategoryChange}
+   />
+   {this.state.errors.categories && <small className="help is-danger">{this.state.errors.categories}</small>}
+ </div>
+ 
+=========================================
+                
+handleCategoryChange(selectedCategories) {
+    const formData = { ...this.state.formData, categories: selectedCategories ? selectedCategories.map(option => option.value) : [] }
+    this.setState({ formData })
+}
+```
+
+This resulted in a change to the category property of the happening model from a string to an array of strings to incorporate the { label: categories, value: categories } structure required by react-select. As this was a change to the underlying models I ensured I talked through this change with other members of the team so they were aware of it.  
+
+Users are required to be logged into the site to create a happening, and I used Toastify to present a warning if they try to proceed when not logged in, together with a redirect to the login or register page:
+
+
+```Javascript
+
+<SecureRoute path="/happenings/new" component={HappeningNew} />
+      
+============================================
+      
+router.route('/happenings/')
+  .get(happeningsController.index)
+  .post(secureRoute, happeningsController.create)
+
+============================================
+
+const SecureRoute = (props) => {
+  if(Auth.isAuthenticated()) return <Route {...props} />
+  toast.error('You need to log in to perform this action')
+  return <Redirect to="/login" />
+}
+```
+
+### Styling
+
+As part of our planning, we decided to implement a mobile-first design approach with responsive web design. Using Bulma allowed a relatively "out of the box" approach", but none the less additional customisation was required using a multiline columns approach with the card component. 
+
+We made a conscious decision not to clutter pages with two much information, instead preferring to limit the text on the screen and make use of large blocks of colour to give the site a spacious and relaxed feel. Given the prevalence of limited text on simple backgrounds, text and colour palette were key. 
+ 
+ We used Bulma variables and custom classes with SASS to tweak the underlying Bulma templates, but were conscious not to "fight" overly with the default Bulma settings:
+
+```CSS 
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+$family-primary: 'Oswald';
+$body-background-color: hsl(179, 3%, 90%);
+$navbar-background-color: hsl(246, 46%, 90%);
+$card-background-color: hsl(218, 17%, 21%);
+$radius-large: 6px;
+
+
+.card-content{
+  color:hsl(179, 3%, 90%);
+}
+
+.card{
+  border-radius: 10px;
+}
+```
+Overall I consider the styling effective, working well with the existing images being supplied by the API, and giving the clean and uncluttered look we were aiming for:
+
+
+
+
+
+### Wins and Blockers
+
+#### Wins:
+* The search functionality works as intended, allowing the user a simple and effective way of searching for cocktails to make.
+
+* Prior research on the API meant that the information available through requests was that required by the app.
+
+* Strong design which puts the product at the heart of the user experience.
+
+* Succinct and well structured code throughout.
+
+#### Blockers:
+* Each pre-populated search on the nav bar has it's own component, when ideally a single component would be used to load each search, with the ingredient passed in as a variable depending on the link clicked. I sucessfully tackled a more advanced version of this issue in Project 3 - Happenings, which is detailed in the project readme.
+
+### Future features
+
+* Introduce the ability to search by multiple ingredients 
+* A comparison function to compare cocktails
+* Making the prepopulated searches use a single component. 
+
+### Learning points (tech & soft skills)
+
+#### Methodology
+The experience of working with a colleague pair programming was invaluable. Having a second person to come up with ideas, suggest alternatives, and check code as it is typed saves time and leads to a more rounded product. 
+
+The hackathon format of the project meant that all time had to be used productively, and it was an interesting exercise to  balance when to start the technical development versus conducting sufficient preparation. I am happy that we struck this balance relatively well for our first such project. 
+
+#### Technical
+This project honed my skills with React, and advanced my understanding of the React set lifeycycle greatly. Understanding when render is called and React reconciliation overall I found key to this, combined with ensuring that all information to be displayed to the user is set by setState, and state is never modified directly. 
+
+It also increased my knowledge of APIs, both in terms of using axios to retrieve information, and in researching the capabilities (and importantly) limitations of APIs prior to deciding to use them through their documentation. 
+
+
+
+
 
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #4: A MERN Stack App
