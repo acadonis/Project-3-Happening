@@ -167,24 +167,27 @@ Parallex effects were used where we felt it added to the visual appeal of the pa
   <h1>Happening</h1>
 </LazyHero>
 ```
-The styling of the site 
+The styling delivers a professional looking website, and I think suits the subject matter of the app.
 
+### Finished product
 
-
+The app at the end of the project delivered a large amount of functionality, from the ability to look up and add events to the creation of a user profile, and the ability to follow other users and see what events they were attending. This took us well past our MVP, and I am happy with the final result. 
 
 ### Wins and Blockers
 
 #### Wins:
-* The search functionality works as intended, allowing the user a simple and effective way of searching for cocktails to make.
+* The DRY nature of the Happening index page, which uses a relatively small amount of code to reuse a functional component and build the main index page. This was a specific goal from my previous project. 
 
-* Prior research on the API meant that the information available through requests was that required by the app.
+* Learning how to work effectively in a group of developers and using github for version control.
 
-* Strong design which puts the product at the heart of the user experience.
+* Using react-select to implement the selection of multiple categories.
 
-* Succinct and well structured code throughout.
 
 #### Blockers:
-* Each pre-populated search on the nav bar has it's own component, when ideally a single component would be used to load each search, with the ingredient passed in as a variable depending on the link clicked. I sucessfully tackled a more advanced version of this issue in Project 3 - Happenings, which is detailed in the project readme.
+
+* Currently the categories on the index page do not return unique results, if a happening has more than one category assigned, and so duplicates will show. 
+
+* 
 
 ### Future features
 
@@ -195,90 +198,10 @@ The styling of the site
 ### Learning points (tech & soft skills)
 
 #### Methodology
-The experience of working with a colleague pair programming was invaluable. Having a second person to come up with ideas, suggest alternatives, and check code as it is typed saves time and leads to a more rounded product. 
-
-The hackathon format of the project meant that all time had to be used productively, and it was an interesting exercise to  balance when to start the technical development versus conducting sufficient preparation. I am happy that we struck this balance relatively well for our first such project. 
+Working in a group development team was excellent practice in teamwork and communcation skills. Making decisions together and having regular standups with the team required a cooperate approach, and planning the required task using Trello cards was an invaluable aid.
 
 #### Technical
-This project honed my skills with React, and advanced my understanding of the React set lifeycycle greatly. Understanding when render is called and React reconciliation overall I found key to this, combined with ensuring that all information to be displayed to the user is set by setState, and state is never modified directly. 
+The project allowed me to further develop my React skills, and become more comfortable with using React packages (such as React-Select), which are an excellent way to give additional functionality to an app without taking large amounts of time. 
 
-It also increased my knowledge of APIs, both in terms of using axios to retrieve information, and in researching the capabilities (and importantly) limitations of APIs prior to deciding to use them through their documentation. 
+Greater understanding of the interation between functional and classical components, together with setting state with data from axios requests before iterating over this data allowed me to solve a complex techincal challenge which was immensly satisying. 
 
-
-
-
-
-
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #4: A MERN Stack App
-​
-## Overview
-​
-**You’ve come a long way, and it's time to show it.** This will be your most advanced project to date. It is __IMPORTANT__ to note that when we say _advanced_, the project doesn't necessarily need to have lots more functionality.
-​
-**Remember:** simple code is stable code, so always favour refactoring and bug fixing over adding more functionality.
-​
-With this in mind, you need to be smart about how you plan, limit your project scope to be achievable (in terms of functionality) and focus on quality rather than quantity.
-​
-Make sure you review your project proposal with your instructor so you can make sure it's **something you can accomplish in the limited time we have**. You will have some time after the project to add extra functionality before your Meet & Hire!
-​
----
-​
-## Technical Requirements
-​
-You must:
-​
-* **Build a full-stack application** by making your own backend and your own front-end
-* **Use an Express API** to serve your data from a Mongo database
-* **Consume your API with a separate front-end** built with React
-* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
-* **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
-* **Be deployed online** so it's publicly accessible.
-* **Have automated tests** for _at least_ one RESTful resource on the back-end. Improve your employability by demonstrating a good understanding of testing principals.
-​
----
-​
-## Necessary Deliverables
-​
-* A **working app** hosted on the internet
-* A **link to your hosted working app** in the URL section of your Github repo
-* A **git repository hosted on Github**, with a link to your hosted project, and frequent commits dating back to the _very beginning_ of the project
-* **A `readme.md` file** with:
-    * An embedded screenshot of the app
-    * Explanations of the **technologies** used
-    * A couple paragraphs about the **general approach you took**
-    * **Installation instructions** for any dependencies
-    * Link to your **user stories/wireframes** – sketches of major views / interfaces in your application
-    * Link to your **pitch deck/presentation** – documentation of your wireframes, user stories, and proposed architecture
-    * Descriptions of any **unsolved problems** or **major hurdles** you had to overcome
-​
----
-​
-## Suggested Ways to Get Started
-​
-* **Don’t get too caught up in too many awesome features** – simple is always better. Build something impressive that does one thing well.
-* **Design first.** Planning with user stories & wireframes before writing code means you won't get distracted changing your mind – you'll know what to build, and you can spend your time wisely by just building it.
-* **Don’t hesitate to write throwaway code** to solve short term problems.
-* **Read the docs for whatever technologies / frameworks / API’s you use**.
-* **Write your code DRY** and **build your APIs RESTful**.
-* **Be consistent with your code style.** You're working in teams, but you're only making one app per team. Make sure it looks like a unified effort.
-* **Commit early, commit often.** Don’t be afraid to break something because you can always go back in time to a previous version.
-* **Keep user stories small and well-defined**, and remember – user stories focus on what a user needs, not what development tasks need accomplishing.
-* **Write code another developer wouldn't have to ask you about**. Do your naming conventions make sense? Would another developer be able to look at your app and understand what everything is?
-* **Make it all well-formatted.** Are you indenting, consistently? Can we find the start and end of every div, curly brace, etc?
-* **Comment your code.** Will someone understand what is going on in each block or function? Even if it's obvious, explaining the what & why means someone else can pick it up and get it.
-* **Write pseudocode before you write actual code.** Thinking through the logic of something helps.
-​
----
-​
-## Project Feedback + Evaluation
-​
-* __Project Workflow__: Did you complete the user stories, wireframes, task tracking, and/or ERDs, as specified above? Did you use source control as expected for the phase of the program you’re in (detailed above)?
-​
-* __Technical Requirements__: Did you deliver a project that met all the technical requirements? Given what the class has covered so far, did you build something that was reasonably complex?
-​
-* __Creativity__: Did you added a personal spin or creative element into your project submission? Did you deliver something of value to the end user (not just a login button and an index page)?
-​
-* __Code Quality__: Did you follow code style guidance and best practices covered in class, such as spacing, modularity, and semantic naming? Did you comment your code as your instructors as we have in class?
-​
-* __Problem Solving__: Are you able to defend why you implemented your solution in a certain way? Can you demonstrated that you thought through alternative implementations? _(Note that this part of your feedback evaluation will take place during your one-on-one code review with your instructors, after you've completed the project.)_
