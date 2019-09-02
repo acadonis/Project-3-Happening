@@ -55,10 +55,6 @@ My main contribution to the build were the new happenings create page and the ma
 
 ### New happening create page
 
-
-
-
-
 The new happening create page is a key part of the site, allowing users to create a new happenings. As we had decided a happening could belong to more than one category, I implemented a react-select input control to achieve this.
 
 
@@ -84,8 +80,7 @@ handleCategoryChange(selectedCategories) {
 
 This resulted in a change to the category property of the happening model from a string to an array of strings to incorporate the { label: categories, value: categories } structure required by react-select. As this was a change to the underlying models I ensured I talked through this change with other members of the team so they were aware of it.  
 
-Users are required to be logged into the site to create a happening, and I used Toastify to present a warning if they try to proceed when not logged in, together with a redirect to the login or register page:
-
+Users are required to be logged into the site to create a happening, and a Toastify warning presents if they try to proceed when not logged in, together with a redirect to the login or register page:
 
 ```Javascript
 
@@ -105,35 +100,74 @@ const SecureRoute = (props) => {
   return <Redirect to="/login" />
 }
 ```
+## Happening Index Page
+
+The Happening index page was required to have 5 sections of happenings grouped by categories, with two larger event placeholders and three smaller ones. The layout of the section was relatively straightforward, using components with Bulma card classes, however the challenge was to adhere to DRY principles and avoid duplication of code.
+
+To this end I built an index section functional component, which was used by the main index classical component to generate the 5 sections. Firstly the intial axios get was sliced, to return results in 5 categories, and then these results were further sliced to return 5 happenings per category. 
+
+Once set to state, the results are mapped over in the render and spread to the Happening index section, which produces the required layout per category. 
+
+```Javascript
+
+componentDidMount() {
+    axios.get('/api/happenings')
+      .then(res => {
+        const results = categories.slice(0,5).map(category => {
+          return {
+            name: category.value,
+            happenings: res.data.filter(happening => happening.categories.includes(category.value)).slice(0,5)
+          }
+        })
+        this.setState({ results })
+      })
+  }
+
+
+
+  render() {
+    return (
+
+      <section className="section">
+        <div className="container">
+          {!this.state.results && <h2 className="title is-2">Loading...</h2>}
+          {this.state.results && this.state.results.map((result, i) =>
+            <div key={i}>
+              <HappeningIndexSection
+                {...result}
+              />
+              <LazyHero
+                ransitionTimingFunction="ease-in-out" isFixed={true}
+                imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+                <h1>Happening</h1>
+              </LazyHero>
+
+            </div>
+          )}
+
+        </div>
+      </section>
+    )
+  }
+```
 
 ### Styling
 
-As part of our planning, we decided to implement a mobile-first design approach with responsive web design. Using Bulma allowed a relatively "out of the box" approach", but none the less additional customisation was required using a multiline columns approach with the card component. 
+Styling was achieved primarily though the use of a Bulma template, Lux from Bulmaswatch. This was introduced by agreement early on in the project, which meant that members of the group were able to style their components with the confidence that these would not deviate signifcantly from other people's styliny. 
 
-We made a conscious decision not to clutter pages with two much information, instead preferring to limit the text on the screen and make use of large blocks of colour to give the site a spacious and relaxed feel. Given the prevalence of limited text on simple backgrounds, text and colour palette were key. 
+At the end of the project minimal tweaks were required to the overall styling to give single visual identity to the app, and this was in a large part due to the use of the template at an early stage.
+
+As with my second project, we felt that, although there was a signficant amount of information to display, an uncluttered apporach was still best. Given the subject matter of events and enjoying yourself, we gave images prominance on the site, as these often grab a user's interest more than text. 
  
- We used Bulma variables and custom classes with SASS to tweak the underlying Bulma templates, but were conscious not to "fight" overly with the default Bulma settings:
-
-```CSS 
-@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
-
-$family-primary: 'Oswald';
-$body-background-color: hsl(179, 3%, 90%);
-$navbar-background-color: hsl(246, 46%, 90%);
-$card-background-color: hsl(218, 17%, 21%);
-$radius-large: 6px;
-
-
-.card-content{
-  color:hsl(179, 3%, 90%);
-}
-
-.card{
-  border-radius: 10px;
-}
+Parallex effects were used where we felt it added to the visual appeal of the page, such as on the Index with React-lazy-hero:
+```Javascript
+<LazyHero
+  ransitionTimingFunction="ease-in-out" isFixed={true}
+  imageSrc="https://unsplash.it/2000/1000" minHeight="10vh">
+  <h1>Happening</h1>
+</LazyHero>
 ```
-Overall I consider the styling effective, working well with the existing images being supplied by the API, and giving the clean and uncluttered look we were aiming for:
-
+The styling of the site 
 
 
 
