@@ -2,6 +2,16 @@
 
 [Happening](https://project-3-happening.herokuapp.com/#/)
 
+### Installation
+
+Fork the repository
+
+Clone the repository down to your local system
+
+Run yarn in the terminal to install dependencies
+
+Run yarn in the terminal to load the app
+
 ### Brief
 
 Working in a group of 4, we were tasked with building a Mongoose, Express, React and Node.js (MERN) full-stack application from scratch. 
@@ -15,6 +25,10 @@ Key deliverables were as follows:
 * Have a visually impressive design
 * Have automated tests for RESTful resources on the back-end
 
+### Timeframe
+
+7 days
+
 ### Overview & concept of the project
 
 Having been allocated our group, we spent several hours discussed what kind of app we wished to build, and who it would serve. Several of the group were not from London, and the topic of knowing where to go in London for particular interests, plus finding people who shared these interests, came up. 
@@ -27,7 +41,7 @@ From the outset we wanted a stylish and attractive app which would draw users in
 
 ### Technologies used
 
-Mongoose, Express, React, Node.js, MongoDB, axios, Bulma, HTML5, ES6, CSS 3, SASS, Git, Github
+Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, Javascript ES6, CSS 3, SASS, Git, Github
 
 ### Approach taken
 
@@ -175,14 +189,12 @@ The app at the end of the project delivered a large amount of functionality, fro
 
 * Currently the categories on the index page do not return unique results, if a happening has more than one category assigned, and so duplicates will show. 
 
--- Continue* 
-
 ### Future features
 
-* Introduce the ability to search by multiple ingredients 
-* A comparison function to compare cocktails
-* Making the prepopulated searches use a single component. 
+* Deal with the returning of duplicate results
 
+* Make the site more mobile responsive (currently this is rather hit and miss)
+ 
 ### Learning points (tech & soft skills)
 
 #### Methodology
