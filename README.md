@@ -47,11 +47,9 @@ Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, Javasc
 
 ## Planning
 
-After agreeing the concept of the project, we spent an afternoon planning the app using wireframes:
+After agreeing the concept of the project, we spent an afternoon planning the app using wireframes.
 
-<img src="./readme/wireframe.jpg" width="50%" alt="CocktailBored wireframe">
-
-<img src="./readme/Wireframe3.jpg" width="50%" alt="Happening wireframe">
+<img src="readme/Wireframe3.jpg" width="50%" alt="Happening wireframe">
 
 We also talked through the process of collaborative working on github, reminding ourselves to work on a new branch for each feature and merge this frequently (once tested), with the main development branch.
 
