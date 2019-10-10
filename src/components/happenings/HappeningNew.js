@@ -1,12 +1,11 @@
 import React from 'react'
+import Select from 'react-select'
 import axios from 'axios'
 import moment from 'moment'
 
 import { categories } from '../../lib/Categories'
 import Auth from '../../lib/Auth'
 
-
-import Select from 'react-select'
 
 class HappeningNew extends React.Component {
 
@@ -40,6 +39,7 @@ class HappeningNew extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     const formData = { ...this.state.formData, time: this.convertDateTime() }
+
     axios.post('/api/happenings', formData, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
@@ -53,7 +53,8 @@ class HappeningNew extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.formData)
+    console.log(this.state.errors)
     const selectedCategories = (this.state.formData.categories || [ ]).map(categories => ({ label: categories, value: categories }))
     return (
       <section className="section">

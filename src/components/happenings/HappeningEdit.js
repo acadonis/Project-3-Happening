@@ -41,7 +41,6 @@ class HappeningEdit extends React.Component {
   }
 
   render() {
-    console.log(this.state.formData.name)
     const selectedName = (this.state.formData.name || [])
     const selectedVenue = (this.state.formData.venue || [])
     const selectedDate = (this.state.formData.local_date || [])

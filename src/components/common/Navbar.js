@@ -28,8 +28,8 @@ class Navbar extends React.Component {
     }
   }
 
-  // <h1 className="title">Happening</h1>
   render() {
+    console.log(Auth.getPayload())
     return (
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
