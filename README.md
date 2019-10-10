@@ -49,7 +49,7 @@ Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, Javasc
 
 After agreeing the concept of the project, we spent an afternoon planning the app using wireframes:
 
-<img src="your image" style="transform:rotate(90deg);">
+<img src="./readme/Wireframe3.jpg" style="transform:rotate(90deg);">
 
 We also talked through the process of collaborative working on github, reminding ourselves to work on a new branch for each feature and merge this frequently (once tested), with the main development branch.
 
@@ -102,7 +102,9 @@ Users are required to be logged into the site to create a happening, and a Toast
 router.route('/happenings/')
   .get(happeningsController.index)
   .post(secureRoute, happeningsController.create)
+  
 ============================================
+
 const SecureRoute = (props) => {
   if(Auth.isAuthenticated()) return <Route {...props} />
   toast.error('You need to log in to perform this action')
