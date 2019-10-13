@@ -1,6 +1,6 @@
 # GA Project 3: Happening
 
-<img src="./readme/happening.jpg" width="100%" alt="Happening front page">
+<img src="./readme/Happening.jpg" width="100%" alt="Happening front page">
 
 ### Link
 
@@ -45,7 +45,7 @@ From the outset we wanted a stylish and attractive app which would draw users in
 
 ### Technologies used
 
-Javascript ES6, Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, CSS 3, SASS, Git, Github
+JavaScript ES6, Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, CSS 3, SASS, Git, Github
 
 ### Approach taken
 
@@ -168,6 +168,7 @@ At the end of the project minimal tweaks were required to the overall styling to
 As with my second project, we felt that, although there was a signficant amount of information to display, an uncluttered apporach was still best. Given the subject matter of events and enjoying yourself, we gave images prominance on the site, as these often grab a user's interest more than text. 
 
 Parallex effects were used where we felt it added to the visual appeal of the page, such as on the Index with React-lazy-hero:
+
 ```Javascript
 <LazyHero
   ransitionTimingFunction="ease-in-out" isFixed={true}
@@ -175,6 +176,7 @@ Parallex effects were used where we felt it added to the visual appeal of the pa
   <h1>Happening</h1>
 </LazyHero>
 ```
+
 The styling delivers a professional looking website, and I think suits the subject matter of the app.
 
 ### Finished product
