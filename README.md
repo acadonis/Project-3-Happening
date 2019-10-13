@@ -14,7 +14,7 @@ Clone the repository down to your local system
 
 Run *yarn* in the terminal to install dependencies
 
-Run *mongodb* in the terminal, together with *yarn serve:backend* and *yarn serve:frontend*
+Run *mongodb* in the terminal, together with *yarn serve:backend* and *yarn serve:frontend* 
 
 ### Brief
 
@@ -115,6 +115,7 @@ const SecureRoute = (props) => {
   return <Redirect to="/login" />
 }
 ```
+
 ## Happening Index Page
 
 The Happening index page was required to have 5 sections of happenings grouped by categories, with two larger event placeholders and three smaller ones. The layout of the section was relatively straightforward, using components with Bulma card classes, however the challenge was to adhere to DRY principles and avoid duplication of code.
@@ -203,7 +204,7 @@ The app at the end of the project delivered a large amount of functionality, fro
 
 * Make the site more mobile responsive (currently this is rather hit and miss)
  
-### Learning points (tech & soft skills)
+### Learning points
 
 #### Methodology
 Working in a group development team was excellent practice in teamwork and communcation skills. Making decisions together and having regular standups with the team required a cooperate approach, and planning the required task using Trello cards was an invaluable aid.
