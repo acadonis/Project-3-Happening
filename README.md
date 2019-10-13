@@ -1,3 +1,7 @@
+# GA Project 3: Happening
+
+<img src="./readme/happening.jpg" width="100%" alt="Happening front page">
+
 ### Link
 
 [Happening](https://project-3-happening.herokuapp.com/#/)
@@ -8,9 +12,9 @@ Fork the repository
 
 Clone the repository down to your local system
 
-Run yarn in the terminal to install dependencies
+Run *yarn* in the terminal to install dependencies
 
-Run yarn in the terminal to load the app
+Run *mongodb* in the terminal, together with *yarn serve:backend* and *yarn serve:frontend*
 
 ### Brief
 
@@ -41,7 +45,7 @@ From the outset we wanted a stylish and attractive app which would draw users in
 
 ### Technologies used
 
-Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, Javascript ES6, CSS 3, SASS, Git, Github
+Javascript ES6, Mongoose, Express, React, Node.js, nodemon, MongoDB, axios, Bulma, HTML5, CSS 3, SASS, Git, Github
 
 ### Approach taken
 
