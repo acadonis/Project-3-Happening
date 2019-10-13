@@ -120,7 +120,7 @@ const SecureRoute = (props) => {
 
 The Happening index page was required to have 5 sections of happenings grouped by categories, with two larger event placeholders and three smaller ones. The layout of the section was relatively straightforward, using components with Bulma card classes, however the challenge was to adhere to DRY principles and avoid duplication of code.
 
-To this end I built an index section functional component, which was used by the main index classical component to generate the 5 sections. Firstly the intial axios get was sliced, to return results in 5 categories, and then these results were further sliced to return 5 happenings per category. 
+To this end I built an index section functional component, which was used by the main index classical component to generate the 5 sections. Firstly the initial axios get was sliced, to return results in 5 categories, and then these results were further sliced to return 5 happenings per category. 
 
 Once set to state, the results are mapped over in the render and spread to the Happening index section, which produces the required layout per category. 
 
@@ -162,11 +162,11 @@ componentDidMount() {
 
 ### Styling
 
-Styling was achieved primarily though the use of a Bulma template, Lux from Bulmaswatch. This was introduced by agreement early on in the project, which meant that members of the group were able to style their components with the confidence that these would not deviate signifcantly from other people's styliny. 
+Styling was achieved primarily though the use of a Bulma template, Lux from Bulmaswatch. This was introduced by agreement early on in the project, which meant that members of the group were able to style their components with the confidence that these would not deviate significantly from other people's styling. 
 
 At the end of the project minimal tweaks were required to the overall styling to give single visual identity to the app, and this was in a large part due to the use of the template at an early stage.
 
-As with my second project, we felt that, although there was a signficant amount of information to display, an uncluttered apporach was still best. Given the subject matter of events and enjoying yourself, we gave images prominance on the site, as these often grab a user's interest more than text. 
+As with my second project, we felt that, although there was a significant amount of information to display, an uncluttered approach was still best. Given the subject matter of events and enjoying yourself, we gave images prominence on the site, as these often grab a user's interest more than text. 
 
 Parallex effects were used where we felt it added to the visual appeal of the page, such as on the Index with React-lazy-hero:
 
@@ -207,11 +207,11 @@ The app at the end of the project delivered a large amount of functionality, fro
 ### Learning points
 
 #### Methodology
-Working in a group development team was excellent practice in teamwork and communcation skills. Making decisions together and having regular standups with the team required a cooperate approach, and planning the required task using Trello cards was an invaluable aid.
+Working in a group development team was excellent practice in teamwork and communication skills. Making decisions together and having regular standups with the team required a cooperate approach, and planning the required task using Trello cards was an invaluable aid.
 
 #### Technical
 The project allowed me to further develop my React skills, and become more comfortable with using React packages (such as React-Select), which are an excellent way to give additional functionality to an app without taking large amounts of time. 
 
-Greater understanding of the interation between functional and classical components, together with setting state with data from axios requests before iterating over this data allowed me to solve a complex techincal challenge which was immensly satisying.
+Greater understanding of the interaction between functional and classical components, together with setting state with data from axios requests before iterating over this data allowed me to solve a complex technical challenge which was immensely satisfying.
 
 
