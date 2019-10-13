@@ -1,4 +1,4 @@
-# GA Project 3: Happening
+# GA Project 3: Happening - A MERN stack app
 
 <img src="./readme/Happening.jpg" width="100%" alt="Happening front page">
 
